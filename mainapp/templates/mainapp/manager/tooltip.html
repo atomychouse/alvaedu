@@ -1,0 +1,71 @@
+<style type="text/css">
+  .pelos{
+    border:1px solid white;
+  }
+</style>
+
+<ol id="menusortable">
+	<li ng-repeat="m in sectionset.modulos|orderBy:'orden'" class="ordermy" ng-class="{'ui-state-disabled':m.slug=='color'}">
+		<div>
+      <a href="#||m.title||" data-toggle="tooltip"  data-placement="top" title="||m.title||">
+
+      <span class="||m.icono||"></span>
+      </a>
+    </div>
+	</li>
+	<li class="ui-state-disabled">
+  <div></div>
+  </li>
+
+</ol>
+
+<ul>
+    <li>
+      <div style="width:23px;border-top:solid 2px #636363;height:10px;margin: auto;">&nbsp;</div>
+    </li>
+    <li class="boton-box ui-state-disabled">
+    <div>
+    <a data-toggle="modal" href="#modulesbox" class="boton gris" style="margin:0px;">
+      <i class="glyphicon glyphicon-plus"></i>
+    </a>
+    </div>
+  </li>
+
+</ul>
+
+
+
+
+<!-- Modal -->
+<div class="modal " id="modulesbox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 12 !important;">
+  <div class="modal-dialog" role="document" style="margin-top:20%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body" style="padding: 25px;text-align:left;">
+    
+          <ul class="modulesboxmenu" style="width:90%;margin:auto;">
+            <li ng-repeat="itm in modlist">
+              <div>
+                <a href="#addmd" ng-click="addModule($event,itm);">
+                <span class="||itm.icono||" style="font-size:20px;padding:10px 0px;text-align: center;"></span>
+                </a>
+              </div>
+              <div class="txt" style="display: none">
+                <a href="#addmd" ng-click="addModule($event,itm);">
+                  ||itm.name||
+                </a>
+              </div>
+            </li>
+          </ul>
+      
+      </div>
+
+      <div class="modal-header">&nbsp;</div>
+
+    </div>
+  </div>
+</div>
+
+<!-- END MODAL -->

@@ -1,0 +1,61 @@
+
+{% extends 'mainapp/loguinbase.html' %}
+
+
+{% block content%}
+
+<style type="text/css">
+	#logueoform label{
+		display: block;
+		margin:10px 0px;
+	}
+
+	.formrow{
+		margin:20px 0px;
+		width:100%;
+	}
+
+	.formrow input{
+		width: 100%;
+	}
+
+</style>
+<section id="loginsection" style="width:100%;height:100%;display: table;" ng-controller="lgnCtr">
+	<div style="display: table-row;">
+		<div style="display: table-cell;vertical-align:middle;">
+			<div style="width:50%;height:auto;margin:auto;border:1px solid blue;">
+				<div style="text-align:center; ">
+					<h1>Nueva Contraseña</h1>
+				</div>
+				<div style="width:80%;margin: auto;" ng-hide="recuperada">
+
+					<div class="alert alert-danger" role="alert" ng-show="passnoval">
+					  <strong>!</strong> Contraseña no valida o no coinciden.
+					</div>
+					<input type="hidden" id="timem" name="timem" value="{{pkt}}">
+					<div class="formrow">
+						<label>Contraseña</label>
+						<input type="password" class="form-control" name="usuario" ng-model="pass" />
+					</div>
+					<div class="formrow">
+						<label>Repita Contraseña</label>
+						<input type="password" class="form-control" name="usuario" ng-model="rpass" />
+					</div>
+					<div class="alert alert-danger" role="alert" ng-if="lgerr">
+					  <strong>!</strong> Usuario o contraseña no validos.
+					</div>
+
+					<div class="formrow" style="text-align: right;">
+						<button type="button" ng-click="assigpass($event);">Enviar</button>
+					</div>
+				</div>
+				<div ng-show="recuperada">
+					<div class="alert alert-default" role="alert">
+					  <strong>!</strong> Su contraseña fué cambiada exitosamente, loguin <a href="/">aquí</a>.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+    {% endblock %}

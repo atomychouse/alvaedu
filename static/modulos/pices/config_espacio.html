@@ -1,0 +1,194 @@
+	
+	<div class="headbox" >
+		<div class="title" style="float: left;padding-top: 20px;">Separador </div>
+		<div style="float: right;text-align: right;margin:10px 0px;">
+			<a href="#addItem"  class="boton-g-round cierraboximgreb" ng-click="colserr();">
+				<i class="glyphicon glyphicon-remove"></i>
+			</a>
+			<a href="#addItem"  class="boton-g-round cierrabox" ng-click="savecfgspace($event);">
+				<i class="glyphicon glyphicon-ok"></i>
+			</a>
+		</div>
+		<div style="clear: both;height: 0px;"></div>
+
+	</div>
+
+	<div style="width:100%;border-top:solid 2px #636363;height:10px;margin:auto;">&nbsp;</div>
+
+	<div style="margin:20px 0px 30px 0px;">
+
+	<table class="sliderspace_t_box">
+		<tr>
+			<td style="width:15%;"><span class="txt-form">Alto</span></td>
+			<td style="width:75%;">
+				<div class="slider-box-space">
+					<div class="back-slide">&nbsp;</div>
+					<div id="slider_space" ></div>
+				</div>
+
+			</td>
+			<td style="width:10%;"><span class="txt-form"><span class="txtpx">||datos_sets.config.alto||</span>px</span></td>
+		</tr>
+	</table>
+
+	</div>
+	<div>
+		<label class="txt-form">Color de relleno</label>
+
+
+    		<div class="input-group listadorow">
+		    	<span class="block_color_cfg" style="background-color:||datos_sets.config.color_fondo||;color:||datos_sets.itm.config.color_linea||;">A</span>
+			    <div class="input-group-btn">
+			        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          +
+			        </button>
+			        <div class="dropdown-menu dropdown-menu-right" style="padding:20px;">
+
+						<div style="position:relative;background: #fff;padding:20px 0px 10px 0px;">
+							<div class="colorear-row">
+								<span class="color-pice"  
+									  style="background:#fff;color:#000;"  
+									  ng-click="setcfgcolorespacio(datos_sets,'#fff','#000');">A</span>
+								
+							</div>
+							<div class="colorear-row" ng-repeat="c in syscolors">
+								<span ng-if="c.cromas.hex!=ft.cromas.hex" class="color-pice" ng-class="{noseve:opacando(c.cromas.hex,ft.cromas.hex)}" 
+									  style="background:||c.cromas.hex||;color:||ft.cromas.hex||;" ng-repeat="ft in syscolors" ng-click="setcfgcolorespacio(datos_sets,c.cromas.hex,ft.cromas.hex);">A</span>
+							</div>
+						</div>
+
+			      	</div>
+			    </div>
+		    </div>
+
+	</div>
+	<div class="cepar">&nbsp;</div>
+	<ul class="linea-cfg">
+		<li>||linea||</li>
+		<li ><a href="#sin" class="cambiolinea" ng-click="datos_sets.config.clase='nones';">
+		<img src="/static/imgs/defaults/space_none.png" />
+		</a> </li>
+		<li><a href="#sin" class="cambiolinea" ng-click="datos_sets.config.clase='centro';">
+			<img src="/static/imgs/defaults/space_one_line.png" />
+		</a> </li>
+		<li><a href="#sin" class="cambiolinea" ng-click="datos_sets.config.clase='extremes';">
+			<img src="/static/imgs/defaults/space_two_line.png" />
+		</a> </li>
+		<li><a href="#sin" class="cambiolinea" ng-click="datos_sets.config.clase='todos';">
+			<img src="/static/imgs/defaults/space_threee_line.png" />
+		</a></li>
+		<li><a href="#sin" class="cambiolinea" ng-click="datos_sets.config.clase='halftop';">
+					<img src="/static/imgs/defaults/space_up_line.png" />
+		</a> </li>
+	</ul>
+
+	<div class="cepar"></div>
+
+	<table class="sliderspace_t_box">
+		<tr>
+			<td style="width:15%;"><span class="txt-form">Alto</span></td>
+			<td style="width:75%;">
+				<div class="slider-box-space">
+					<div class="back-slide">&nbsp;</div>
+					<div id="slider_space_inner" ></div>
+				</div>
+
+			</td>
+			<td style="width:10%;"><span class="txt-form"><span class="txtlineapx">||datos_sets.config.grosor_linea||</span>px</span></td>
+		</tr>
+	</table>
+
+
+
+<script type="text/javascript">
+	
+	jQuery(document).ready(function(){
+
+
+		
+		$('#fondo').change(function(e){
+			$(this).css({'background':e.value});
+
+		});
+
+		$('.cierrabox').click(function(){
+			$('#cfg_space').hide();
+		});
+
+	var valores = [15,30,50,75];
+
+	slider = $('#slider_space');
+
+	$('#cambiasize').on('change',function(){
+		
+		aselecc = valores.indexOf(parseInt(this.value));
+		truselec = this.value;
+		slider.slider('value',aselecc);
+
+		var ro = angular.element(jQuery('#configs')).scope();
+			 ro.$apply(function(){
+			 	textsize = 99 - truselec;
+			 	ro.datos_sets.config.img_box_size=truselec;
+			 	ro.datos_sets.config.text_box_size=textsize;
+			 });
+
+
+	});
+
+
+
+
+
+	 jQuery( function() {
+
+	 	var ro = angular.element(jQuery('#configs')).scope();
+	 	init_val = ro.datos_sets.config.alto;
+
+	    jQuery( "#slider_space" ).slider({
+	    	min:0,
+	    	max:500,
+	    	value:init_val,
+	    	stop: function( event, ui ) {
+	    		var sizebox = ui.value;
+	    		jQuery('.txtpx').html(ui.value);
+				var ro = angular.element(jQuery('#configs')).scope();
+				 ro.$apply(function(){
+				 	console.log(ro);
+				 	ro.datos_sets.config.alto=sizebox;
+				 
+				 });
+				 $('#cambiasize').val(sizebox);
+
+	    	}
+
+	    });
+	  } );
+
+ jQuery( function() {
+ 		var ro = angular.element(jQuery('#configs')).scope();
+ 		initi_gros = ro.datos_sets.config.grosor_linea;
+	    jQuery( "#slider_space_inner" ).slider({
+	    	min:0,
+	    	max:20,
+	    	value:initi_gros,
+	    	slide:function(event,ui){
+	    		jQuery('.txtlineapx').html(ui.value);
+	    	},
+	    	stop: function( event, ui ) {
+	    		var sizebox = ui.value;
+	    		jQuery('.txtlineapx').html(ui.value);
+				var ro = angular.element(jQuery('#configs')).scope();
+				 ro.$apply(function(){
+				 	ro.datos_sets.config.grosor_linea=sizebox;
+				 });
+				 $('#cambiasize').val(sizebox);
+
+	    	}
+
+	    });
+	  } );		
+
+
+	});
+
+</script>

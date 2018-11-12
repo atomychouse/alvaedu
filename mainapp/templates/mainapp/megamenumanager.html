@@ -1,0 +1,84 @@
+<nav id="mainmenu_page" class="navbar navbar-default navbar-fixed-top " ng-controller="megamenuCtr" >
+      <div class="container">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav menupage" id="main-ul" ng-hide="editando">
+            <li style="border-right:1px solid #ececec;">
+              
+              <a href="#" class="dropdown-toggle mainmenu titulo" 
+                          data-toggle="dropdown" 
+                          role="button" 
+                          aria-expanded="false"  
+                          style="color:#FFCAE4;font-weight:400;font-size:1.3rem;" 
+                          >
+                          albaedu
+              </a>
+
+            </li>
+
+            <li>
+              <a href="#servicios" class="mainmenu">
+                Servicios
+              </a>
+            </li>
+
+
+            <li>
+              <a href="#contacto" class="mainmenu">
+                Contácto
+              </a>
+            </li>
+
+
+
+            <li>
+              <a href="#acerca" class="mainmenu">
+                Acerca de
+              </a>
+            </li>
+
+
+           <ul class="nav navbar-nav navbar-right" style="position:absolute;top: 0px;right:10px;display: none;">
+
+
+
+            <li ng-show="templado">
+              <a href="/?gone=1" class="font_color">
+                <i class="glyphicon glyphicon-off"></i>
+              </a>
+            </li>
+
+            <li ng-show="templado">
+               <a href="#" ng-click="showTools($event,true);" ng-hide="editando" class="font_color">
+                  <i class="glyphicon glyphicon-pencil"></i>
+                </a>
+                <a href="#" ng-click="showTools($event,false);" ng-show="editando" class="font_color">
+                  <i class="glyphicon glyphicon-eye-open"></i>
+                </a>
+            </li>
+
+
+          </ul>
+
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,117 @@
+<style type="text/css">
+	
+#row_||r.pk|| .gridtitle{
+	font-size:||r.config.fontsize||px;
+	color:||r.config.fontcolor||;
+}
+
+
+#row_||r.pk|| .insidegridbox{
+	padding:||r.config.margs||px;
+}
+
+#row_||r.pk|| .contendor{
+	padding:0px ||r.config.pads||px;
+}
+
+
+
+#row_||r.pk||
+	.captions p{
+		font-size:||r.config.fontsize||px;color:||r.config.fontcolor||;
+	}
+
+
+</style>
+ 
+<div id="row_||r.pk||" class="renglon ||r.slug|| ||mascaraedicion||" ng-class="{managging:editando===true}" >
+	<a name="/||r.title||"></a>
+	<ng-include src="'/static/modulos/pices/headbancobtns.html'"></ng-include>
+		<div class="row"  ng-class="estadoEdicion(editando);">
+			<div ng-hide="editando" class="cfg_titulos">||r.title||</div>
+			<div class="col-md-||r.config.cols|| col-sm-||r.config.cols|| col-xl-3 gridcol growl" ng-class="{visibil:publicaBox(editando,itm.publicado)}" ng-repeat="itm in r.items|orderBy:'orden'">
+				
+				<div class="insidegridbox">
+					<div class="floatrev" style="position: relative;top:inherit;">
+
+					<div class="top-btns" ng-show="editando">
+							<a href="#" class="boton-noround" ng-click="loadImg($event,this,'grid');">
+								<span class="icon-iconos-brandline_banco-de-imagen"></span>
+							</a>	
+					</div>
+					<a href="#banco"   
+							       data-target="#bancomodal" 
+							       class="modalbanco" 
+							       data-webimg="||itm.webimage||" 
+							       data-original="||itm.original||"
+							       data-pk='||itm.pk||'
+							      ng-click="showMod($event,this);">
+						<img src="||itm.img||" class="img-responsive" style="width:100%;">
+					</a>
+					</div>
+					
+					<div class="edit-tools" ng-show="editando">
+						<div class="captions" ng-show="editando" style="height:123px;margin:10px 0px;">
+							<text-angular ta-toolbar="[]" name="bancocontent_||itm.pk||"  ng-model="itm.descp" >
+							</text-angular>
+					    </div>
+					</div>
+					<div class="dwlist-grid" ng-show="editando" ng-repeat="x in itm.onlydowns">
+							<a href="/||x.pathfile||" target="_blank" title="||x.filename||">
+							<span class="fleft" >Original</span>
+							</a>
+					</div>
+					<ul ng-show="editando">
+					    <li  ng-repeat="dw in itm.downs" class="dwlist-grid">
+						    <div>
+						    	<a href="/||dw.pathfile||" target="_blank" style="color:#4c4c4c;float:left;width:70%;">||dw.filename||</a>
+						    	
+						    	<a href="#" ng-show="editando" ng-if="dw.pk" style="float: right;padding-top:4%;width:25%;text-align:right;"   
+						    	   ng-click="rmme($event,this,this.itm.downs,dw,'dwgrid');" >
+										<i class="glyphicon glyphicon-trash"></i>
+								</a>
+							</div>
+							<div style="height:0px;clear: both;"></div>
+					   	</li>
+					</ul>
+
+						<div id="doms-link-||itm.pk||" style="display: none;">
+							<div class="row">
+								<div class="col-md-1" ng-repeat="d in itm.downs">
+									<a href="/||d.pathfile||" class="dwlist-grid" target="_blank" >||d.filename||</a>
+								</div>
+								<div class="col-md-1" ng-repeat="od in itm.onlydowns">
+									<a href="/||od.pathfile||" class="dwlist-grid" target="_blank" >||od.filename||</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="down-btns-box" ng-show="editando">
+								<a href="#||dw.filepath||" 
+								   class="fleft" 
+								   ng-click="loadImg($event,this,'assign');" style="display: none;"> 
+								   <img src="/static/imgs/defaults/btn-dw.png"/>
+								</a>
+							<a href="#" 
+							   class="down-botton" 
+							   ng-click="cfg_banco_itm($event,this,'cfg_banco_itm','Banco');">
+								 <i class="glyphicon glyphicon-cog"></i> 
+							</a>
+
+
+							<a href="#" class="down-botton" ng-click="rmme($event,this,r.items,itm,'itm');">
+								 <i class="glyphicon glyphicon-trash"></i> 
+							</a>
+							<a href="#" class="down-botton" ng-click="saveBanco($event,this);"><i class="glyphicon glyphicon-ok"></i></a>
+							<div style="height:0px;clear: both;"></div>
+						</div>
+
+
+				</div>
+			
+			</div>	
+		</div>
+</div>
+
+
+

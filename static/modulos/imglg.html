@@ -1,0 +1,71 @@
+
+	<div ng-repeat="itm in r.items|orderBy:'orden'" style="height:auto;" class="gridcol" ng-class="{visibil:publicaBox(editando,itm.publicado)}">
+		<div class="contenido-box">
+			<div class="frontbox" >
+				
+				<div style="padding:0px ||itm.config.margs||px;">
+					<div style="position: relative;">
+						<div class="top-btns" ng-show="editando" style="right: 30px;">
+							<a href="#" class="boton" ng-click="loadImg($event,this,'full');">
+								<span class="icon-iconos-brandline_banco-de-imagen"></span>
+							</a>	
+						</div>
+					</div>
+					<div><img id="src-lo-||itm.pk||" src="||itm.img||"  ng-if="itm.img"  width="100%" ng-hide="itm.cropperit"></div>
+				
+				</div>
+
+				<div style="padding: 0px 90px;">
+
+				<div style=" padding:0px ||itm.config.margs||px;">
+						<div>
+							<div class="input-title input-w-decored cfg_subtitulos" 
+							     style="color:||itm.config.fontcolor||;" 
+							     ng-hide="editando">
+								||itm.title||
+							</div>
+
+							<input 
+								type="text" 
+								ng-show="editando"  
+								ng-model="itm.title" 
+								class="input-title input-w-decored cfg_subtitulos" 
+								style="color:||itm.config.fontcolor||;"  
+								placeholder="T&iacute;tulo" />
+						</div>
+
+						<div>
+							<input 
+							    type="text" 
+							    ng-change="editadoes(itm);" 
+							    ng-model="itm.descp" 
+							    style="color:||itm.config.fontcolor||;" 
+							    class="input-title input-w-decored cfg_textos" 
+							    placeholder="Texto" />
+						</div>					
+					</div>
+
+
+				
+				</div>
+
+
+
+				<div class="editionbox" style="position: absolute;right:0px;height: 0px;">
+					<ul style="text-align: right;padding:0px 100px;">
+						<li>
+
+							<a href="#" class="boton "
+						   ng-class="{btn_active:itm.cambiose}" 
+						   ng-click="saveGrid($event,this);" ng-show="editando">
+							<i class="glyphicon glyphicon-ok"></i>
+							</a>
+							&nbsp;
+						</li>
+					</ul>
+				</div>
+		</div>
+		</div>
+	</div>
+
+

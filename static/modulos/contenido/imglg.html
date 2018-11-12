@@ -1,0 +1,25 @@
+<style type="text/css">
+	.txtbox{
+		padding:0px 90px;
+	}
+</style>
+
+<div class="clearingall" ng-repeat="itm in r.items|orderBy:'orden'" ng-class="{visibil:publicaBox(editando,itm.publicado)}">
+	<div class="imgbox" style="position: relative;">
+
+		<div><img id="src-lo-||itm.pk||" src="||itm.img||" width="100%" ng-hide="itm.cropperit" /></div>
+	</div>
+	<div class="txtbox">
+		<div class="cfg_subtitulos" ng-hide="editando" style="padding:20px 10px;margin:10px 0px;">
+			||itm.title||
+		</div>
+
+		<div class="cfg_textos" ng-hide="editando" style="padding:20px 10px;margin:10px 0px;">
+			||itm.descp||
+		</div>
+
+
+	</div>
+
+
+</div>

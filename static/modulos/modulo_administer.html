@@ -1,0 +1,21 @@
+<div id="row_||r.pk||" class="row row-container" ng-class="{managging:editando===true}">
+	<a name="/||r.title||" ></a>
+	<!-- CABECERA -->
+	<div style="width:100%;padding:40px 90px;" ng-class="{visibil:publicaBox(editando,r.items[0].publicado)}" ng-if="r.slug!='color'">
+		
+		<div class="cfg_titulos"  ng-hide="editando" style="padding:8px 0px;">&nbsp;||r.title||</div>
+
+		<div style="display:inline-block;width:81%;vertical-align:top;" ng-show="editando">	
+			<span ng-show="editando" class=" iconico ||r.icono||"></span>
+			<input type="text" class="cfg_titulos change-titles" ng-model="r.title" placeholder="Título" ng-blur="saveT($event,r)" />
+		</div>
+		<div style="display: inline-block;width:18%;text-align: right;padding:6px 0px;" ng-show="editando">	
+			<ng-include src="'/static/modulos/headers/'+r.slug+'.html'"></ng-include>	
+		</div>
+
+	</div>
+
+	<section id="contenido_modulo_||r.pk||" class="||r.slug||" >
+		<ng-include src="'/static/modulos/administer/'+r.slug+'.html'"></ng-include>
+	</section>
+</div>

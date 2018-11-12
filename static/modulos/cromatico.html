@@ -1,0 +1,59 @@
+
+<style type="text/css">
+    
+    .rgb_box input{
+        display:inline-block;width:20%;
+    }
+
+</style>
+<div class="container-fluid" ng-class="{managging:editando===true}" id="crom_||r.pk||" style="padding:50px 90px;">
+
+    <div class="row">
+        <ng-include src="'/static/modulos/pices/headcromabotons.html'"></ng-include>
+            
+            <div class="row" ng-if="r.estilo!='linear'">
+                <div class="col-md-6 col-sm-6 col-xl-1" ng-repeat="typoc in ['principales','apoyo']">
+                    <div>
+                        <span>||typoc||</span>
+                        <a href="#" ng-click="addcolorsquema($event,typoc);" ng-show="editando">[+]</a>
+                    </div>
+                    <div class="row">
+                        <div ng-include 
+                             src="'/static/modulos/pices/cromatico_' + r.estilo + '.html'" >
+                        </div> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" ng-if="r.estilo=='linear'">
+                <div  ng-repeat="typoc in ['principales','apoyo']">
+                    <div style="text-transform: capitalize;margin:20px 0px;">||typoc||</div>
+                    <div class="row">
+                        <div ng-include 
+                             src="'/static/modulos/pices/cromatico_' + r.estilo + '.html'" >
+                        </div> 
+                    </div>
+                </div>
+
+
+                
+            </div>
+
+
+    </div>
+    
+    <div class="cepar" style="margin:50px auto;"></div>
+            <div>Proporción</div>
+
+            <div class="barras-bex" style="position:relative;height:60px;z-index:10;">
+                <div ng-repeat="apy in setcolores|orderBy:'-leverper'" style="width:||apy.percente||%;display:inline-block;text-align: right;">
+                        ||apy.roundper||%
+                </div>
+
+                <div ng-repeat="apy in setcolores|orderBy:'-leverper'" style="background-color:rgba(||apy.cromas.rgb.r||,||apy.cromas.rgb.g||,||apy.cromas.rgb.b||,1);width:||apy.percente||%;display:inline-block;">
+                        &nbsp;
+                </div>
+                <div class="cromas_style" id="cromatica" slider-colors ng-show="editando"></div>       
+            </div>
+
+</div>

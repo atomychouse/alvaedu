@@ -1,0 +1,142 @@
+<div ng-controller="megamenuCtr" id="megamenu" class="coloresback">
+  
+  <div class="nodes-box" id="brandline-logo">
+      <a href="/" style="padding: 20px 0px;position: relative;top:20px;">&nbsp;</a>
+  </div>
+
+  <ul id="menubag" style="display: inline-block;width:79%;vertical-align:top;" class="cfg_titulos_menu" >
+    <li class="nodes-list dropdown-me" ng-class="{selected:seleccion(s)}" ng-repeat="s in sections">
+      <div>
+      <span ng-hide="editando">
+        <a href="/section/||s.slug||/"  ng-if="s.cols.length<1">||s.title||</a>
+        <a href="#"  ng-if="s.cols.length>0" show-menu>||s.title||</a>
+        <a href="/section/||s.slug||/"  ng-if="s.title.length<1">Sección</a>
+        <a href="#||s.slug||"  ng-if="s.cols.length>0" show-menu> 
+          &nbsp;v
+        </a> 
+      </span>
+      <span ng-show="editando">  
+
+          <p ng-hide="s.editando">
+            <a href="#/section/||s.slug||/" ng-click="$event.preventDefault();s.editando=true;">||s.title||</a>
+            <a href="/section/||s.slug||/" class="first_color">
+              [*]
+            </a>
+            <a href="#addcol" class="first_color" ng-hide="s.ishome"  ng-if="s.cols.length<1" show-addmenu>
+              [+]
+            </a>
+            <a href="#as" 
+              ng-if="s.ishome!=true" class="first_color" ng-click="removeItm($event,sections,s,0);">
+              [x]
+            </a>
+
+            <a href="#||s.slug||"  ng-if="s.cols.length>0" show-menu> 
+              <i class="glyphicon glyphicon-chevron-down"></i> 
+            </a> 
+          </p>
+
+      <input type="text" ng-show="s.editando" ng-class="{errors:s.err}" placeholder="Sección" name="||s.slug||" ng-model="s.title" ng-blur="savesec($event,s);" />
+      </span>
+   
+      </div>
+
+      <!-- SUBMENU  -->
+      <ul id="sub-pk-||s.pk||" ng-if="s.cols.length>0" class="submenu-drop row" hide-menu>
+        <li style="text-align: right;">
+          <a href="#" ng-click="addsub($event,s);" ng-show="editando">
+            <i class="glyphicon glyphicon-plus"></i>
+          </a>
+          <a href="#as"  ng-show="editando"  ng-click="removeItm($event,sections,s,0);"  
+                  class="popsovers" 
+                  data-trigger="hover"  
+                  data-container="body" 
+                  data-toggle="popover" 
+                  data-placement="bottom" 
+                  data-content="Esto eliminara la Sección/subsecciones y todos sus contenidos" just-popover>
+                  <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </li>
+        <li ng-repeat="c in s.cols" class="col-md-3 col-sm-3 col-xl-1">
+            <div>
+              <ul>
+                <li>
+                    <span class="categorias cfg_titulos_menu second_color" ng-hide="editando">||c.cname||</span>
+                    <span ng-show="editando">
+                      <span class="categorias cfg_titulos_menu second_color" 
+                            ng-click="c.editando=true;" 
+                            ng-hide="c.editando" 
+                            style="cursor: pointer;margin-right: 5px;" 
+
+                        >||c.cname||</span> 
+
+                      <span class="categorias cfg_titulos_menu second_color" 
+                            ng-click="c.editando=true;" 
+                            ng-hide="c.editando" ng-if='c.name.length<1' 
+                            style="cursor: pointer;margin-right: 5px;" 
+
+                        >Categoría</span> 
+
+
+                        <input type="text" ng-show="c.editando" name="||c.cname||" ng-model="c.cname" ng-blur="saveCat(s,c);" />
+                      <a href="#" ng-click="addsbcol($event,s,c);">
+                        <i class="glyphicon glyphicon-plus"></i>
+                      </a>
+                      <a href="#" ng-click="removeItm($event,s.cols,c,1);">
+                        <i class="glyphicon glyphicon-trash"></i>
+                      </a> 
+                    </span>
+                </li>
+                <li ng-repeat="sb in c.subsecs" class="subsecs cfg_textos_menu" style="padding-left:10px;">
+                    <span>
+                      <a href="/section/||s.slug||/||c.cslug||/||sb.slug||" ng-hide="editando">||sb.title||</a>
+                    </span>
+                    <span ng-show="editando">
+                      <a href="#/section/||s.slug||/||c.cslug||/||sb.slug||" ng-click="$event.preventDefault();sb.editando=true" ng-hide="sb.editando" >||sb.title||</a>
+                      <a href="/section/||s.slug||/||c.cslug||/||sb.slug||">[*]</a>
+                      <input type="text" ng-show="sb.editando" name="||sb.slug||" ng-model="sb.title" ng-blur="savesec($event,sb);"/>                      
+                      <a href="#"  
+                       ng-click="removeItm($event,c.subsecs,sb,0);"> 
+                        <i class="glyphicon glyphicon-trash"></i>
+                      </a>
+
+                    </span>
+                </li>
+              </ul>             
+            </div>
+        </li>
+      </ul>
+      <!-- SUBMENU  -->
+    </li>
+    <li class="nodes-list" style="color:#fff;" ng-show="editando">
+      <span style="padding-right:20px;">|</span> <a href="#addsec" class="first_color" ng-click="addSection($event);" >Nueva Sección +</a>
+    </li>
+
+
+  </ul>
+
+  <ul style="display: none;">
+          <li id="menutabres">
+            <a href="#showmenu" ng-click="showmenu($event);"><i class="glyphicon glyphicon-menu-hamburger"></i></a>
+        </li>
+
+  </ul>
+
+  <ul style="position: absolute;top:10px;right:30px;" class="ul-line">
+      <li >
+        <a href="/cfg/">
+          <i class="glyphicon glyphicon-cog"></i>
+        </a>
+      </li>
+      <li >
+        <a href="/?gone=1">
+          <i class="glyphicon glyphicon-off"></i>
+        </a>
+      </li>
+      <li>
+          <a href="#" ng-click="showTools($event,true);" ng-hide="editando"><i class="glyphicon glyphicon-pencil"></i></a>
+          <a href="#" ng-click="showTools($event,false);" ng-show="editando"><i class="glyphicon glyphicon-eye-open"></i></a>
+
+      </li>
+  </ul>
+
+</div>

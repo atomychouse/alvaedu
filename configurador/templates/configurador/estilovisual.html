@@ -1,0 +1,185 @@
+<style type="text/css">
+	
+	.rgb_box input{
+		display:inline-block;
+		width:22%;
+		text-align:center;
+	}
+
+
+	.addcolorbox li{
+		display: inline-block;
+		width:49%;
+		vertical-align: top;
+		padding:20px;
+		margin:20px 0px;
+	}
+
+
+
+	.spacer{
+		padding:20px;
+	}
+
+</style>
+
+<div class="container-fluid" style="margin:20px 0px;">
+	<div class="row" style="display: none;">
+
+
+		<div class="col-md-6 col-sm-6 col-xs-6 col-xl-2 spacer">
+            <ul class="addcolorbox">
+                <li>
+                	<div>Colores Principales</div>
+                    <div class="rgb_box">
+                    R <input type="text" name="color" ng-model="color_r" placeholder="R" maxlength="3" />
+                    G <input type="text" name="color" ng-model="color_g" placeholder="G" maxlength="3" />
+                    B <input type="text" name="color" ng-model="color_b" placeholder="B" maxlength="3" />
+                    <span>
+                        <a href="#" ng-click="addRGB($event,color_r,color_g,color_b,'principales');"> + </a>
+                    </span>
+                    
+                    </div>
+                </li>
+
+                <li>
+                	<div>Colores de Apoyo</div>
+                    <div class="rgb_box">
+                    R <input type="text" name="color" ng-model="color_ra" placeholder="R" maxlength="3" />
+                    G <input type="text" name="color" ng-model="color_ga" placeholder="G" maxlength="3" />
+                    B <input type="text" name="color" ng-model="color_ba" placeholder="B" maxlength="3" />
+                    <span>
+                        <a href="#" ng-click="addRGB($event,color_ra,color_ga,color_ba,'apoyo');"> + </a>
+                    </span>
+                    
+                    </div>
+                </li>
+
+            </ul>
+            <ul class="addcolorbox" style="border-top:1px dotted #4c4c4c;">
+            <li style="height: auto;">
+	            <div ng-repeat="cp in colorset.principales|filter:'principales':strict" style="margin:10px 0px;" watch-colors>
+		            <div>
+		            	<div>
+		            			<div style="background-color:rgba(||cp.cromas.rgb.r||,||cp.cromas.rgb.g||,||cp.cromas.rgb.b||,1);" class="showcolor">
+		            			&nbsp;</div>	            		
+		            	</div>
+
+		            		<div>
+		            			<input type="text" ng-model="cp.cromas.pantone" class="fullw" placeholder="Pantone" />
+		            		</div>
+		            		<div class="rgb_box cmykins">
+			                    <input type="text" ng-model="cp.cromas.cmyk.c" placeholder="C" maxlength="3" />
+			                    <input type="text" ng-model="cp.cromas.cmyk.m" placeholder="M" maxlength="3" />
+			                    <input type="text" ng-model="cp.cromas.cmyk.y" placeholder="Y" maxlength="3" />
+			                    <input type="text" ng-model="cp.cromas.cmyk.k" placeholder="K" maxlength="3" />		
+
+		            		</div>
+			            	<div class="rgb_box">
+			                     R <input type="text" ng-model="cp.cromas.rgb.r" maxlength="3" />
+			                     G <input type="text" ng-model="cp.cromas.rgb.g" maxlength="3" />
+			                     B <input type="text" ng-model="cp.cromas.rgb.b" maxlength="3" />	            		
+			            	</div>
+		            		<div>
+		            			<label>HEX</label>
+		            			<div>||cp.cromas.hex||</div>	
+		            		</div>
+		            		<div>
+		            			<label>HSL</label>
+		            			<div>||cp.cromas.hsl.h|| ||cp.cromas.hsl.s|| ||cp.cromas.hsl.l||</div>	
+		            		</div>
+		            		<div style="text-align:right;">
+		            			<a href="#rmcolor" class="down-botton" ng-click="rmvcolor($event,colorset.principales,cp);">
+		            				<i class="glyphicon glyphicon-trash"></i> 
+		            			</a>
+		            			<a href="#rmcolor" class="down-botton" ng-click="savecolor($event,cp);">
+		            				<i class="glyphicon glyphicon-ok"></i> 
+		            			</a>
+		            		</div>
+		            </div>
+	            
+	            </div>
+
+			</li>
+
+
+            <li style="height: auto;">
+	            <div ng-repeat="cp in colorset.principales|filter:'apoyo':strict" style="margin:10px 0px;" watch-colors>
+	            <div>
+	            	<div>
+	            			<div style="background-color:rgba(||cp.cromas.rgb.r||,||cp.cromas.rgb.g||,||cp.cromas.rgb.b||,1);" class="showcolor">
+	            			&nbsp;</div>	            		
+	            	</div>
+
+	            		<div>
+	            			<input type="text" ng-model="cp.cromas.pantone" class="fullw" placeholder="Pantone" />
+	            		</div>
+	            		<div class="rgb_box cmykins">
+		                    <input type="text" ng-model="cp.cromas.cmyk.c" placeholder="C" maxlength="3" />
+		                    <input type="text" ng-model="cp.cromas.cmyk.m" placeholder="M" maxlength="3" />
+		                    <input type="text" ng-model="cp.cromas.cmyk.y" placeholder="Y" maxlength="3" />
+		                    <input type="text" ng-model="cp.cromas.cmyk.k" placeholder="K" maxlength="3" />		
+
+	            		</div>
+		            	<div class="rgb_box">
+		                     R <input type="text" ng-model="cp.cromas.rgb.r" maxlength="3" />
+		                     G <input type="text" ng-model="cp.cromas.rgb.g" maxlength="3" />
+		                     B <input type="text" ng-model="cp.cromas.rgb.b" maxlength="3" />	            		
+		            	</div>
+	            		<div>
+	            			<label>HEX</label>
+	            			<div>||cp.cromas.hex||</div>	
+	            		</div>
+	            		<div>
+	            			<label>HSL</label>
+	            			<div>||cp.cromas.hsl.h|| ||cp.cromas.hsl.s|| ||cp.cromas.hsl.l||</div>	
+	            		</div>
+	            		<div style="text-align:right;">
+	            			<a href="#rmcolor" class="down-botton" ng-click="rmvcolor($event,colorset.principales,cp);">
+	            				<i class="glyphicon glyphicon-trash"></i> 
+	            			</a>
+	            			<a href="#rmcolor" class="down-botton" ng-click="savecolor($event,cp);">
+	            				<i class="glyphicon glyphicon-ok"></i> 
+	            			</a>
+	            		</div>
+	            </div>
+	            
+	            </div>
+
+			</li>
+
+           </ul>
+
+
+		</div>
+
+
+			<div class="col-md-6 col-sm-6  col-xs-6 col-xl-2 spacer">
+				<div class="row">
+					<div class="col-md-8 col-sm-8 col-xl-2">
+						Fondos de Color
+					</div>
+					<div class="col-md-3 col-sm-3 col-xl-2" style="text-align:right;">
+							<a href="#" 
+							   class="down-botton" 
+							   ng-click="saverejects($event,this);">
+							   	<i class="glyphicon glyphicon-ok"></i>
+							</a>
+					</div>
+				</div>
+				<div ng-repeat="c in colorset.principales" class="row">
+					<div ng-if="c.cromas.hex!=ft.cromas.hex"  ng-class="{opaque:opacando(c.cromas.hex,ft.cromas.hex)}"
+					     class="col-md-2 col-sm-2 col-xl-2" 
+					     ng-repeat="ft in colorset.principales" 
+					     style="background:||c.cromas.hex||;margin:2px;cursor:pointer;" ng-click="addreject(c.cromas.hex,ft.cromas.hex);">					    
+						<div  style="color:||ft.cromas.hex||;margin:5px;" class="fondocolorset">A ||ft.active||
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+
+
+</div>
+

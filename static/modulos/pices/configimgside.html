@@ -1,0 +1,123 @@
+	<div class="headbox" >		
+		<div class="title" style="float: left;padding-top: 20px;">Texto e Imagen </div>
+		<div style="float: right;text-align: right;margin:10px 0px;">
+			<a href="#addItem"  class="boton-g-round cierraboximgreb" ng-click="colserr();">
+				<i class="glyphicon glyphicon-remove"></i>
+			</a>
+			<a href="#addItem"  class="boton-g-round cierrabox" ng-click="savesettgrid($event);">
+				<i class="glyphicon glyphicon-ok"></i>
+			</a>
+		</div>
+		<div style="clear: both;height: 0px;"></div>
+
+	</div>
+
+	<div style="width:100%;border-top:solid 2px #636363;height:10px;margin:auto;">&nbsp;</div>
+
+	<div style="margin:20px 0px 30px 0px;">
+	<div class="txt-form">Tamaño de la imagen</div>
+		<div class="slider-box">
+			<div class="back-slide">&nbsp;</div>
+			<div id="slider2" just-silder></div>
+			<div class="marcadores">
+				<div class="txt-form" style="left:0%;">15%</div>
+				<div class="txt-form" style="left:33.3334%;">30%</div>
+				<div class="txt-form" style="left:66.6667%;">50%</div>
+				<div class="txt-form" style="left:100%;">75%</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div style="width:100%;border-top:solid 2px #636363;height:10px;margin:auto;">&nbsp;</div>
+
+	<table style="width:100%;height:100%;">
+		<tr>
+			<td class="txt-form">Alineación</td>
+			<td>
+				<select name="alineation" class="form-control input-sm centered" ng-model="cambiaside" id="cambiaside">
+					<option value="left">Izquierda</option>
+					<option value="right">Derecha</option>
+				</select>				
+			</td>
+		</tr>
+	</table>
+
+		<table style="width:100%;height: 100%;" class="formgrid" >
+
+		<tr>
+			<td colspan="2" class="txt-form">Color de la fuente</td>
+			<td>
+		    <div class="input-group listadorow">
+		    	<span style="display: inline-block;width:100%;height:34px;background:||datos_sets.items[0].config.fontcolor||;">&nbsp;</span>
+		      <div class="input-group-btn">
+		        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          +
+		        </button>
+		        <div class="dropdown-menu dropdown-menu-right" style="padding:20px;">
+		          <div ng-repeat="c in syscolors">
+		          	<a class="dropdown-item" style="background:||c.cromas.hex||;width:100%;display: inline-block;" href="#" 
+		                ng-click="$event.preventDefault();datos_sets.items[0].config.fontcolor=c.cromas.hex">
+		                &nbsp;&nbsp;
+		            </a>
+		          </div>	          
+		      </div>
+		    </div>
+		    </div>
+
+		</td>
+		</tr>
+
+	</table>
+
+<script type="text/javascript">
+	
+	jQuery(document).ready(function(){
+
+	
+
+		$('.cierrabox').click(function(){
+			$('#cfgtxtimg').hide();
+		});
+
+	var valores = [15,30,50,75];
+
+	slider = $('#slider');
+
+	$('#cambiasize').on('change',function(){
+		
+		aselecc = valores.indexOf(parseInt(this.value));
+		truselec = this.value;
+		slider.slider('value',aselecc);
+
+		var ro = angular.element(jQuery('#configs')).scope();
+			 ro.$apply(function(){
+			 	textsize = 99 - truselec;
+			 	ro.datos_sets.items[0].config.img_box_size=truselec;
+			 	ro.datos_sets.items[0].config.text_box_size=textsize;
+			 });
+
+
+	});
+
+
+	$('#cambiaside').on('change',function(){
+		
+		truselec = this.value;
+
+		var ro = angular.element(jQuery('#configs')).scope();
+			 ro.$apply(function(){
+			 	ro.datos_sets.items[0].config.img_pos=truselec;
+			 	if(truselec=='right')
+			 		ro.datos_sets.items[0].config.txt_pos='left';
+			 	else
+			 		ro.datos_sets.items[0].config.txt_pos='right';
+
+			 });
+
+
+		});
+
+	});
+
+</script>

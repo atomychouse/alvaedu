@@ -1,0 +1,17 @@
+@charset "UTF-8";
+{% for f in fontas.fuentemain_set.all %}
+@font-face {
+    font-family: "{{f.font_group}}";
+    {% for ff in f.fuentepk.all %}
+        {% if 'eot' in ff.font_type %}
+        src:url('{{ff.font_name}}') format('embedded-opentype');
+        {% endif %}
+        {% if 'ttf' in ff.font_type %}
+        src:url('{{ff.font_file}}') format('truetype');
+        {% endif %}
+        {% if 'woff' in ff.font_type %}
+        src:url('{{ff.font_file}}') format('woff');
+        {% endif %}
+    {% endfor %}
+}
+{% endfor %}

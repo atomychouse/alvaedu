@@ -1,0 +1,105 @@
+
+	<div style="background: #4c4c4c;color:#fff;">
+	<ul style="padding:20px 0px 20px 40px;">
+
+		<li ng-repeat="c in r.allcats">
+
+			<div ng-hide="editando" style="padding:30px 0px;">
+				<span class="catname cfg_subtitulos cat" style="font-weight: bold;">||c.name||</span>
+			</div>
+
+
+			<div ng-show="editando">
+				<table style="width:84%;">
+					<tr>
+						<td>
+							<input type="text" class="addcat" ng-model="c.name" placeholder="Categoría" ng-blur="savecat(c,false,r);"  />
+
+						</td>
+						<td>
+					      
+					      	<a href="#" class="boton-noround-sm" ng-click="rmcat($event,c,false,r);">
+					      		<i class="glyphicon glyphicon-trash"></i>
+					      	</a>
+							
+						</td>
+					</tr>
+				</table>
+			</div>
+
+
+			
+			<ul>
+				<li ng-repeat="sb in c.subcats" style="padding:5px 0px 5px 15px;">
+					
+					<div ng-hide="editando">
+						<div class="row">
+							<div class="col-md-8 col-sm-8 col-xl-8 col-xs-1">
+								<span class="cfg_textos subcat">||sb.name||</span>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xl-2 col-xs-1">
+								<input type="checkbox" click-flter />
+							</div>
+						</div>
+
+						
+					</div>
+					<div ng-show="editando"> 
+						<table style="width:80%;">
+							<tr>
+								<td>
+							      <input type="text" 
+							      	class="addcat" 
+							      	ng-model="sb.name"  
+							      	placeholder="Nombre Categoría"  
+							      	ng-blur="savecat(c,sb,false);" />
+									
+								</td>
+								<td>
+									<a href="#" class="boton-noround-sm" ng-click="rmcat($event,c,sb,false);">
+										<i class="glyphicon glyphicon-trash"></i>
+									</a>
+								</td>
+							</tr>
+						</table>
+
+
+					
+					</div>
+					
+				</li>
+
+			</ul>
+				<div style="border-top:1px solid white;padding: 10px 0px 0px 40px;text-align: right;width:80%;margin: auto;" ng-show="editando" >
+				<a href="#" class="boton-noround-sm" ng-click="addCat($event,c,'sub');" >
+					+	
+				</a></div>
+
+		</li>
+	</ul>
+
+	<div ng-show="editando" style="text-align:right;border-top:1px solid white;padding:10px 0px;width:80%;margin: auto;">
+		<a href="#" class="boton-noround-sm" ng-click="addCat($event,r.allcats,'');" >
+			+
+		</a>
+	</div>
+
+
+
+<script type="text/javascript">
+	
+	jQuery(document).ready(function(){
+
+		$('.cierraboxbanco').click(function(){
+			$('#cfg_banco').hide();
+		});
+
+
+
+
+
+
+
+	});
+
+</script>

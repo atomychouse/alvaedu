@@ -1,0 +1,86 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="atomyc.in">
+        <title>BRANDLINE  &reg;</title>
+        <meta name="" content="#496201s">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Josefin+Sans|Open+Sans|Paytone+One" rel="stylesheet">
+        <link rel="stylesheet" href="/static/bootstrap-4/css/bootstrap.min.css">
+        <link href="/static/css/jquery-ui.min.css" rel="stylesheet">
+        <link href="/static/css/brandfonts.css" rel="stylesheet">
+        <link href="/static/css/frontend-main.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+        {% block css %}{% endblock %}
+
+</head>
+<body ng-app='mainApp' ng-controller="pageCtr" class="registro">
+        {% block content%}
+        {% endblock %}
+
+    <script src="/static/js/jquery.js"></script>
+    <script src='/static/js/cropper.min.js'></script>
+    <script src="/static/js/jquery-ui.min.js"></script>
+
+    <script src="/static/bootstrap-4/js/bootstrap.bundle.js"></script>
+    <script src="/static/js/w3color.js"></script>
+    <script src="/static/js/angular.min.js"></script>
+    <script src="/static/js/angular-route.min.js"></script>
+    <script src="/static/js/chumbucket.js"></script>
+    <script src="/static/js/superplaceholder.js"></script>
+   
+    <script type="text/javascript">    
+$(function () {
+  $('[data-toggle="popover"]').popover();
+});
+        var myapp = angular.module('mainApp',['ngRoute']);
+        var customInterpolationApp = angular.module('customInterpolationApp', []);
+        // GLOBALS --------------------------------------------------------------------
+        var csrf = '{{csrf}}';
+        // ----------------------------------------------------------------------------
+        
+        myapp.config(function($interpolateProvider) {
+            $interpolateProvider.startSymbol('||');
+            $interpolateProvider.endSymbol('||');
+
+        });
+
+        myapp.config(['$httpProvider', function($httpProvider) {
+            $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+            $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+            $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';        
+        }]);   
+
+
+
+             
+    </script>
+
+
+
+
+    {% block scripts %}{% endblock %}
+
+
+<form ng-show="editandox">
+    <input type="file" id="uploader" name="uploader" upload-foto>
+    <input type="file" id="upload-file" name="upload-file" upload-file>
+</form>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1"  id="saving" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      Guardando ...
+    </div>
+  </div>
+</div>
+
+</body>
+
+</html>

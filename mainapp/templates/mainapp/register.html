@@ -1,0 +1,72 @@
+
+{% extends 'mainapp/loguinbase.html' %}
+
+
+{% block content%}
+
+<style type="text/css">
+	#logueoform label{
+		display: block;
+		margin:10px 0px;
+	}
+
+	.formrow{
+		margin:20px 0px;
+		width:100%;
+	}
+
+	.formrow input{
+		width: 100%;
+	}
+
+</style>
+<section id="loginsection" style="width:100%;height:100%;display: table;">
+	<div style="display: table-row;">
+		<div style="display: table-cell;vertical-align:middle;">
+			<div style="width:50%;height:auto;margin:auto;border:1px solid blue;">
+				<div style="text-align:center; ">
+					<h1>Entrar</h1>
+					<p>An online styleguide for</p>
+					<p>small business</p>
+				</div>
+
+				<div style="width:80%;margin: auto;">
+					<form name="lg" id="regform" action="/register/" method="post" >
+						{% csrf_token %}
+						{{forma.as_p}}
+						<br/>
+						<label>Dominio</label>
+						<div class="input-group" id="id_dominio">
+						  <input type="text"  class="form-control"  
+						         placeholder="dominio" 
+						         aria-label="dominio" 
+						         aria-describedby="basic-addon2" 
+						         name="dominio"
+						         >
+						  <span class="input-group-addon" id="basic-addon2">.brandline.com</span>
+						</div>
+						<div class="formrow" style="text-align: right;">
+							<button type="submit" >Enviar</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+    {% endblock %}
+
+
+
+{% block modules_loader %}
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$('#regform').submit(sendit);
+		});
+
+	</script>
+	
+
+{% endblock %}

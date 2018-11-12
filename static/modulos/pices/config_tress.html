@@ -1,0 +1,79 @@
+	<div class="headbox" >
+		<div class="title" style="float: left;padding-top: 20px;">360</div>
+		<div style="float: right;text-align: right;margin:10px 0px;">
+			<a href="#addItem"  class="boton-g-round cierraboximgreb" ng-click="colserr();">
+				<i class="glyphicon glyphicon-remove"></i>
+			</a>
+
+			<a href="#addItem"  class="boton-g-round cierraboximgreb" ng-click="save_row_setts($event);">
+				<i class="glyphicon glyphicon-ok"></i>
+			</a>
+		</div>
+		<div style="clear: both;height: 0px;"></div>
+
+	</div>
+
+	<div class="cepar"></div>
+
+	<div style="margin:20px 0px 30px 0px;">
+
+	<table style="width:100%;height: 100%;" class="formnom" >
+	<tr>
+		<td class="txt-form" style="width:70%;">
+			<div class="txt-form">Margenes exteriores</div>
+		</td>
+		<td style="text-align: right;">
+			<select name="imagen" class="form-control" ng-model="datos_sets.r.config.margs" >
+				<option value="0">0</option>
+				<option value="50">50</option>
+				<option value="90">100</option>
+			</select>
+		</td>
+	</tr>
+	</table>
+	<table style="width:100%;height: 100%;" class="formgrid" >
+	<tr style="display: none;">
+		<td class="txt-form" style="width:40%;" colspan="2">Fonts</td>
+		<td style="width: 60%;">
+	    <div class="input-group listadorow">
+	      <input type="text" class="form-control" aria-label="fontsize" placeholder="Xpx" ng-model="datos_sets.r.config.fontsize">
+	      <div class="input-group-btn">
+	        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	          +
+	        </button>
+	        <div class="dropdown-menu dropdown-menu-right">
+	          <div><a class="dropdown-item" href="#" 
+	                  ng-click="$event.preventDefault();datos_sets.r.config.fontsize=5">5px</a></div>
+	          <div><a class="dropdown-item" href="#" 
+	                  ng-click="$event.preventDefault();datos_sets.r.config.fontsize=10">10px</a></div>
+	          <div><a class="dropdown-item" href="#" 
+	                  ng-click="$event.preventDefault();datos_sets.r.config.fontsize=15">15px</a></div>
+	      </div>
+	    </div>		
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" class="txt-form">Color de la fuente</td>
+		<td>
+
+		    <div class="input-group listadorow">
+			    	<span style="display: inline-block;width:100%;height:34px;background:||datos_sets.r.config.fontcolor||;">&nbsp;</span>
+			      <div class="input-group-btn">
+			        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          +
+			        </button>
+			        <div class="dropdown-menu dropdown-menu-right" style="padding:20px;">
+			          <div ng-repeat="c in syscolors">
+			          	<a class="dropdown-item" style="background:||c.cromas.hex||;width:100%;display: inline-block;" href="#" 
+			                ng-click="$event.preventDefault();datos_sets.r.config.fontcolor=c.cromas.hex">
+			                &nbsp;&nbsp;
+			            </a>
+			          </div>	          
+			      </div>
+			    </div>
+			    </div>
+		</td>
+	</tr>
+
+	</table>
+

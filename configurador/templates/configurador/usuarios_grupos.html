@@ -1,0 +1,121 @@
+<div class="container-fluid" style="margin:20px 0px;">
+
+
+	<div class="row">
+
+		<div class="col-md-3 col-sm-3 col-xs-3 col-xl-2 spacer">
+			<div>
+				<span>Grupos</span>
+				<a href="#addg" ng-click="addgroup($event);">[+]</a>
+			</div>
+			<ul>
+				<li ng-repeat="g in groups">
+					<span ng-hide="g.editando">
+						<a href="#change"  ng-click="$event.preventDefault();g.editando=true;">||g.name||</a>
+						<a href="#change" ng-click="rmG($event,g);">[x]</a>
+					</span>
+					<a href="#change" ng-if="g.name.length<1">Grupo </a>
+
+					<input type="text" ng-model="g.name" ng-show="g.editando" ng-blur="saveG(g);"/>
+				</li>
+			</ul>
+		</div>
+
+
+		<div class="col-md-9 col-sm-9 col-xs-9 col-xl-2 spacer">
+			<div>
+				<span>Usuarios</span>
+				<a href="#banco"   
+		       data-target="#addusuario" 
+		       class="modalbanco" 
+		      ng-click="showMod($event,null);">
+				[+]</a>
+			</div>
+			<ul>
+				<li ng-repeat="u in usuarios" class="row">
+					<div class="col-md-4 col-sm-4 col-xs-4 col-xl-2">
+						||u.fname||
+					</div>
+
+					<div class="col-md-2 col-sm-2 col-xs-2 col-xl-2">
+						<a href="#banco"   
+		       data-target="#addusuario" 
+		       class="modalbanco" 
+		      ng-click="showMod($event,u);">||u.usuario||</a>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-4 col-xl-2">
+						||u.correo||
+					</div>
+					<div class="col-md-1 col-sm-1 col-xs-1 col-xl-2">
+						<a href="#" ng-click="rmUs($event,usuarios,u);">[x]</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+
+
+	</div>
+
+</div>
+
+
+
+<div class="modal " id="addusuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Usuario</h4>
+      </div>
+      <div class="modal-body">
+        <img src="" id="grande" class="img-responsive" />
+        <div class="cuerpo-texto">
+
+        <div id="formulariousuario" style="margin:20px 0px;">
+
+        	<div>
+        		<label>Nombre</label>
+        		<input type="text" name="nombre" class="form-control" ng-model="udt.fname" id="id_first_name" />
+        	</div>
+
+        	
+        	<div>
+        		<label>Usuario</label>
+        		<input type="text" name="usuario" class="form-control" ng-model="udt.usuario" id="id_username" />
+        	</div>
+
+        	<div>
+        		<label>Correo</label>
+        		<input type="text" name="correo" class="form-control" ng-model="udt.correo" id="id_email" />
+        	</div>
+
+        	<div ng-show="chpass();" style="margin:10px 0px;">
+        		<a href="#" ng-click="cambiandopass();">cambiar Contraseña</a>
+        	</div>
+        	<div ng-show="cambiapass" style="margin:10px 0px;">
+        		<label>Contraseña</label>
+        		<input type="password" name="pass" class="form-control" ng-model="udt.pass" id="id_pass" />
+        	</div>
+
+        	<div>
+        		<label>Grupo</label>
+        		<select name="grupous" ng-model="udt.grupo">
+        			<option value="||g.pk||" ng-repeat="g in groups" ng-selected="seleccionaUsGrup(udt,g);">||g.name||</option>
+        		</select>
+        	</div>
+
+
+        </div>
+
+
+        </div>
+      </div>
+        <div id="descargaslinks" ></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default"  ng-click="saveUser();">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

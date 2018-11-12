@@ -1,0 +1,57 @@
+<div  id="cfg_html" ng-show="editando">
+<div class="boxy">
+
+	<div class="headbox" >
+		
+		<div class="title" style="float: left;padding-top: 20px;">Texto</div>
+		<div style="float: right;text-align: right;margin:10px 0px;">
+			<a href="#addItem" class="boton-g-round">
+				<i class="glyphicon glyphicon-trash"></i>
+			</a>
+			<a href="#addItem"  class="boton-g-round cierraboxht" ng-click="savesettxt($event,this);">
+				<i class="glyphicon glyphicon-ok"></i>
+			</a>
+		</div>
+		<div style="clear: both;height: 0px;"></div>
+
+	</div>
+
+	<div class="cepar"></div>
+
+	<div style="margin:20px 0px 30px 0px;">
+
+
+	<table style="width:100%;height: 100%;" class="formgrid" >
+	<tr>
+		<td colspan="2" class="txt-form">Color de la fuente</td>
+		<td>
+			<select name="fondo" id="fondo" ng-model="datos.config.fontcolor">  
+			<option value="#4c4c4c">#4c4c4c</option>
+			<option value="#fff">#fff</option>
+			<option value="#000">#000</option>
+			</select>
+			
+		</td>
+	</tr>
+
+	</table>
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+<script type="text/javascript">
+	
+	jQuery(document).ready(function(){
+		$('.cierraboxht').click(function(){
+			$('#cfg_html').hide();
+		});
+	});
+
+</script>

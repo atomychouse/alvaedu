@@ -1,0 +1,92 @@
+
+<div id="tressbox-||r.pk||" class=" sfera" ng-class="{managging:editando===true}">
+
+
+	
+
+	<div ng-repeat="itm in r.items|orderBy:'orden'" ng-class="{visibil:publicaBox(editando,itm.publicado)}" >
+
+
+		<img  src="||itm.img||" 
+		      ng-if="itm.img=='/static/imgs/defaults/imagenrebasada.jpg'" 
+		      ng-hide="editando"  
+		      class="img-responsive"  
+		      width="100%"/>
+
+
+
+		<div class="adminpanel"  ng-show="editando" style="position: relative;">
+
+				<ul class="itm-menu" ng-show="editando" style="z-index: 12;right:30px;top:20px;position: absolute;padding:0px ||r.config.margs||px;">
+					<li>
+						<a href="#" class="boton" ng-click="loadImg($event,this,'tress');">
+							<span class="icon-iconos-brandline_banco-de-imagen"></span>
+						</a>	
+					</li>
+					<li>
+						<a href="#" class="boton" ng-click="savetress($event,itm,this)"><i class="glyphicon glyphicon-ok"></i></a>
+					</li>
+				</ul>
+				<img  src="||itm.img||" 
+				      ng-if="itm.img=='/static/imgs/defaults/imagenrebasada.jpg'" 
+				        
+				      class="img-responsive"  
+				      width="100%"/>
+
+		</div>
+
+
+		<div id="paraque-||itm.pk||" ng-show="itm.tresscero" style="width:100%;height:450px;z-index:10;padding:0px ||r.config.margs||px;" ng-if="itm.img!='/static/imgs/defaults/imagenrebasada.jpg'"></div>
+		<div ng-hide="editando">
+			        <div ng-include 
+			             src="'/static/modulos/' + itm.tresscero + '?updated=' + itm.tresupdateTime" 
+			             ng-if="itm.img" 
+			             onload="cargando(itm);">
+	        		</div>	
+	        		
+
+
+		</div>
+		<div class="editionbox edit-bar" ng-hide="editando" style="margin:10px 0px;">
+					<div style="padding:0px ||r.config.margs||px;">
+						<font color="||r.config.fontcolor||" size="||r.config.fontsize||px">
+						<div class=" input-w-decored cfg_subtitulos" style="margin:10px 0px;">||itm.title||</div>				
+						<div class=" input-w-decored cfg_textos">||itm.descp||</div>
+						</font>
+					
+					</div>
+
+				</div>
+
+
+
+				<div class="editionbox edit-bar" ng-show="editando" style="margin:10px 0px;">
+					<div style="padding:0px ||r.config.margs||px;">
+						<div>
+							<input 
+								style="color:||r.config.fontcolor||;"  
+								type="text"  
+								ng-model="itm.title" 
+								class="input-title input-w-decored cfg_subtitulos" 
+								placeholder="T&iacute;tulo" />
+						</div>
+						<div>
+							<input 
+							    type="text"  
+							    style="color:||r.config.fontcolor||;" 
+							    ng-model="itm.descp" 
+							    class="input-title input-w-decored cfg_textos" 
+							    placeholder="Texto" />
+						</div>					
+					</div>
+
+				</div>
+
+
+
+	</div>
+	
+
+</div>
+
+

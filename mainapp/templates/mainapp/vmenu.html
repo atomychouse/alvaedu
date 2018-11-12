@@ -1,0 +1,100 @@
+<div ng-controller="megamenuCtr" id="megamenu" style="background: #4c4c4c;height:100px;width:100%;">
+  
+  <div class="nodes-box" id="brandline-logo">
+    <span class="brandlogo cfg_titulos">BrandLine </span>
+  </div>
+
+  <ul class="nodes-box central-menu cfg_textos" id="menubag">
+    <li class="nodes-list dropdown-me" ng-class="{selected:seleccion(s)}" ng-repeat="s in sections">
+      <div>
+      
+      <a href="/section/||s.slug||/" ng-hide="editando" ng-if="s.cols.length<1">||s.title||</a>
+      <a href="#" ng-hide="editando" ng-if="s.cols.length>0" show-menu>||s.title||</a>
+      <a href="/section/||s.slug||/" ng-hide="editando" ng-if="s.title.length<1">Sección</a>
+
+      <span ng-show="editando">  
+        <span ng-hide="s.editando">
+          <a href="/section/||s.slug||/" ng-dblclick="$event.preventDefault();s.editando=true;" show-menu>||s.title||</a>
+          <a href="#addcol" ng-show="editando" ng-if="s.cols.length<1"  show-addmenu>[+]</a>
+          <a href="#as"  ng-show="editando" ng-if="s.ishome!=true" ng-click="removeItm($event,sections,s,0);">
+            [x]
+          </a>
+        </span>
+      <input type="text" ng-show="s.editando" ng-class="{errors:s.err}" placeholder="Sección" name="||s.slug||" ng-model="s.title" ng-blur="savesec($event,s);" />
+      </span>
+      <a href="#||s.slug||"  ng-if="s.cols.length>0" show-menu> 
+        <i class="glyphicon glyphicon-chevron-down"></i> 
+      </a>    
+      </div>
+
+      <!-- SUBMENU  -->
+      <ul ng-if="s.cols.length>0" class="submenu-drop row" hide-menu>
+        <li>
+          <a href="#" ng-click="addsub($event,s);" ng-show="editando" style="float: left;">COl[+]</a>
+          <a href="#as"  ng-show="editando" style="float: right;" ng-click="removeItm($event,sections,s,0);"  
+                  class="popsovers" 
+                  data-trigger="hover"  
+                  data-container="body" 
+                  data-toggle="popover" 
+                  data-placement="bottom" 
+                  data-content="Esto eliminara la Sección/subsecciones y todos sus contenidos" just-popover>
+                  <i class="glyphicon glyphicon-trash"></i>
+          </a>
+          <span style="clear: both;height:0px;">&nbsp;</span>
+        </li>
+        <li ng-repeat="c in s.cols" class="col-md-3 col-sm-3 col-xl-1">
+            <div>
+              <ul>
+                <li>
+                    <span class="categorias" ng-hide="editando">||c.cname||</span>
+                    <span ng-show="editando">
+                      <a href="#changecol" ng-hide="c.editando" ng-click="$event.preventDefault();c.editando=true;">||c.cname|| </a>
+                      <input type="text" ng-show="c.editando" name="||c.cname||" ng-model="c.cname" ng-blur="saveCat(s,c);" />
+                      <a href="#" ng-click="addsbcol($event,s,c);">[+]</a>
+                      <a href="#" ng-click="removeItm($event,s.cols,c,1);">[x]</a> 
+                    </span>
+                </li>
+                <li ng-repeat="sb in c.subsecs">
+                    <a href="/section/||s.slug||/||c.cslug||/||sb.slug||" ng-hide="editando">||sb.title||</a>
+                    <span ng-show="editando">
+                    <a href="#||sb.slug||" ng-hide="sb.editando" ng-click="sb.editando=true;">||sb.title||</a>
+                    <input type="text" ng-show="sb.editando" name="||sb.slug||" ng-model="sb.title" ng-blur="savesec($event,sb);" />
+                    </span>
+                </li>
+              </ul>             
+            </div>
+        </li>
+      </ul>
+      <!-- SUBMENU  -->
+    </li>
+  </ul>
+
+  <ul class="nodes-box right-menu">
+    <li class="nodes-list">
+      <a href="#addsec" ng-click="addSection($event);" ng-show="editando">Nueva Sección</a>
+    </li>
+    <li class="nodes-list">
+      <a href="/cfg/">
+        <i class="glyphicon glyphicon-cog"></i>
+      </a>
+    </li>
+    <li class="nodes-list">
+      <a href="/?gone=1">
+        <i class="glyphicon glyphicon-off"></i>
+      </a>
+    </li>
+    <li id="menutabres">
+        <a href="#showmenu" ng-click="showmenu($event);"><i class="glyphicon glyphicon-menu-hamburger"></i></a>
+    </li>
+  </ul>
+  <div style="clear: both;height:0px;width:0px;overflow:hidden;">&nbsp;</div>
+
+
+</div>
+
+
+
+
+
+
+

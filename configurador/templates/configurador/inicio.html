@@ -1,0 +1,98 @@
+{% extends 'configurador/base.html' %}
+
+{% block css %}
+<style type="text/css">
+  body{
+    background:#e6e6e6;
+  }
+
+  .miniheader{
+    background:||page_settings.colores[0].hex||;padding: 20px;text-align:left;
+  }
+
+
+  .textcolorsimulate{
+    background:||page_settings.colores[1].hex||;
+  }
+
+
+  .minimenu{
+    display:inline-block;
+    width:100%;
+    height:3px;
+    background:||page_settings.colores[1].hex||;
+    position:absolute;top:45%;
+  }
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+<section id="layouth" class="steps fullw" ng-show="viewer == 'layouth'" >
+  <div style="display: table-row;">
+    <div style="display: table-cell;vertical-align: middle;height:100%;">
+
+      <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-2 col-xl-2">
+          &nbsp;
+        </div>
+        {% include 'registroapp/paso_dos.html'%}
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<section id="ccolores" class="steps" style="padding:60px 0px;" ng-show="viewer == 'colores'">
+ 
+  <div style="display: table-row;">
+    <div style="display: table-cell;vertical-align: middle;height:100%;">
+
+      <div class="row">
+        <div class="col-md-1 col-sm-1 col-xs-1 col-xl-2" style="padding:0px 90px;">
+          &nbsp;
+        </div>
+        {% include 'registroapp/colores.html'%}
+      </div>
+
+
+    </div>
+
+    
+  </div>
+
+</section>
+
+
+<section id="tipos" class="steps" ng-show="viewer=='fuentes'">
+  
+  <div style="display: table-row;">
+    <div style="display: table-cell;vertical-align: middle;height:100%;">
+
+      <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-2 col-xl-2" style="padding:0px 40px;">
+          &nbsp;
+        </div>
+        {% include 'registroapp/tipografia.html'%}
+      </div>
+
+
+    </div>
+
+    
+  </div>
+
+</section>
+
+
+{%  endblock %}
+
+

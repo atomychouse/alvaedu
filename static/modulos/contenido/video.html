@@ -1,0 +1,42 @@
+
+	<div class="exmarg" style="padding: 0px ||r.config.pads||px;">
+
+		<div class="col-md-||r.config.cols|| col-sm-||r.config.cols|| col-xl-3" ng-repeat="itm in r.items|orderBy:'orden'" ng-class="{visibil:publicaBox(editando,itm.publicado)}">
+
+
+
+		    	<div class="itmlink" style="margin:||r.config.margs||px;">
+				    
+	    			<div style="position: relative;">
+
+	    				
+		    			<a ng-if="itm.link" 
+		    			   href="#" 
+		    			   ng-click="playme($event,this);" 
+		    			   style="position: absolute;top:45%;left:45%;">
+		    				<i class="glyphicon glyphicon-play-circle" 
+		    				   style="font-size: 40px;color:#fff;"></i>
+		    			</a>
+				        <img  ng-src="http://img.youtube.com/vi/||itm.link||/0.jpg" 
+				        	  ng-if="itm.link" 
+				        	  class="img-responsive"  
+				        	  width="100%" />
+				        <img src="/static/imgs/defaults/video.jpg" 
+				        	 ng-hide="itm.link" 
+				             class="img-responsive" style="width: 100%" />
+			        </div>
+			  	
+		            <div class="caption" style="font-size:||r.config.fontsize||px;color:||r.config.fontcolor||;" >
+			          <div class="input-w-decored" ng-hide="editando" style="margin:12px 0px;">&nbsp;</div>
+			          <div ng-hide="editando" class="input-w-decored cfg_subtitulos" ng-bind-html="itm.title" style="margin:15px 0px;">||itm.title||</div>
+			          <div ng-hide="editando" class="input-w-decored cfg_textos" ng-bind-html="itm.descp" style="margin:10px 0px;">||itm.descp||</div>
+
+		            </div>
+
+				</div>
+
+		</div>
+	
+	</div>
+
+

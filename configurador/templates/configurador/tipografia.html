@@ -1,0 +1,87 @@
+<style type="text/css">
+	||fuentes_css||	
+</style>
+
+	<div class="row">
+		<div class="col-md-3 col-sm-3 col-xs-3 col-xl-2 spacer">
+			Tipografía
+			<ul>
+				<li>
+				<form id="fontform" class="sended" name="forma" action="/cfg/upfont/" method="post" >
+					{% csrf_token %}
+					<input type="file" name="addfont" id="addFont" />
+					<button type="submit">UPLOAD</button>
+				</form>
+				</li>
+			</ul>
+		</div>
+
+		<div class="col-md-3 col-sm-3  col-xs-3 col-xl-2 spacer">
+			<div > Disponibles </div>
+			<ul droplist-ft class="flistdrop">
+				<li ng-repeat="f in fuentes_available" style="font-family:||f.font_name||;" font-name="||f.font_name||" data-fontname="||f.font_name||" data-pk="||f.pk||">
+					||f.font_name||
+				</li>
+			</ul>
+		</div>
+
+		<div class="col-md-6 col-sm-6  col-xs-6 col-xl-2 spacer">
+
+
+
+			Usos <a href="#addcat" ng-click="addFcat($event,this);" style="display: none;">[+]</a>
+			<div ng-repeat="fc in fontcats">
+				<div>||fc.cat||</div>
+				<ul id="usuoslist_||fc.fslug||" >
+					<li ng-repeat="u in fc.usages">
+						<div class="||u.usag|| showcase">
+							<span 
+							    style="font-family:||u.ft||;font-size:||u.puntaje||px;display: inline-block;">
+								||u.usag||
+							</span>
+							<div style="display: inline-block;">
+							    <div class="input-group listadorow">
+							      <input type="text" class="form-control" aria-label="fontsize" placeholder="Xpx" 
+							       ng-model="u.puntaje" ng-blur="changesizef($event,u,fontusage);" />
+							      <div class="input-group-btn">
+							        <button type="button" 
+							                class="btn btn-default dropdown-toggle" 
+							                data-toggle="dropdown" 
+							                aria-haspopup="true" 
+							                aria-expanded="false">
+							          +
+							        </button>
+							        <div class="dropdown-menu dropdown-menu-right">
+							          <div><a class="dropdown-item" href="#" 
+							                  ng-click="$event.preventDefault();u.puntaje=5;">15px</a></div>
+							          <div><a class="dropdown-item" href="#" 
+							                  ng-click="$event.preventDefault();u.puntaje=10;">25px</a></div>
+							          <div><a class="dropdown-item" href="#" 
+							                  ng-click="$event.preventDefault();u.puntaje=15;">35px</a></div>
+							      </div>
+							    </div>
+							    </div>
+							</div>
+
+							
+						</div>
+						<div class="row fuentedescp">
+							<ul droplist-ft data-fcase="||u.usag||">
+								<li ng-repeat="fo in fontusage|filter:{usage:u.usag}:strict">
+									<font family="||fo.fonty||">
+										<a ng-if="fo.pk>0" href="#removefont" ng-click="rmfontusage($event,fontusage,fo);"> x </a>
+										<a href="#comisario" ng-click="fontchange($event,u,fo);">||fo.fonty||</a>
+									</font>
+								</li>
+							</ul>
+
+						</div>
+					</li>					
+				</ul>
+			</div>
+			<div class="down-btns-box">
+				<a href="#" class="down-botton" ng-click="savecfgFonts($event,fontusage);"><i class="glyphicon glyphicon-ok"></i></a>
+			</div>
+
+		</div>
+	</div>

@@ -1,0 +1,63 @@
+
+<style type="text/css">
+	#row_||r.pk|| .txt_box p, .inputtxt{
+		font-size:||r.items[0].config.fontsize||px;
+		color:||r.items[0].config.fontcolor||;
+	}
+</style>
+
+
+
+	
+	<div  class="row edit-bar" ng-repeat="itm in r.items|orderBy:'orden'" ng-class="{visibil:publicaBox(editando,itm.publicado)}" >
+		
+		<div class="img_box gridcol" style="width:||itm.config.img_box_size||%;float:||itm.config.img_pos||;position: relative;">
+
+
+
+
+			<div ng-hide="itm.cropperit">
+				<img src="||itm.img||" class="img-responsive" style="width:100%;" />
+			</div>
+
+			<div id="img-txt-||itm.pk||" ng-show="itm.cropperit" >
+				<img src="||itm.img||" class="img-responsive" style="width:100%;"/>
+			</div>
+		</div>
+		
+		<div class="txt_box" style="float:||itm.config.txt_pos||;width:||itm.config.text_box_size||%; ">
+			<div ng-hide="editando">
+			<p  class="inputtxt input-w-decored md-title cfg_subtitulos" style="padding:5px 0px; ">||itm.title||</p>
+			<div ng-bind-html="itm.descp" class=" cfg_textos">||itm.descp||</div>
+			</div>
+		</div>
+
+
+
+		<div style="clear: both;"></div>
+		<div style="height: 35px;">&nbsp;</div>
+		<ul style="margin-top:20px;">
+			<li class="dwlist" ng-repeat="dw in itm.downs">
+				<span class="fleft"><a href="/||dw.pathfile||" target="_blank">||dw.filename||</a></span>
+				<span class="fright" ng-show="editando"><a href="#||dw.filepath||" ng-click="rmme($event,this,this.itm.downs,dw);"> <i class="glyphicon glyphicon-trash"></i> </a></span>
+				<span class="cleared">&nbsp;</span>
+			</li>
+		</ul>
+
+
+
+				<div class="down-btns-box" ng-show="editando">
+						<a href="#||dw.filepath||" 
+						   class="fleft" 
+						   ng-click="loadImg($event,this,'assign');"> 
+						   <img src="/static/imgs/defaults/btn-dw.png"/>
+						</a>
+					
+					<div style="height:0px;clear: both;"></div>
+				</div>
+
+
+
+	</div>
+		
+

@@ -1,0 +1,40 @@
+
+{% extends 'mainapp/loguinbase.html' %}
+
+
+{% block content%}
+
+<style type="text/css">
+	#logueoform label{
+		display: block;
+		margin:10px 0px;
+	}
+
+	.formrow{
+		margin:20px 0px;
+		width:100%;
+	}
+
+	.formrow input{
+		width: 100%;
+	}
+
+</style>
+<section id="loginsection" style="width:100%;height:100%;display: table;" ng-controller="lgnCtr">
+	<div style="display: table-row;">
+		<div style="display: table-cell;vertical-align:middle;">
+			<div style="width:50%;height:auto;margin:auto;border:1px solid blue;">
+				<div style="text-align:center; ">
+					<h1>Nueva Contraseña</h1>
+				</div>
+				<div style="width:80%;margin: auto;">
+	
+					El link a expirado, intente nuevamente <a href="/">aquí</a> En el apartado, Recuperar contraseña.
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+    {% endblock %}

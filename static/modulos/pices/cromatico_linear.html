@@ -1,0 +1,37 @@
+
+
+<div ng-repeat="cp in itm.colores" 
+     style="border-bottom: 1px solid #8a8c8c;" class="linear">
+<div class="row">
+     <div class="col-md-2 col-sm-2 col-xs-1">
+	    <div style="background-color:||cp.cromas.hex.color||;width:70%;margin: auto;"  class="lineas">
+            &nbsp;
+	    </div>                        
+     	
+     </div>
+     <div class="col-md-2 col-sm-2 col-xs-1" ng-if="cp.cromas.pantone.visible" class="cfg_textos">
+     	Pantone: ||cp.cromas.pantone.color||
+     </div>
+
+     <div class="col-md-2 col-sm-2 col-xs-1" ng-if="cp.cromas.cmyk.visible" class="cfg_textos">
+                CMYK: 
+                ||cp.cromas.cmyk.color.c||,
+                ||cp.cromas.cmyk.color.m||,
+                ||cp.cromas.cmyk.color.y||,
+                ||cp.cromas.cmyk.color.k||
+     </div>
+     <div class="col-md-2 col-sm-2 col-xs-1" ng-if="cp.cromas.rgb.visible" class="cfg_textos">
+            RGB: ||cp.cromas.rgb.color.r||,
+                      ||cp.cromas.rgb.color.g||,
+                      ||cp.cromas.rgb.color.b||
+     </div>
+     <div class="col-md-2 col-sm-2 col-xs-1" ng-if="cp.cromas.hex.visible" class="cfg_textos">
+		HEX: ||cp.cromas.hex.color||
+     </div>
+     <div class="col-md-2 col-sm-2 col-xs-1" ng-if="cp.cromas.hsl.visible" class="cfg_textos">
+		HSL: ||cp.cromas.hsl.color.h|| ||cp.cromas.hsl.color.s|| ||cp.cromas.hsl.color.l||
+     </div>
+
+</div>
+
+</div>

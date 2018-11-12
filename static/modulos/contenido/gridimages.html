@@ -1,0 +1,38 @@
+<style type="text/css">
+	
+#row_||r.pk|| .gridtitle{
+	
+	color:||r.config.fontcolor||;
+}
+
+
+#row_||r.pk|| .insidegridbox{
+	margin:||r.config.margs||px;
+}
+
+#row_||r.pk|| .contendor{
+	padding:0px ||r.config.pads||px;;
+}
+
+
+</style>
+ 
+<div class="contendor">
+	<!-- CONTENIDO -->
+
+			<div class="col-md-||r.config.cols|| col-sm-||r.config.cols|| col-xl-3 gridcol" ng-class="{visibil:publicaBox(editando,itm.publicado)}" ng-repeat="itm in r.items|orderBy:'orden'">
+				
+			<div class="insidegridbox">
+				<div class="edit-tools" ng-hide="editando">
+					<a href="||itm.link||" class="brand-control gridtitule cfg_subtitulos gridtitle" style="color:||r.config.fontcolor||;margin:5px 0px;">
+						||itm.title||
+					</a>
+					<span class="brand-control link" >&nbsp;</span>
+				</div>
+				
+			</div>
+			</div>	
+
+
+
+</div>

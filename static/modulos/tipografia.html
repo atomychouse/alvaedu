@@ -1,0 +1,113 @@
+<style type="text/css">
+	
+#row_||r.pk|| .gridtitle{
+	font-size:||r.config.fontsize||px;
+	color:||r.config.fontcolor||;
+}
+
+
+#row_||r.pk|| .insidegridbox{
+	margin:||r.config.margs||px;
+}
+
+#row_||r.pk|| .contendor{
+	padding:0px ||r.config.pads||px;;
+}
+</style>
+<style type="text/css">
+	||fuentes_css||	
+</style>
+
+
+<div id="row_||r.pk||" class="renglon marginado ||r.slug||" style="position:relative;" ng-class="{managging:editando===true}">
+	<a name="/||r.title||"></a>
+	<!-- BOTONERA -->
+	<div class="" ng-show="editando">
+
+		    <div class="barra_titulo">
+		    	<div class="barra_row">
+		    		<div style="padding:30px 0px;">
+			         	<span  class=" iconico ||r.icono||"></span>
+						<span><a href="#" class=" cfg_titulos" ng-hide="r.editandoT" ng-click="editTR($event,r);">||r.title||</a></span>
+						<input type="text" class="cfg_titulos" name="titulo" ng-blur="saveT($event,r)" ng-model="r.title" ng-show="r.editandoT" />
+		    		</div>
+
+		    	</div>
+		    </div>
+	</div>
+	<!-- CONTENIDO -->
+		<div class="row " ng-class="estadoEdicion(editando);">
+		<div ng-hide="editando" class="cfg_titulos">||r.title||</div>
+		<div class="gridcol">
+			<div  ng-class="{visibil:publicaBox(editando,itm.publicado)}" ng-repeat="itm in r.items|orderBy:orden">
+
+
+		      		<ul class="lateral-menu-btns" ng-show="editando">
+				        <li>
+				        	<a href="#" class="boton" 
+				        	   ng-click="addcattypo($event,r);"> 
+				        		<i class="glyphicon glyphicon-plus"></i>
+				         	</a>
+				         </li>
+				        <li><a href="#" class="boton" ng-click="rmme($event,this,this.rows,r,'mod');"> <i class="glyphicon glyphicon-trash"></i> </a></li>
+							<li>
+								<a href="#" class="boton" ng-click="publicarRow($event,r);">
+									<i class="glyphicon glyphicon-ok"></i>
+								</a>
+							</li>
+
+				      </ul>
+
+				<div style="padding:15px 0px;">
+					<div ng-show="editando">
+						<input type="text" ng-model="itm.categoria" class="cfg_textos" placeholder="Categoría de Fuente" />
+									<a href="#" class="boton" 
+						        	   ng-click="cfgmodal($event,this,'cfg_tipografia','Código Tipográfico');"> 
+						        		<i class="glyphicon glyphicon-pencil"></i>
+						         	</a>
+					</div>
+
+					<div ng-hide="editando" class="cfg_subtitulos">
+						> ||itm.categoria||
+					</div>
+				</div>
+
+			<div ng-repeat="f in itm.fuentes" class="fontlist">
+
+				<div class="cfg_textos">
+					<font style="" face="||f.fonty||">||f.fonty||</font>
+				</div>
+				<font style="" face="||f.fonty||"  >
+					<div ng-hide="editando">||f.font_title||</div>
+					<div ng-show="editando">
+						<span style="cursor: pointer;" ng-click="f.edtr=true;" ng-hide="f.edtr">||f.font_title||  </span>
+						<input ng-show="f.edtr" ng-blur="saveTy(f);" type="text" ng-model="f.font_title" style="width:100%;" />
+					</div>
+				</font>
+				
+				<div style="text-align: right;">
+				<a href="||f.ffile.fontfile||" target="_blank">
+					||f.ffile.ffile||
+					<img src="/static/imgs/downbtn.png"/>
+				</a>
+					</div>
+				</div>	
+				
+				<div ng-show="editando" style="padding:30px 0px;text-align: right;">
+					<a href="#addItem"  class="boton-g-round cierraboximgreb" ng-click="savetypografia($event,r);">
+						<i class="glyphicon glyphicon-floppy-disk"></i>
+					</a>
+				</div>
+
+				
+			</div>
+
+
+
+		</div>
+
+		</div>
+</div>
+
+
+

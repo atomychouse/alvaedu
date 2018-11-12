@@ -1,0 +1,176 @@
+	<div class="headbox" >
+		<div class="title" style="float: left;padding-top: 20px;">Tabla </div>
+
+
+		<div style="float: right;text-align: right;margin:10px 0px;">
+			<a href="#addItem"  class="boton-g-round cierraboximgreb" ng-click="colserr();">
+				<i class="glyphicon glyphicon-remove"></i>
+			</a>
+			<a href="#addItem"  class="boton-g-round cierraboxtabla" ng-click="savetabla($event,datos_sets);">
+				<i class="glyphicon glyphicon-ok"></i>
+			</a>
+		</div>
+
+		<div style="clear: both;height: 0px;"></div>
+
+	</div>
+
+	<div class="cepar">&nbsp;</div>
+
+	<div style="margin:0px 0px 30px 0px;">
+
+	<table style="width:100%;height:100%;" cellpadding="10px" cellspacing="20px">
+		<tr>
+			<td width="60%" class="txt-form">Filas</td>
+			<td  style="text-align:right;padding:10px 0px;">
+				<select name="fondo" id="fondo"  ng-model="datos_sets.rows_tool" 				
+					    ng-change="manageRows(datos_sets);" 
+					    class="form-control" style="width:100% !important;">  
+				<option  ng-repeat="rs in datos_sets.items[0].config.rows" ng-value="rs" value="||rs||"> ||rs|| </option>
+				</select>
+				
+			</td>
+		</tr>
+		<tr>
+			<td width="60%" class="txt-form">Columnas</td>
+			<td width="40%" style="text-align: right;padding:10px 0px;">
+				<select name="fondo" id="fondo"  ng-model="datos_sets.cols_tool" ng-change="manageCols(datos_sets);" class="form-control" style="width:100% !important;">  
+				<option  ng-repeat="cls in datos_sets.items[0].config.cols" ng-value="cls" value="||cls||"> ||cls|| </option>
+				</select>
+				
+			</td>
+		</tr>
+
+	</table>
+
+	<div class="cepar">&nbsp;</div>
+
+
+	<table style="width:100%;height:100%;">
+		<tr>
+			<td width="60%" class="txt-form">Color</td>
+			<td width="40%" style="text-align: right;">				
+			    <div class="input-group listadorow">
+			    	<span class="block_color_cfg" style="background-color:||datos_sets.itm.config.backcolor||;color:||datos_sets.itm.config.fontcolor||;">A</span>
+				    <div class="input-group-btn">
+				        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				          +
+				        </button>
+				        <div class="dropdown-menu dropdown-menu-right" style="padding:20px;">
+
+							<div style="position:relative;background: #fff;padding:20px 0px 10px 0px;">
+								<div class="colorear-row">
+									<span  class="color-pice"  
+										  style="background:#fff;color:#000;"  ng-click="setcfgcolor(datos_sets,'#fff','#000');">A</span>
+									
+								</div>
+								<div class="colorear-row" ng-repeat="c in syscolors">
+									<span ng-if="c.cromas.hex!=ft.cromas.hex" class="color-pice" 
+									      ng-class="{noseve:opacando(c.cromas.hex,ft.cromas.hex)}" 
+										  style="background:||c.cromas.hex||;color:||ft.cromas.hex||;" 
+										  ng-repeat="ft in syscolors" ng-click="setcfgcolor(datos_sets,c.cromas.hex,ft.cromas.hex);">A</span>
+								</div>
+							</div>
+
+				      	</div>
+				    </div>
+			    </div>
+
+			</td>
+		</tr>
+	</table>
+
+
+
+	</div>
+
+	<div class="cepar">&nbsp;</div>
+	<ul class="linea-cfg" style="display: none;">
+		<li class="txt-form">Contorno</li>
+		<li ><a href="#sin" class="cambiolinea" ng-click="cambiolinea($event,this,'sin');">sin</a> </li>
+		<li><a href="#sin" class="cambiolinea" ng-click="cambiolinea($event,this,'medio');">enmedio</a> </li>
+		<li><a href="#sin" class="cambiolinea" ng-click="cambiolinea($event,this,'doble');">doble</a> </li>
+		<li><a href="#sin" class="cambiolinea" ng-click="cambiolinea($event,this,'todos');">todo</a></li>
+		<li><a href="#sin" class="cambiolinea" ng-click="cambiolinea($event,this,'mediotop');">mediotop</a> </li>
+	</ul>
+
+	<table class="sliderspace_t_box" style="margin:20px 0px;">
+		<tr>
+			<td style="width:15%;"><span class="txt-form">Grosor</span></td>
+			<td style="width:75%;">
+				<div class="slider-box-space">
+					<div class="back-slide">&nbsp;</div>
+					<div id="slider_tabla_inner" ></div>
+				</div>
+
+			</td>
+			<td style="width:10%;">
+				<span class="txt-form">
+					<span class="txtlineapx">||datos_sets.itm.config.grosor_linea||</span>px</span>
+			</td>
+		</tr>
+	</table>
+
+		
+
+	<table class="sliderspace_t_box">
+		<tr>
+			<td style="width:65%;"><span class="txt-form">Color de linea</span></td>
+			<td style="width:25%;">
+	
+
+			    <div class="input-group listadorow">
+				    <span style="display: inline-block;width:100%;height:34px;background:||datos_sets.itm.config.color_linea||;">&nbsp;</span>
+				    <div class="input-group-btn">
+				        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				          +
+				        </button>
+				    	<div class="dropdown-menu dropdown-menu-right" style="padding:20px;">
+				          <div ng-repeat="c in syscolors">
+				          	<a class="dropdown-item" style="background:||c.cromas.hex||;width:100%;display: inline-block;" href="#" 
+				                ng-click="$event.preventDefault();datos_sets.itm.config.color_linea=c.cromas.hex">
+				                &nbsp;&nbsp;
+				            </a>
+				          </div>	          
+				      	</div>
+				    </div>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+
+
+
+<script type="text/javascript">
+	
+	jQuery(document).ready(function(){
+
+
+
+		 jQuery( function() {
+			    jQuery( "#slider_tabla_inner" ).slider({
+			    	min:0,
+			    	max:20,
+			    	slide:function(event,ui){
+			    		jQuery('.txtlineapx').html(ui.value);
+			    	},
+			    	stop: function( event, ui ) {
+			    		var sizebox = ui.value;
+			    		jQuery('.txtlineapx').html(ui.value);
+						var ro = angular.element(jQuery('#configs')).scope();
+						 ro.$apply(function(){
+						 	ro.datos_sets.items[0].config.bordes=sizebox;
+						 });
+						 $('#cambiasize').val(sizebox);
+
+			    	}
+
+			    });
+			  } );		
+
+
+
+	});
+
+</script>

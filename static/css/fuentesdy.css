@@ -1,0 +1,196 @@
+@charset "UTF-8";
+        @font-face {
+            font-family: "DINComp";
+                src:url('/static/dyfonts/DINComp_wCUPuKG.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp-Bold";
+                src:url('/static/dyfonts/DINComp-Bold.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp-Bold";
+                src:url('/static/dyfonts/DINComp-Bold_788KGLo.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp";
+                src:url('/static/dyfonts/DINComp.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp-Bold";
+                src:url('/static/dyfonts/DINComp-Bold.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp";
+                src:url('/static/dyfonts/DINComp_ZF4Y93O.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp-Bold";
+                src:url('/static/dyfonts/DINComp-Bold_0mhzDwE.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp";
+                src:url('/static/dyfonts/DINComp_4UgT262.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp";
+                src:url('/static/dyfonts/DINComp_mQIwrPR.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp-Bold";
+                src:url('/static/dyfonts/DINComp-Bold_pJyETlp.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp";
+                src:url('/static/dyfonts/DINComp_WysEQxN.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp-Bold";
+                src:url('/static/dyfonts/DINComp-Bold_PmSkfzS.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp";
+                src:url('/static/dyfonts/DINComp_jdCR3lU.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp";
+                src:url('/static/dyfonts/DINComp_8DTN5dH.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp-Bold";
+                src:url('/static/dyfonts/DINComp-Bold_IwZNwtu.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINWeb";
+                src:url('/static/dyfonts/DINWeb.woff') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp";
+                src:url('/static/dyfonts/DINComp.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp";
+                src:url('/static/dyfonts/DINComp_w6zMlFI.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp";
+                src:url('/static/dyfonts/DINComp_TOEOo1A.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp";
+                src:url('/static/dyfonts/DINComp_VEoOExV.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp-Bold";
+                src:url('/static/dyfonts/DINComp-Bold.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp";
+                src:url('/static/dyfonts/DINComp.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp";
+                src:url('/static/dyfonts/DINComp_eIaw0FU.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp-Bold";
+                src:url('/static/dyfonts/DINComp-Bold.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp-Bold";
+                src:url('/static/dyfonts/DINComp-Bold_mDamzLS.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp";
+                src:url('/static/dyfonts/DINComp_IKh4PNn.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp-Bold";
+                src:url('/static/dyfonts/DINComp-Bold_i1jI7Bw.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp";
+                src:url('/static/dyfonts/DINComp_d2h6xrj.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "DINComp-Bold";
+                src:url('/static/dyfonts/DINComp-Bold_0foGHSn.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "Play-Bold";
+                src:url('/static/dyfonts/Play-Bold.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "Raleway-Bold";
+                src:url('/static/dyfonts/Raleway-Bold.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "Muli-Bold";
+                src:url('/static/dyfonts/Muli-Bold.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "Poppins-Regular";
+                src:url('/static/dyfonts/Poppins-Regular.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "Anton-Regular";
+                src:url('/static/dyfonts/Anton-Regular.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "OpenSans-ExtraBold";
+                src:url('/static/dyfonts/OpenSans-ExtraBold.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "OpenSans-Light";
+                src:url('/static/dyfonts/OpenSans-Light.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "r_cars3_header_6d7b710a";
+                src:url('/static/dyfonts/r_cars3_header_6d7b710a.jpeg') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "OpenSans-Bold";
+                src:url('/static/dyfonts/OpenSans-Bold.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: "Raleway-MediumItalic";
+                src:url('/static/dyfonts/Raleway-MediumItalic_Xs3ptCG.ttf') format('truetype');
+        }
+        

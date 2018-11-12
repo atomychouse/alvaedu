@@ -1,0 +1,552 @@
+{% extends base %}
+
+{% block content %}
+
+
+
+<div ng-controller="rowsCtr" id="renglones">
+
+
+
+<div  class="cropprev" >
+    <div style="text-align: right;margin-bottom:10px;">
+        <a href="#asd" class="boton-g-round"  ng-click="no_img($event);">
+            <i class="glyphicon glyphicon-remove"></i>
+        </a>
+        <a href="#asd" class="boton-g-round"  ng-click="ok_img($event,this);">
+            <i class="glyphicon glyphicon-ok"></i>
+        </a>
+    </div>
+    <div id="cropping-box">
+      <img id="image" src="/static/imgs/defaults/grids.jpg" alt="Picture" style="width:400px !important;">
+    </div>
+</div>
+
+
+
+<div class="modal " id="playermodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabelVideos">Videos</h4>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <div id="player_box" style="width:500px;height:300px;margin:auto;"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div  id="configs" ng-show="editando">
+    <div class="boxy" just-draggable>
+        <div ng-include src="'/static/modulos/pices/' + configurador + '?updated=' + updateTime" 
+             ng-if="configurador" 
+             onload="loadcfg($event);">
+        </div>
+    </div>
+</div>
+
+
+
+	<div class="row" ng-repeat="r in rows|orderBy:'orden'" >
+		<ng-include src="r.typo" ></ng-include>
+        <a name="/addmd" ng-if="$last">&nbsp;</a>
+        <div style="clear: both;"></div>
+	</div>
+</div>
+
+{%  endblock %}
+
+
+{% block modules_loader %}
+
+
+
+
+
+
+
+<script type="text/javascript">
+    
+    jQuery(document).ready(function(){
+
+         $('.sended').submit(sendit);
+
+        $('.cierra_confgurador').click(function(){
+            jQuery('#configs').hide();
+        });
+
+        $('#addFont').change(function(){
+            $(this).parents('form:first').submit();
+        });
+
+    });
+
+</script>
+
+
+<script type="text/javascript">
+
+	var modules_loaded = [];
+    var loadmods = [];
+    var videoplayeractive = [];
+    var fuentes = [];
+    var setcoloresstr = '{{setcolores|safe}}';
+    var setcolores = eval("(" + setcoloresstr + ")");
+    var rejectsstr = '{{rejects|safe}}';
+    var rejects = eval("(" + rejectsstr + ")");
+
+
+
+    {% for f in fuentes %}
+        var newff = {'fontfile':'/{{f.originalf.fuente_file.name}}'};
+        newf = {
+                'pk':'{{f.pk}}',
+                'fonty':'{{f.font_name}}',
+                'ffile':newff
+                };
+        fuentes.push(newf);
+    {% endfor %}
+
+
+
+
+{% for m in section.modulo_set.all %}
+    
+    var blaz = [];
+    var rowbuild = new ITM_CONSTRUC();
+	var newrow = rowbuild.getRow('{{m.slugmd}}');
+
+    newrow.pk = '{{m.pk}}';
+    newrow.orden = parseInt('{{m.orden}}');
+    newrow.slug = '{{m.slugmd}}';
+    newrow.typo = '/static/modulos/{{m.slugmd}}.html';
+    newrow.items = blaz;
+    newrow.title='{{m.mdtitle|default:""}}';
+
+
+    {% if m.slugmd in 'cromatico' %}
+        newrow.principales=[];
+        newrow.apoyo=[];
+        newrow.barra=[];
+        newrow.listapan=[];
+        newrow.fullcolors = [];
+
+        {% for i in m.md_codigo_color_set.all %}
+            newrow.submodpk = '{{i.pk}}';
+
+            {% if i.principales %}
+                principalesstr = '{{i.principales|safe}}';
+                principales = eval("(" + principalesstr + ")");
+                newrow.principales = principales;
+            {% endif %}
+
+                newrow.estilo = '{{i.estilo}}';
+            {% if i.apoyo %}
+                apoyostr = '{{i.apoyo|safe}}';
+                apoyo = eval("(" + apoyostr + ")");
+                newrow.apoyo = apoyo;
+            {% endif %}
+
+            {% if i.barra %}
+                barrastr = '{{i.barra|safe}}';
+                barra = eval("(" + barrastr + ")");
+                newrow.barra = barra;
+            {% endif %}
+
+
+            {% if i.listapan %}
+                listapanstr = '{{i.listapan|safe}}';
+                listapan = eval("(" + listapanstr + ")");
+                newrow.listapan = listapan;
+            {% endif %}
+
+
+        {% endfor %}
+    {% endif %}
+
+
+    
+
+    {% if m.slugmd in 'tipografia' %}
+
+
+        var items = [];
+        {% for xt in m.modextra_set.all %}
+            cont_str = '{{xt.contenido|safe}}';
+            items =  eval("(" + cont_str + ")");
+            
+        {% endfor %}
+        newrow.items = items;
+
+    {% endif %}
+
+
+
+    {% if m.config %}
+        cf = '{{m.config|safe}}';
+        cfg = eval("(" + cf + ")");
+        newrow.config = cfg;
+    {% endif %}
+
+	{% if m.slugmd in 'gridlink,gridimages' %}
+		{% for i in m.md_grid_set.all %}
+            var itm = {};
+            itm.config = {};
+            mydowns = [];
+            
+            {% if i.config %}
+                cfg = '{{i.config|safe}}';
+                var cfgjsn =  eval("(" + cfg + ")");
+                itm.config = cfgjsn;
+            {% endif %}
+
+            {% if i.mydownsarr %}
+                    mydowns = '{{i.mydownsarr|safe}}';
+                    mydowns = eval("(" + mydowns + ")");
+            {% endif%}
+
+			itm.title='{{i.title|default:""}}';
+			itm.img = "/{{i.webimage|default:'static/imgs/defaults/grids.jpg'}}";
+            itm.oldimg = "/{{i.webimage|default:'static/imgs/defaults/grids.jpg'}}";
+            itm.descp = '{{i.descp|default:""|safe|linebreaksbr}}';
+			itm.orden = parseInt('{{i.orden}}');
+            itm.pk = '{{i.pk}}';
+            itm.link = '{{i.link}}';
+            itm.downs = mydowns;
+            itm.publicado='{{i.publicado}}';
+
+    		blaz.push(itm);
+		{% endfor %}
+        newrow.items = blaz;
+	{% endif %}
+
+
+    {% if m.slugmd in 'imglg,color' %}
+        {% for i in m.md_grid_set.all %}
+            var giveitm = new ITM_CONSTRUC();
+            var itm = giveitm.getItm('imglg');
+            itm.config = {};
+            {% if i.config %}
+                cfg = '{{i.config|safe}}';
+                var cfgjsn =  eval("(" + cfg + ")");
+                itm.config = cfgjsn;
+            {% endif %}
+            itm.title='{{i.title|default:""}}';
+            itm.img = "/{{i.webimage|default:'static/imgs/defaults/imagenrebasada.jpg'}}";
+            itm.oldimg = "/{{i.webimage|default:'static/imgs/defaults/imagenrebasada.jpg'}}";
+            itm.descp = '{{i.descp|default:""|safe|linebreaksbr}}';
+            itm.orden = parseInt('{{i.orden}}');
+            itm.pk = '{{i.pk}}';
+            itm.link = '{{i.link}}';
+            itm.publicado='{{i.publicado}}';
+            blaz.push(itm);
+        {% endfor %}
+        newrow.items = blaz;
+    {% endif %}
+
+
+    {% if m.slugmd in 'sideimg' %}
+        {% for i in m.md_grid_set.all %}
+            var itm = {};
+            itm.config = {};
+            mydowns = [];
+            {% if i.config %}
+                cfg = '{{i.config|safe}}';
+                var cfgjsn =  eval("(" + cfg + ")");
+                itm.config = cfgjsn;
+            {% else %}
+                itm.config = {'img_box_size':'30','text_box_size':'70','img_pos':'left','txt_pos':'right'};
+            {% endif %}
+
+            {% if i.mydownsarr %}
+                    mydowns = '{{i.mydownsarr|safe}}';
+                    mydowns = eval("(" + mydowns + ")");
+            {% endif%}
+
+            itm.title='{{i.title|default:""}}';
+            itm.img = "/{{i.webimage|default:'static/imgs/defaults/grids.jpg'}}";
+            itm.oldimg = "/{{i.webimage|default:'static/imgs/defaults/grids.jpg'}}";
+            itm.descp = '{{i.descp|default:""|safe|linebreaksbr}}';
+            itm.orden = parseInt('{{i.orden}}');
+            itm.pk = '{{i.pk}}';
+            itm.link = '{{i.link}}';
+            itm.downs = mydowns;
+            itm.publicado='{{i.publicado}}';
+
+            
+
+            blaz.push(itm);
+        {% endfor %}
+        newrow.items = blaz;
+    {% endif %}
+
+
+
+
+
+    {% if m.slugmd in 'tabla' %}
+        var tablaitms = [];
+        {% for i in m.modextra_set.all %}
+            var itm = {};
+            itm.config = {};
+            items = []; 
+            {% if i.contenido %}
+                cto = '{{i.contenido|safe}}';
+                itm =  eval("(" + cto + ")");
+                itm.pk = '{{i.pk}}';
+                itm.orden = parseInt('{{i.orden}}');
+            {% endif %}
+
+            blaz.push(itm);
+        {% endfor %}
+        newrow.items = blaz;
+    {% endif %}
+
+    {% if m.slugmd in 'video' %}
+        videoplayeractive.push('{{m.pk}}');
+        {% for i in m.md_video_set.all %}
+            var itm = {};
+            itm.config = {};
+            {% if i.config %}
+                cfg = '{{i.config|safe}}';
+                var cfgjsn =  eval("(" + cfg + ")");
+                itm.config = cfgjsn;
+            {% endif %}
+            itm.title='{{i.title|default:""|safe}}';
+            itm.descp = '{{i.descp|default:""|safe}}';
+            itm.orden = parseInt('{{i.orden}}');
+            itm.pk = '{{i.pk}}';
+            itm.link = '{{i.link|default:""}}';
+            itm.publicado='{{i.publicado}}';
+
+
+            blaz.push(itm);
+        {% endfor %}
+        newrow.items = blaz;
+    {% endif %}
+
+
+    {% if m.slugmd in 'banco' %}
+        cats = [];
+        mydowns = [];
+        onlydowns = [];
+        {% if m.catsarr %}
+                cats = '{{m.catsarr|safe}}';
+                cats = eval("(" + cats + ")");
+        {% endif%}
+
+        {% for i in m.md_banco_set.all %}
+
+            {% if i.mycatsarr %}
+                    mycats = '{{i.mycatsarr|safe}}';
+                    mycats = eval("(" + mycats + ")");
+            {% endif%}
+
+        {% if i.mydownsarr %}
+                mydowns = '{{i.mydownsarr|safe}}';
+                mydowns = eval("(" + mydowns + ")");
+        {% endif%}
+
+
+        {% if i.onlydowns %}
+                onlydowns = '{{i.onlydowns|safe}}';
+                onlydowns = eval("(" + onlydowns + ")");
+        {% endif%}
+
+            var itm = {};
+            itm.config = {};
+            {% if i.config %}
+                cfg = '{{i.config|safe}}';
+                var cfgjsn =  eval("(" + cfg + ")");
+                itm.config = cfgjsn;
+            {% endif %}
+            itm.oldimg='/{{i.recorte|default:"static/imgs/defaults/grids.jpg"}}';
+            itm.img='/{{i.recorte|default:"static/imgs/defaults/grids.jpg"}}';
+            itm.webimage = '/{{i.webimage|default:"static/imgs/defaults/grids.jpg"}}';
+            itm.original = '/{{i.original|default:"static/imgs/defaults/grids.jpg"}}';
+            itm.descp = '{{i.descp|default:""|safe}}';
+            itm.orden = parseInt('{{i.orden}}');
+            itm.pk = '{{i.pk}}';
+            itm.mycats=mycats;
+            itm.downs = onlydowns;
+            itm.onlydowns = mydowns;
+            itm.publicado='{{i.publicado}}';
+            blaz.push(itm);
+        {% endfor %}
+        newrow.items = blaz;
+        newrow.allcats = cats;
+    {% endif %}
+
+
+
+        {% if m.slugmd in 'aviso' %}
+            {% for i in m.modextra_set.all %}
+                var itm = {};
+                itm.config = {};
+                {% if i.config %}
+                    cfg = '{{i.config|safe}}';
+                    var cfgjsn =  eval("(" + cfg + ")");
+                    itm.config = cfgjsn;
+                {% endif %}
+                itm.typo = '{{i.typo}}';
+                itm.contenido = '{{i.contenido|safe}}';
+                itm.orden = parseInt('{{i.orden}}');
+                itm.pk = '{{i.pk}}';
+                blaz.push(itm);
+                itm.publicado='{{i.publicado}}';
+            {% endfor %}
+            newrow.items = blaz;
+        {% endif %}
+
+
+        {% if m.slugmd in 'richtxt' %}
+            {% for i in m.modextra_set.all %}
+                var itm = {};
+                itm.config = {};
+                {% if i.config %}
+                    cfg = '{{i.config|safe}}';
+                    var cfgjsn =  eval('(' + cfg + ')');
+                    itm.config = cfgjsn;
+                {% endif %}
+                itm.typo = '{{i.typo}}';
+                itm.contenido = '{{i.contenido|safe}}';
+                itm.orden = parseInt('{{i.orden}}');
+                itm.pk = '{{i.pk}}';
+                itm.publicado='{{i.publicado}}';
+                blaz.push(itm);
+            {% endfor %}
+            newrow.items = blaz;
+        {% endif %}
+
+
+        {% if m.slugmd in 'notasref' %}
+            var notas = [];
+            var cfgs = {};
+            {% for i in m.md_imgtxt_set.all %}
+                var itm = {};
+                itm.pk = '{{i.pk}}';
+                itm.img = '/{{i.imagen.name|default:"/static/imgs/defaults/imagenrebasada.jpg"}}';
+                itm.oldimg = '/{{i.imagen.name|default:"/static/imgs/defaults/imagenrebasada.jpg"}}';
+                itm.orden = parseInt('{{i.orden}}');
+                {% if i.contenido %}
+                    cto = '{{i.contenido|safe}}';
+                    notas =  eval("(" + cto + ")");
+                {% endif %}
+                cfgs = {};
+                {% if i.configs %}
+                    cfgs = '{{i.configs|safe}}';
+                    cfgs =  eval("(" + cfgs + ")");
+                {% else %}
+                    cfgs = {'color':'#4c4c4c','numeracion':'nums','clase':'redondeo'};
+                {% endif %}
+
+                
+
+                itm.notas = notas;
+                itm.config = cfgs;
+                itm.tresscero = 'tresseiscero.html';
+                itm.tresupdateTime = Date.now();
+                itm.publicado='{{i.publicado}}';
+                blaz.push(itm);
+            {% endfor %}
+
+            if(blaz.length>0)    
+                newrow.items = blaz;
+        
+        {% endif %}
+
+
+        {% if m.slugmd in 'tressesenta' %}
+            var notas = [];
+  
+            {% for i in m.md_img_set.all %}
+                var itm = {};
+                itm.pk = '{{i.pk}}';
+                itm.title = '{{i.titulo|default:""}}';
+                itm.descp = '{{i.descp|default:""}}';
+                itm.markas = [];
+                itm.img = '/{{i.imagen.name|default:"static/imgs/defaults/imagenrebasada.jpg"}}';
+                itm.orden = parseInt('{{i.orden}}');
+                {% if i.contenido %}
+                    cto = '{{i.contenido|safe}}';
+                    notas =  eval("(" + cto + ")");
+                {% endif %}
+                cfgs = {};
+                {% if i.configs %}
+                    cfgs = '{{i.configs|safe}}';
+                    cfgs =  eval("(" + cfgs + ")");
+                {% endif %}
+                itm.notas = notas;
+                itm.config = cfgs;
+                itm.tresscero = 'tresseiscero.html';
+                itm.tresupdateTime = Date.now();
+                itm.publicado='{{i.publicado}}';
+                blaz.push(itm);
+            {% endfor %}
+
+            if(blaz.length>0)    
+                newrow.items = blaz;
+        {% endif %}
+
+
+
+        {% if m.slugmd in 'ambientes' %}
+            var markas = [];
+  
+            {% for i in m.md_img_set.all %}
+
+                {% if i.markas %}
+
+                var markas = '{{i.markas|safe}}';
+                markas =  eval("(" + markas + ")");
+
+                {% endif %}
+
+                var itm = {};
+                itm.pk = '{{i.pk}}';
+                itm.title = '{{i.titulo|default:""}}';
+                itm.descp = '{{i.descp|default:""}}';
+                itm.markas = [];
+                itm.img = '/{{i.imagen.name|default:"static/imgs/defaults/imagenrebasada.jpg"}}';
+                itm.orden = parseInt('{{i.orden}}');
+                {% if i.contenido %}
+                    cto = '{{i.contenido|safe}}';
+                    notas =  eval("(" + cto + ")");
+                {% endif %}
+                cfgs = {};
+                {% if i.configs %}
+                    cfgs = '{{i.configs|safe}}';
+                    cfgs =  eval("(" + cfgs + ")");
+                {% endif %}
+                itm.markas = markas;
+                itm.config = cfgs;
+                itm.tresscero = 'tresseiscero.html';
+                itm.tresupdateTime = Date.now();
+                itm.publicado='{{i.publicado}}';
+                blaz.push(itm);
+            {% endfor %}
+
+            if(blaz.length>0)    
+                newrow.items = blaz;
+        {% endif %}
+
+
+	loadmods.push(newrow);	
+
+{% endfor %}
+
+modules_loaded = loadmods;
+
+
+</script>
+
+
+
+{% endblock %}

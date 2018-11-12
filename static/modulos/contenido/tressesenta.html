@@ -1,0 +1,37 @@
+
+<div id="tressbox-||r.pk||" class=" sfera" ng-class="{managging:editando===true}">
+
+	<div ng-repeat="itm in r.items|orderBy:'orden'" ng-class="{visibil:publicaBox(editando,itm.publicado)}" >
+
+
+		<img  src="||itm.img||" 
+		      ng-if="itm.img=='/static/imgs/defaults/imagenrebasada.jpg'" 
+		      ng-hide="editando"  
+		      class="img-responsive"  
+		      width="100%"/>
+		<div id="paraque-||itm.pk||" ng-show="itm.tresscero" style="width:100%;height:450px;z-index:10;padding:0px ||r.config.margs||px;" ng-if="itm.img!='/static/imgs/defaults/imagenrebasada.jpg'"></div>
+		<div ng-hide="editando">
+			        <div ng-include 
+			             src="'/static/modulos/' + itm.tresscero + '?updated=' + itm.tresupdateTime" 
+			             ng-if="itm.img" 
+			             onload="cargando(itm);">
+	        		</div>	
+
+		</div>
+		<div class="editionbox edit-bar" ng-hide="editando" style="margin:10px 0px;">
+					<div style="padding:0px ||r.config.margs||px;">
+						<font color="||r.config.fontcolor||" size="||r.config.fontsize||px">
+						<div class=" input-w-decored cfg_subtitulos" style="margin:10px 0px;">||itm.title||</div>				
+						<div class=" input-w-decored cfg_textos">||itm.descp||</div>
+						</font>
+					
+					</div>
+
+				</div>
+
+	</div>
+	
+
+</div>
+
+

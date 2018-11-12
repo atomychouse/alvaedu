@@ -1,0 +1,53 @@
+<style type="text/css">
+	.txtbox{
+		padding:0px 90px;
+	}
+</style>
+
+<div class="clearingall" ng-repeat="itm in r.items|orderBy:'orden'" ng-class="{visibil:publicaBox(editando,itm.publicado)}">
+	<div class="imgbox" style="position: relative;">
+		<div class="adminpanel" style="position:absolute;top:10px;right:30px;height: auto;width: auto;" ng-show="editando">
+			<ul class="itm-menu">
+				<li>
+					<a href="#" class="boton" ng-click="loadImg($event,this,'full');">
+						<span class="icon-iconos-brandline_banco-de-imagen"></span>
+					</a>					
+				</li>
+				<li>
+					<a href="#" class="boton "
+						   ng-class="{btn_active:itm.cambiose}" 
+						   ng-click="saveGrid($event,this);">
+							<i class="glyphicon glyphicon-ok"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div><img id="src-lo-||itm.pk||" src="||itm.img||" width="100%" ng-hide="itm.cropperit" /></div>
+	</div>
+	<div class="txtbox">
+		<div class="cfg_subtitulos" ng-hide="editando" style="padding:20px 10px;margin-top:10px;">
+			||itm.title||
+		</div>
+
+		<div class="cfg_textos" ng-hide="editando" style="padding:10px 10px;margin-top:2px;">
+			||itm.descp||
+		</div>
+
+		<div  ng-show="editando" style="margin:10px 0px;">
+			<input type="text" 
+			       class="cfg_subtitulos" 
+			       style="display:block;width:100%;padding:5px 10px;margin-bottom:4px;" 
+			       placeholder="título" 
+			       ng-model="itm.title" />
+
+			<input type="text" 
+			       class="cfg_textos" 
+			       style="display:block;width:100%;padding:5px 10px;" 
+			       placeholder="Texto" 
+			       ng-model="itm.descp" />
+
+		</div>
+	</div>
+
+
+</div>

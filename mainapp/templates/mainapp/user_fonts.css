@@ -1,0 +1,85 @@
+{% for f in fonts %}
+
+@font-face {
+    font-family: "{{f.font_name}}";
+    	{% for ff in f.fontfile_set.all %}
+        src:url('/{{ff.fuente_file.name}}') format('truetype');
+    	}
+    	{% endfor %}
+}		
+
+
+.load_{{f.font_name}}
+{
+	font-family: "{{f.font_name}}";
+}
+
+
+
+{% endfor %}
+
+
+
+#brandline-logo a{
+	display: inline-block;
+	margin-left: 30px;
+	background-image:url('/{{setts.logo}}');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:70%;
+
+}
+
+
+{% for cfg in setts.setts.fuentes %}
+
+
+
+	.cfg_{{cfg.slug}} {
+		font-family:{{cfg.fuente}};
+		font-size:{{cfg.puntos}}px;
+		{% if cfg.slug in 'titulos' %}
+			font-weight: bold;
+		{% endif %}
+	}
+
+{% endfor %}
+
+
+.coloresback{
+	background-color:{{setts.setts.colorsite.bk|default:'#3d3f42'}} !important;
+	border-bottom:2px solid white;
+}
+
+
+.coloresback .mainmenu{
+	color:{{setts.setts.colorsite.fcolor|default:'#fff'}} !important;
+}
+
+
+.coloresback .font_color{
+	color:{{setts.setts.colorsite.fcolor|default:'#fff'}} !important;
+}
+
+
+
+.coloresback a{
+	color:#333;
+}
+
+
+
+
+
+.cat{
+	font-size: 18px !important;
+}
+
+.subcat{
+	font-size: 14px !important;
+}
+
+.menuconf a{
+	color:#fff;
+}

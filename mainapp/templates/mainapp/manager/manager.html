@@ -1,0 +1,47 @@
+<!-- MANAGE DESIGN C SS -->
+
+
+
+<section id="managertools" ng-controller="manageCtr">
+
+    <form id="fontform" class="sended" name="forma" action="/cfg/upfont/" method="post" style="display: none;">
+      {% csrf_token %}
+      <input type="file" name="addfont" id="addFont" />
+      <input type="hidden" name="frommodul" value="fuentesmodulo" />
+      <button type="submit">UPLOAD</button>
+    </form>
+
+
+{% csrf_token %}
+
+
+
+
+
+<div id="controlersform" ng-show="editando">
+    <input type="file" name="loader" id="loader-file">
+    <input type="file" name="uploaders" id="uploaders" style="display: none;" />
+    {% include 'mainapp/manager/tooltip.html' %}
+</div>
+
+
+
+
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1"  id="saving" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      Guardando ...
+    </div>
+  </div>
+</div>
+
+
+</section>
+
+
+
+
+
+
+

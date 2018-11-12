@@ -1,0 +1,33 @@
+
+<div class="rows managging" ng-class="managging" style="position: relative;">
+	<a name="/||r.title||"></a>
+	<div style="padding:0px 100px;">
+	<div>
+		<div style="position: relative;width:100%;">
+			<div>
+			<img  src="/static/imgs/defaults/biscard.png" width="366px" height="192px" />
+			</div>	
+			<div class="info-imglg">
+				<div><input type="text"  ng-model="r.nombre" class="" placeholder="Nombre" /></div>
+				<div>
+				<input type="text"  ng-model="r.cargo" class="" placeholder="Cargo" />
+				</div>
+			</div>
+		</div>
+		<div><a href="||r.pathimage||" target="_blank" ng-if="r.pathimage">descargar</a></div>
+	</div>
+
+
+	<div class="separador">
+		<a href="#" class="boton rg-side " ng-class="{btn_active:editore(r)}" ng-click="save_bcard($event,r);">
+			 <i class="glyphicon glyphicon-ok"></i></a>
+		<span class="clr-both"></span>
+	</div>
+
+
+		
+	</div>
+
+ 		
+
+</div>

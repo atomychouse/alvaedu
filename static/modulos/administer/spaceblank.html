@@ -1,0 +1,75 @@
+
+<style type="text/css">
+
+#spacebox-||r.pk||
+.boxsep{
+	height:||r.config.alto||px;
+	background-color:||r.config.color_fondo||;
+
+}
+
+#spacebox-||r.pk||
+
+.boxsep .bar{
+	width:100%;
+	margin:10px 0px;
+ 	background-color:||r.config.color_fondo||;
+	background-color:||r.config.color_linea||;
+}
+
+#spacebox-||r.pk||
+
+.bar-top{
+ 	height:||2*r.config.grosor_linea||px;
+}
+#spacebox-||r.pk||
+
+.bar-middle{
+	 	height:||1*r.config.grosor_linea||px;
+
+}
+#spacebox-||r.pk||
+
+.bar-bottom{ 
+ 	height:||2*r.config.grosor_linea||px;
+
+ }
+</style>
+<div id="spacebox-||r.pk||" >
+	<div class="btn-box">
+	<div  class="row">
+
+			<div style="display: table;width:100%;" class="boxsep">
+
+				<div style="display: table-row;">
+				<div style="display: table-cell;width:100%;height:100%;vertical-align:middle;">
+
+					<div ng-show="r.config.clase=='centro'">
+						<div class="bar bar-middle" >&nbsp;</div>
+					</div>
+					<div ng-show="r.config.clase=='extremes'">
+						<div class="bar bar-top">&nbsp;</div>
+						<div style="height:15px;width:0px;">&nbsp;</div>
+						<div class="bar bar-bottom">&nbsp;</div>
+					</div>
+					<div ng-show="r.config.clase=='todos'">
+						<div class="bar bar-top"    >&nbsp;</div>
+						<div class="bar bar-middle" >&nbsp;</div>
+						<div class="bar bar-bottom" >&nbsp;</div>
+					</div>
+					<div ng-show="r.config.clase=='halftop'">
+						<div class="bar bar-middle" >&nbsp;</div>
+						<div class="bar bar-bottom" >&nbsp;</div>
+					</div>
+
+
+
+				</div>
+
+
+				</div>
+			</div>
+	</div>
+		
+	</div>
+</div>

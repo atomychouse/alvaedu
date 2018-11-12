@@ -1,0 +1,48 @@
+<style type="text/css">
+	
+#row_||r.pk|| .gridtitle{
+	font-size:||r.config.fontsize||px;
+	color:||r.config.fontcolor||;
+}
+
+
+#row_||r.pk|| .insidegridbox{
+	padding:||r.config.margs||px;
+}
+
+#row_||r.pk|| .contendor{
+	padding:0px ||r.config.pads||px;
+}
+
+
+
+#row_||r.pk||
+	.captions p{
+		font-size:||r.config.fontsize||px;color:||r.config.fontcolor||;
+	}
+
+
+</style>
+ 
+		<div class="contendor">
+			<div class="col-md-||r.config.cols|| col-sm-||r.config.cols|| col-xl-3" ng-class="{visibil:publicaBox(editando,itm.publicado)}" ng-repeat="itm in r.items|orderBy:'orden'">
+
+				<div class="insidegridbox">
+					<div class="floatrev" style="position: relative;top:inherit;">
+					<a href="#banco"   
+							       data-target="#bancomodal" 
+							       class="modalbanco" 
+							       data-webimg="||itm.webimage||" 
+							       data-original="||itm.original||"
+							       data-pk='||itm.pk||'
+							      ng-click="showMod($event,this);">
+						<img src="||itm.img||" class="img-responsive" style="width:100%;">
+					</a>
+					</div>
+					<div style="height: 123px;" ng-hide="editando">&nbsp;</div>
+				</div>
+			
+			</div>	
+		</div>
+
+

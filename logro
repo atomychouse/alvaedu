@@ -1,0 +1,160 @@
+[2017-10-26 12:50:18 +0000] [30436] [INFO] Starting gunicorn 19.7.1
+[2017-10-26 12:50:18 +0000] [30436] [INFO] Listening at: http://0.0.0.0:8009 (30436)
+[2017-10-26 12:50:18 +0000] [30436] [INFO] Using worker: sync
+[2017-10-26 12:50:18 +0000] [30440] [INFO] Booting worker with pid: 30440
+[2017-10-26 12:50:18 +0000] [30442] [INFO] Booting worker with pid: 30442
+[2017-10-26 15:16:53 +0000] [30796] [INFO] Booting worker with pid: 30796
+[2017-10-26 15:16:53 +0000] [30797] [INFO] Booting worker with pid: 30797
+[2017-10-26 15:16:53 +0000] [30436] [INFO] Handling signal: hup
+[2017-10-26 15:16:53 +0000] [30436] [INFO] Hang up: Master
+[2017-10-26 15:16:53 +0000] [30799] [INFO] Booting worker with pid: 30799
+[2017-10-26 15:16:53 +0000] [30800] [INFO] Booting worker with pid: 30800
+[2017-10-26 15:16:56 +0000] [30796] [INFO] Worker exiting (pid: 30796)
+[2017-10-26 15:16:56 +0000] [30797] [INFO] Worker exiting (pid: 30797)
+[2017-10-30 21:08:17 +0000] [30436] [INFO] Handling signal: hup
+[2017-10-30 21:08:17 +0000] [30436] [INFO] Hang up: Master
+[2017-10-30 21:08:17 +0000] [30799] [INFO] Worker exiting (pid: 30799)
+[2017-10-30 21:08:17 +0000] [30800] [INFO] Worker exiting (pid: 30800)
+[2017-10-30 21:08:17 +0000] [13078] [INFO] Booting worker with pid: 13078
+[2017-10-30 21:08:17 +0000] [13079] [INFO] Booting worker with pid: 13079
+[2017-10-30 21:08:17 +0000] [30436] [INFO] Handling signal: hup
+[2017-10-30 21:08:17 +0000] [30436] [INFO] Hang up: Master
+[2017-10-30 21:08:17 +0000] [13082] [INFO] Booting worker with pid: 13082
+[2017-10-30 21:08:17 +0000] [13083] [INFO] Booting worker with pid: 13083
+[2017-10-30 21:08:18 +0000] [13078] [INFO] Worker exiting (pid: 13078)
+[2017-10-30 21:08:18 +0000] [13079] [INFO] Worker exiting (pid: 13079)
+[2017-11-06 21:28:39 +0000] [30436] [CRITICAL] WORKER TIMEOUT (pid:13082)
+[2017-11-06 21:28:39 +0000] [13082] [INFO] Worker exiting (pid: 13082)
+[2017-11-06 21:28:39 +0000] [18682] [INFO] Booting worker with pid: 18682
+[2017-11-08 21:04:55 +0000] [30436] [INFO] Handling signal: hup
+[2017-11-08 21:04:55 +0000] [30436] [INFO] Hang up: Master
+[2017-11-08 21:04:55 +0000] [13083] [INFO] Worker exiting (pid: 13083)
+[2017-11-08 21:04:55 +0000] [18682] [INFO] Worker exiting (pid: 18682)
+[2017-11-08 21:04:56 +0000] [26442] [INFO] Booting worker with pid: 26442
+[2017-11-08 21:04:56 +0000] [26441] [INFO] Booting worker with pid: 26441
+[2017-11-08 21:04:56 +0000] [30436] [INFO] Handling signal: hup
+[2017-11-08 21:04:56 +0000] [30436] [INFO] Hang up: Master
+[2017-11-08 21:04:56 +0000] [26445] [INFO] Booting worker with pid: 26445
+[2017-11-08 21:04:56 +0000] [26446] [INFO] Booting worker with pid: 26446
+[2017-11-08 21:04:57 +0000] [26442] [INFO] Worker exiting (pid: 26442)
+[2017-11-08 21:04:57 +0000] [26441] [INFO] Worker exiting (pid: 26441)
+[2017-11-09 04:47:41 +0000] [30436] [INFO] Handling signal: hup
+[2017-11-09 04:47:41 +0000] [30436] [INFO] Hang up: Master
+[2017-11-09 04:47:41 +0000] [26445] [INFO] Worker exiting (pid: 26445)
+[2017-11-09 04:47:41 +0000] [26446] [INFO] Worker exiting (pid: 26446)
+[2017-11-09 04:47:41 +0000] [28604] [INFO] Booting worker with pid: 28604
+[2017-11-09 04:47:41 +0000] [28603] [INFO] Booting worker with pid: 28603
+[2017-11-09 04:47:42 +0000] [30436] [INFO] Handling signal: hup
+[2017-11-09 04:47:42 +0000] [30436] [INFO] Hang up: Master
+[2017-11-09 04:47:42 +0000] [28608] [INFO] Booting worker with pid: 28608
+[2017-11-09 04:47:42 +0000] [28607] [INFO] Booting worker with pid: 28607
+[2017-11-09 04:47:43 +0000] [30436] [INFO] Handling signal: hup
+[2017-11-09 04:47:43 +0000] [30436] [INFO] Hang up: Master
+[2017-11-09 04:47:43 +0000] [28611] [INFO] Booting worker with pid: 28611
+[2017-11-09 04:47:43 +0000] [28612] [INFO] Booting worker with pid: 28612
+[2017-11-09 04:47:43 +0000] [28604] [INFO] Worker exiting (pid: 28604)
+[2017-11-09 04:47:43 +0000] [28603] [INFO] Worker exiting (pid: 28603)
+[2017-11-09 04:47:45 +0000] [28607] [INFO] Worker exiting (pid: 28607)
+[2017-11-09 04:47:45 +0000] [28608] [INFO] Worker exiting (pid: 28608)
+[2017-11-14 22:54:50 +0000] [30436] [INFO] Handling signal: hup
+[2017-11-14 22:54:50 +0000] [30436] [INFO] Hang up: Master
+[2017-11-14 22:54:50 +0000] [28611] [INFO] Worker exiting (pid: 28611)
+[2017-11-14 22:54:50 +0000] [28612] [INFO] Worker exiting (pid: 28612)
+[2017-11-14 22:54:50 +0000] [1814] [INFO] Booting worker with pid: 1814
+[2017-11-14 22:54:50 +0000] [1815] [INFO] Booting worker with pid: 1815
+[2017-11-14 22:54:50 +0000] [30436] [INFO] Handling signal: hup
+[2017-11-14 22:54:50 +0000] [30436] [INFO] Hang up: Master
+[2017-11-14 22:54:50 +0000] [1818] [INFO] Booting worker with pid: 1818
+[2017-11-14 22:54:50 +0000] [1819] [INFO] Booting worker with pid: 1819
+[2017-11-14 22:54:51 +0000] [1814] [INFO] Worker exiting (pid: 1814)
+[2017-11-14 22:54:51 +0000] [1815] [INFO] Worker exiting (pid: 1815)
+[2017-11-15 18:38:45 +0000] [30436] [INFO] Handling signal: hup
+[2017-11-15 18:38:45 +0000] [30436] [INFO] Hang up: Master
+[2017-11-15 18:38:45 +0000] [1818] [INFO] Worker exiting (pid: 1818)
+[2017-11-15 18:38:45 +0000] [1819] [INFO] Worker exiting (pid: 1819)
+[2017-11-15 18:38:45 +0000] [11031] [INFO] Booting worker with pid: 11031
+[2017-11-15 18:38:45 +0000] [11030] [INFO] Booting worker with pid: 11030
+[2017-11-15 18:38:46 +0000] [30436] [INFO] Handling signal: hup
+[2017-11-15 18:38:46 +0000] [30436] [INFO] Hang up: Master
+[2017-11-15 18:38:46 +0000] [11036] [INFO] Booting worker with pid: 11036
+[2017-11-15 18:38:46 +0000] [11037] [INFO] Booting worker with pid: 11037
+[2017-11-15 18:38:46 +0000] [11030] [INFO] Worker exiting (pid: 11030)
+[2017-11-15 18:38:46 +0000] [11031] [INFO] Worker exiting (pid: 11031)
+[2017-11-23 19:06:24 +0000] [30436] [INFO] Handling signal: hup
+[2017-11-23 19:06:24 +0000] [30436] [INFO] Hang up: Master
+[2017-11-23 19:06:24 +0000] [11036] [INFO] Worker exiting (pid: 11036)
+[2017-11-23 19:06:24 +0000] [11037] [INFO] Worker exiting (pid: 11037)
+[2017-11-23 19:06:24 +0000] [1001] [INFO] Booting worker with pid: 1001
+[2017-11-23 19:06:24 +0000] [1002] [INFO] Booting worker with pid: 1002
+[2017-11-23 19:06:25 +0000] [30436] [INFO] Handling signal: hup
+[2017-11-23 19:06:25 +0000] [30436] [INFO] Hang up: Master
+[2017-11-23 19:06:25 +0000] [1005] [INFO] Booting worker with pid: 1005
+[2017-11-23 19:06:25 +0000] [1006] [INFO] Booting worker with pid: 1006
+[2017-11-23 19:06:25 +0000] [30436] [INFO] Handling signal: hup
+[2017-11-23 19:06:25 +0000] [30436] [INFO] Hang up: Master
+[2017-11-23 19:06:26 +0000] [1009] [INFO] Booting worker with pid: 1009
+[2017-11-23 19:06:26 +0000] [1010] [INFO] Booting worker with pid: 1010
+[2017-11-23 19:06:26 +0000] [1001] [INFO] Worker exiting (pid: 1001)
+[2017-11-23 19:06:26 +0000] [1002] [INFO] Worker exiting (pid: 1002)
+[2017-11-23 19:06:27 +0000] [1006] [INFO] Worker exiting (pid: 1006)
+[2017-11-23 19:06:27 +0000] [1005] [INFO] Worker exiting (pid: 1005)
+[2017-11-29 04:46:56 +0000] [30436] [INFO] Handling signal: hup
+[2017-11-29 04:46:56 +0000] [30436] [INFO] Hang up: Master
+[2017-11-29 04:46:56 +0000] [1009] [INFO] Worker exiting (pid: 1009)
+[2017-11-29 04:46:56 +0000] [1010] [INFO] Worker exiting (pid: 1010)
+[2017-11-29 04:46:56 +0000] [31163] [INFO] Booting worker with pid: 31163
+[2017-11-29 04:46:56 +0000] [31162] [INFO] Booting worker with pid: 31162
+[2017-11-29 04:46:57 +0000] [30436] [INFO] Handling signal: hup
+[2017-11-29 04:46:57 +0000] [30436] [INFO] Hang up: Master
+[2017-11-29 04:46:57 +0000] [31162] [INFO] Worker exiting (pid: 31162)
+[2017-11-29 04:46:57 +0000] [31163] [INFO] Worker exiting (pid: 31163)
+[2017-11-29 04:46:57 +0000] [31167] [INFO] Booting worker with pid: 31167
+[2017-11-29 04:46:57 +0000] [31166] [INFO] Booting worker with pid: 31166
+[2017-11-29 04:46:58 +0000] [30436] [INFO] Handling signal: hup
+[2017-11-29 04:46:58 +0000] [30436] [INFO] Hang up: Master
+[2017-11-29 04:46:58 +0000] [31171] [INFO] Booting worker with pid: 31171
+[2017-11-29 04:46:58 +0000] [31170] [INFO] Booting worker with pid: 31170
+[2017-11-29 04:46:58 +0000] [31167] [INFO] Worker exiting (pid: 31167)
+[2017-11-29 04:46:58 +0000] [31166] [INFO] Worker exiting (pid: 31166)
+[2017-12-06 08:48:27 +0000] [30436] [CRITICAL] WORKER TIMEOUT (pid:31171)
+[2017-12-06 08:48:27 +0000] [31171] [INFO] Worker exiting (pid: 31171)
+[2017-12-06 08:48:27 +0000] [10840] [INFO] Booting worker with pid: 10840
+[2017-12-15 17:57:28 +0000] [30436] [INFO] Handling signal: hup
+[2017-12-15 17:57:28 +0000] [30436] [INFO] Hang up: Master
+[2017-12-15 17:57:28 +0000] [31170] [INFO] Worker exiting (pid: 31170)
+[2017-12-15 17:57:28 +0000] [10840] [INFO] Worker exiting (pid: 10840)
+[2017-12-15 17:57:28 +0000] [11053] [INFO] Booting worker with pid: 11053
+[2017-12-15 17:57:28 +0000] [11054] [INFO] Booting worker with pid: 11054
+[2017-12-15 17:57:29 +0000] [30436] [INFO] Handling signal: hup
+[2017-12-15 17:57:29 +0000] [30436] [INFO] Hang up: Master
+[2017-12-15 17:57:29 +0000] [11057] [INFO] Booting worker with pid: 11057
+[2017-12-15 17:57:29 +0000] [11058] [INFO] Booting worker with pid: 11058
+[2017-12-15 17:57:30 +0000] [11053] [INFO] Worker exiting (pid: 11053)
+[2017-12-15 17:57:30 +0000] [11054] [INFO] Worker exiting (pid: 11054)
+[2017-12-20 04:46:28 +0000] [30436] [INFO] Handling signal: hup
+[2017-12-20 04:46:28 +0000] [30436] [INFO] Hang up: Master
+[2017-12-20 04:46:28 +0000] [11057] [INFO] Worker exiting (pid: 11057)
+[2017-12-20 04:46:28 +0000] [11058] [INFO] Worker exiting (pid: 11058)
+[2017-12-20 04:46:28 +0000] [7482] [INFO] Booting worker with pid: 7482
+[2017-12-20 04:46:28 +0000] [7483] [INFO] Booting worker with pid: 7483
+[2017-12-20 04:46:29 +0000] [30436] [INFO] Handling signal: hup
+[2017-12-20 04:46:29 +0000] [30436] [INFO] Hang up: Master
+[2017-12-20 04:46:29 +0000] [7486] [INFO] Booting worker with pid: 7486
+[2017-12-20 04:46:29 +0000] [7487] [INFO] Booting worker with pid: 7487
+[2017-12-20 04:46:30 +0000] [7482] [INFO] Worker exiting (pid: 7482)
+[2017-12-20 04:46:30 +0000] [7483] [INFO] Worker exiting (pid: 7483)
+[2018-01-10 07:23:03 +0000] [30436] [CRITICAL] WORKER TIMEOUT (pid:7486)
+[2018-01-10 07:23:03 +0000] [7486] [INFO] Worker exiting (pid: 7486)
+[2018-01-10 07:23:03 +0000] [7181] [INFO] Booting worker with pid: 7181
+[2018-01-16 06:05:54 +0000] [15064] [INFO] Booting worker with pid: 15064
+[2018-01-16 06:05:54 +0000] [30436] [INFO] Handling signal: hup
+[2018-01-16 06:05:54 +0000] [30436] [INFO] Hang up: Master
+[2018-01-16 06:05:54 +0000] [15075] [INFO] Booting worker with pid: 15075
+[2018-01-16 06:05:54 +0000] [15095] [INFO] Booting worker with pid: 15095
+[2018-01-16 06:05:54 +0000] [15105] [INFO] Booting worker with pid: 15105
+[2018-01-16 06:05:54 +0000] [30436] [INFO] Handling signal: term
+[2018-01-16 06:05:56 +0000] [15075] [INFO] Worker exiting (pid: 15075)
+[2018-01-16 06:05:56 +0000] [15064] [INFO] Worker exiting (pid: 15064)
+[2018-01-16 06:05:56 +0000] [15105] [INFO] Worker exiting (pid: 15105)
+[2018-01-16 06:05:56 +0000] [15095] [INFO] Worker exiting (pid: 15095)
+[2018-01-16 06:05:56 +0000] [30436] [INFO] Shutting down: Master

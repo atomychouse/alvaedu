@@ -1,0 +1,130 @@
+<style type="text/css">
+	.noedit{
+		background:#fff;
+		padding:10px;
+
+	}
+
+	.popsovers{
+		cursor: move;
+	}
+
+</style>
+
+
+	<div ng-repeat="itm in r.items|orderBy:'orden'" ng-class="{visibil:publicaBox(editando,itm.publicado)}" style="height:auto;margin-bottom:20px;" class="gridcol">
+
+
+		<div class="mybox" style="position: relative;width:100%;">
+			<div class="adminpanel" style="position:absolute;top:10px;right:30px;padding:0px 90px;" ng-show="editando">
+				<ul class="itm-menu" ng-show="editando" >
+					<li>
+						<a href="#" class="boton" ng-click="loadImg($event,this,'full');">
+							<span class="icon-iconos-brandline_banco-de-imagen"></span>
+						</a>
+					</li>
+					<li>
+						<a href="#" 
+						class="boton " 
+						ng-class="{btn_active:editore(itm)}" 
+						ng-click="savenota($event,itm,this,'saver');">
+						 <i class="glyphicon glyphicon-ok"></i>
+					</a>
+					</li>
+				</ul>
+			</div>
+
+			<div id="img-posnotas-||itm.pk||" style="min-height:100px;padding:0px 90px;">
+				<img  src="||itm.img||" ng-if="itm.img"  class="img-responsive"  width="100%" />
+
+				<div ng-show="editando" 
+					 style="padding:10px;position:absolute;left:||n.psx||%;top:||n.psy||%;z-index:10;"  
+					  
+					 ng-repeat="n in itm.notas" andy-draggable>
+					<a href="#as"
+					        ng-class="{noedit:n.titulo.length<2}"  
+					        class="popsovers" 
+					        data-trigger="hover"  
+					        data-container="body" 
+					        data-toggle="popover" 
+					        data-placement="bottom" 
+					        data-content="||n.titulo||" just-popover>
+					      <span class="||itm.config.clase||" ng-show="itm.config.numeracion=='chars'" style="background-color:||itm.config.backcolor|| !important;color:||itm.config.fontcolor||;">
+					      ||n.orden|| 
+					      </span>
+					      <span class="||itm.config.clase||" ng-show="itm.config.numeracion=='nums'" style="background-color:||itm.config.backcolor|| !important;color:||itm.config.fontcolor||;">
+					      	||abcs[n.orden]||
+					      </span>				
+					</a>
+				</div>
+
+
+
+
+			</div>	
+
+			<div  ng-hide="editando" 
+				  style="position:absolute;left:||n.psx||%;top:||n.psy||%;z-index:1009;" 
+				  ng-repeat="n in itm.notas">
+					<a href="#as"  
+				        class="popsovers " 
+				        data-container="body" 
+				        data-toggle="popover" 
+				        data-trigger="hover" 
+				        data-placement="bottom" 
+				        data-content="||n.titulo||" just-popover>
+				      <span class="||itm.config.clase||" ng-show="itm.config.numeracion=='chars'" style="background-color:||itm.config.backcolor|| !important;color:||itm.config.fontcolor||;">
+				      ||n.orden|| 
+				      </span>
+				      <span class="||itm.config.clase||" ng-show="itm.config.numeracion=='nums'" style="background-color:||itm.config.backcolor|| !important;color:||itm.config.fontcolor||;">
+				      	||abcs[n.orden]||
+				      </span>				
+				</a>
+
+ 			</div>
+			
+
+			<div class="separador" ng-hide="editando" style="padding:15px 115px;">
+				<div>
+					<div class="lb notaslistbox" ng-repeat="n in itm.notas">
+					      <span class="" ng-show="itm.config.numeracion=='chars'">
+					       		&nbsp;
+					      </span>
+					      <span class="" ng-show="itm.config.numeracion=='nums'" >
+					      		&nbsp;
+					      </span>
+					      <span class="cfg_textos">&nbsp;</span>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="separador" ng-show="editando" style="padding:10px 115px;">
+				<div>
+					<div class="lb notaslistbox" ng-repeat="n in itm.notas">
+					      <span class="||itm.config.clase||" ng-show="itm.config.numeracion=='chars'" style="background-color:||itm.config.backcolor|| !important;color:||itm.config.fontcolor||;;">
+					      ||n.orden|| 
+					      </span>
+					      <span class="||itm.config.clase||" ng-show="itm.config.numeracion=='nums'" style="background-color:||itm.config.backcolor|| !important;color:||itm.config.fontcolor||;">
+					      	||abcs[n.orden]||
+					      </span>
+
+					      	<input type="text" ng-model="n.titulo"  ng-blur="savenota($event,itm,this,'keysavenota');" style="border:0px solid;width:100px;"  />
+					        <button style="display: none;" class="btn btn-default" ng-click="savenota($event,n,this,'rmnota');" type="button">x</button>      
+					</div>
+					<a href="#masreferencia" class="boton" ng-click="savenota($event,itm,this,'addnota');"> + </a>
+				</div>
+			</div>
+
+
+
+
+		</div><!-- MYBOX-->
+	</div>
+
+
+
+
+
+

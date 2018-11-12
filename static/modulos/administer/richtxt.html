@@ -1,0 +1,25 @@
+<div class="edit-bar">
+	<div class="col-md-12 col-sm-12 col-xl-12"  ng-repeat="itm in r.items" ng-class="{visibil:publicaBox(editando,itm.publicado)}">
+			<div ng-bind-html="itm.contenido" ng-hide="editando">||itm.contenido||</div>		
+
+			<text-angular name="htmlcontent_||itm.pk||"  ng-model="itm.contenido" ta-target-toolbars='toolbar_||itm.pk||' ng-show="editando"></text-angular>
+			<div ng-show="editando" style="text-align:center;background:#999;">
+				<text-angular-toolbar ta-toolbar-class="btn-toolbar-ca" ta-toolbar="[['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote','bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],
+			      ['justifyLeft', 'justifyCenter', 'justifyRight', 'indent', 'outdent'],
+			      ['html']]" ta-toolbar-button-class="btn btn-sm" name="toolbar_||itm.pk||" ng-show="editando" >
+			      </text-angular-toolbar>
+		  	</div>		
+			<div class="newseparador" ng-show="editando" style="text-align:right;padding:0px !important;">
+				<a href="#" class="boton "
+				   ng-class="{btn_active:itm.cambiose}" 
+				   ng-click="savehtml($event,this)" >
+					<i class="glyphicon glyphicon-ok"></i>
+				</a>
+				<div class="clr-both" style=""></div>
+			</div>
+
+
+	</div>
+
+
+</div>

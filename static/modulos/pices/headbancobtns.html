@@ -1,0 +1,34 @@
+		<div class="manage_gridlink edit-bar" ng-show="editando">
+		    <div class="barra_titulo">
+			    	<div class="barra_row">
+			    		<div class="barra_cell" style="width:70%;">
+				         	<span  class=" iconico ||r.icono||"></span>
+							<span><a href="#" class="editT" ng-hide="r.editandoT" ng-click="editTR($event,r);">||r.title||</a></span>
+							<input type="text" name="titulo" ng-keyup="saveT($event,r)" ng-model="r.title" ng-show="r.editandoT" />
+			    		</div>
+			    		<div class="barra_cell" style="width:29%;text-align: right;">
+
+					      <ul class="menu_barra">
+					        <li>
+					        	<a href="#" class="boton" 
+					        	   ng-click="cfg_banco($event,this,'cfg_banco');"> 
+					        		<i class="glyphicon glyphicon-pencil"></i>
+					         	</a>
+					         </li>
+					        <li>
+					        	<a href="#addItem" ng-click="addItm($event,this);" class="boton">
+					        		<i class="glyphicon glyphicon-plus"></i>
+					        	</a>
+					        </li>
+					        <li><a href="#" class="boton" ng-click="rmme($event,this,this.rows,r,'mod');"> <i class="glyphicon glyphicon-trash"></i> </a></li>
+								<li>
+									<a href="#" class="boton" ng-click="publicarRow($event,r);">
+										<i class="glyphicon glyphicon-ok"></i>
+									</a>
+								</li>
+
+					      </ul>
+				   		</div>
+			    	</div>
+			    </div>
+		</div>

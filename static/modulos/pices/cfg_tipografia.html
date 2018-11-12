@@ -1,0 +1,45 @@
+<div class="headbox" style="color:#ffffff;">		
+		<div class="title" style="float: left;padding-top: 20px;">Código Tipográfico</div>
+		<div style="float: right;text-align: right;margin:10px 0px;">
+			<a href="#addItem"  class="boton-g-round cierraboximgreb" ng-click="colserr();">
+				<i class="glyphicon glyphicon-remove"></i>
+			</a>
+			<a href="#addItem"  class="boton-g-round cierraboximgreb" ng-click="colserr();">
+				<i class="glyphicon glyphicon-ok"></i>
+			</a>
+		</div>
+		<div style="clear: both;height: 0px;"></div>
+
+	</div>
+
+	<div style="margin:10px 0px;">
+		<span class="txt-form">Agregar Fuente</span> <a href="#" class="txt-form" ng-click="addfontfile($event);">+</a>
+	</div>
+
+	<div class="cepar"></div>
+
+	<div style="margin:20px 0px 30px 0px;">
+
+
+	<ul>
+		<li ng-repeat="f in fuentes">
+			<input type="checkbox" ng-checked="checkfont(f);" ng-click="addfm(f);"/>
+			<span class="txt-form">||f.fonty||</span>
+		</li>
+	</ul>
+
+	</div>
+
+<script type="text/javascript">
+	
+	jQuery(document).ready(function(){
+
+		$('.cierraboxbanco').click(function(){
+			$('#cfg_banco').hide();
+		});
+
+
+
+	});
+
+</script>

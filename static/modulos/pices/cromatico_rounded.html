@@ -1,0 +1,52 @@
+<style type="text/css">
+    
+    .edt-color input{
+        width:35px;
+        text-align: center;
+        padding: 0px;
+        display: inline-block;
+    }
+
+    .edt-color label{
+        display: inline-block;
+        width:72px;margin:10px 0px;
+    }
+
+    .pantone{
+        width:151px !important;
+    }
+
+</style>
+
+<div class="col-md-3 col-sm-3 col-xl-3 "
+     ng-repeat="cp in itm.colores" 
+     style="margin:10px 0px 50px 0px;min-width:230px;">
+    <div>
+        <div>
+            <div style="background-color:||cp.cromas.hex.color||;" class="redondo">
+            &nbsp;</div>                        
+        </div>
+        <div class="cromas">
+            <div >
+                <div ng-if="cp.cromas.pantone.visible" class="cfg_textos"> Pantone: ||cp.cromas.pantone.color||</div>    
+                <div ng-if="cp.cromas.cmyk.visible" class="cfg_textos">
+                    CMYK: 
+                    ||cp.cromas.cmyk.color.c||,
+                    ||cp.cromas.cmyk.color.m||,
+                    ||cp.cromas.cmyk.color.y||,
+                    ||cp.cromas.cmyk.color.k||
+                </div>    
+                <div ng-if="cp.cromas.rgb.visible" class="cfg_textos">
+                    RGB: ||cp.cromas.rgb.color.r||,
+                          ||cp.cromas.rgb.color.g||,
+                          ||cp.cromas.rgb.color.b||
+                </div>    
+            </div>
+            <div ng-if="cp.cromas.hex.visible" class="cfg_textos">HEX: ||cp.cromas.hex.color|| </div>    
+            <div ng-if="cp.cromas.hsl.visible" class="cfg_textos">HSL: ||cp.cromas.hsl.color.h|| ||cp.cromas.hsl.color.s|| ||cp.cromas.hsl.color.l||</div>  
+        </div>
+    </div>
+
+
+
+</div>

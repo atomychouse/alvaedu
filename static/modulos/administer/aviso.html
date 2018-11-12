@@ -1,0 +1,44 @@
+<div  class="row pad_edit"  
+      ng-repeat="itm in r.items|orderBy:'orden'" 
+      style="position: relative;" 
+      ng-class="{visibil:publicaBox(editando,itm.publicado)}">
+
+			
+	<table style="width:86%;height:100%;margin:auto;" ng-hide="editando" class="||itm.config.typo|| ||itm.config.visible|| aviso-general">
+		<tr>
+			<td  style="vertical-align:top;width:70px;text-align: center;">
+				<span class="icon-iconos-brandline_comentarias" style="font-size:30px;"></span>
+			</td>
+			<td>
+				<div class="aviso-mensaje" ng-hide="editando">
+					<div ng-bind-html="itm.contenido">||itm.contenido||</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+
+	<table style="width:84%;height:100%;margin: auto;" ng-show="editando"  class="||itm.config.typo||  aviso-general">
+		<tr>
+			<td  style="vertical-align:top;width:70px;text-align: center;">
+				<span class="icon-iconos-brandline_comentarias" style="font-size:30px;"></span>
+			</td>
+			<td>				
+				<div class="aviso-mensaje" ng-show="editando" >
+					<text-angular ta-toolbar="[]" name="avisotxt_||itm.pk||"  ng-model="itm.contenido" style="height:60px;" >
+					</text-angular>						
+				</div>
+			</td>
+		</tr>
+	</table>
+
+	<div class="newseparador" ng-show="editando" style="width:95%;">
+
+		<a href="#" class="boton rg-side " ng-class="{btn_active:editore(itm)}" ng-click="saveaviso($event,itm,this)">
+			 <i class="glyphicon glyphicon-ok"></i></a>
+		<span class="clr-both"></span>
+	</div>
+
+
+
+</div>

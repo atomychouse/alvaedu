@@ -1,0 +1,19 @@
+	<div >
+		<a name="/||r.title||"></a>
+		<div class="manage_gridlink " ng-show="editando" style="padding: 0px 90px;">
+
+			    <div class="barra_titulo">
+			    	<div class="barra_row">
+			    		<div class="barra_cell" style="width:76%;">
+				         	<span  class=" iconico ||r.icono||"></span>
+							<span><a href="#" class="editT" ng-hide="r.editandoT" ng-click="editTR($event,r);">||r.title||</a></span>
+							<input type="text" name="titulo" ng-keyup="saveT($event,r)" ng-model="r.title" ng-show="r.editandoT" />
+			    		</div>
+			    		<div class="barra_cell" style="width:29%;text-align: right;">
+
+
+				   		</div>
+			    	</div>
+			    </div>
+		</div>
+	</div>

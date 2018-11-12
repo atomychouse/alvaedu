@@ -1,0 +1,108 @@
+<div class="row" ng-class="{managging:editando===true} ">
+	<div class="btn-box">
+		<a name="/||r.title||"></a>
+		<div class="manage_gridlink" ng-show="editando">
+
+			    <div class="barra_titulo">
+			    	<div class="barra_row">
+			    		<div class="barra_cell" style="width:76%;">
+				         	<span  class=" iconico ||r.icono||"></span>
+							<span><a href="#" class="editT" ng-hide="r.editandoT" ng-click="editTR($event,r);">||r.title||</a></span>
+							<input type="text" name="titulo" ng-keyup="saveT($event,r)" ng-model="r.title" ng-show="r.editandoT" />
+			    		</div>
+			    		<div class="barra_cell" style="width:29%;text-align: right;">
+
+					      <ul class="menu_barra">
+					        <li>
+					        	<a href="#" class="boton" 
+					        	   ng-click="cfg_grid($event,this,'cfg_grid','Videos',itm);"> 
+					        		<i class="glyphicon glyphicon-pencil"></i>
+					         	</a>
+					         </li>
+					        <li>
+					        	<a href="#addItem" ng-click="addItm($event,this);" class="boton">
+					        		<i class="glyphicon glyphicon-plus"></i>
+					        	</a>
+					        </li>
+					        <li><a href="#" class="boton" ng-click="rmme($event,this,this.rows,r,'mod');"> <i class="glyphicon glyphicon-trash"></i> </a></li>
+								<li>
+									<a href="#" class="boton" ng-click="publicarRow($event,r);">
+										<i class="glyphicon glyphicon-ok"></i>
+									</a>
+								</li>
+
+					      </ul>
+				   		</div>
+			    	</div>
+			    </div>
+		</div>
+
+	</div>
+	
+	<div class="exmarg" style="padding: 0px ||r.config.pads||px;">
+
+		<div class="col-md-||r.config.cols|| col-sm-||r.config.cols|| col-xl-3" ng-repeat="itm in r.items|orderBy:'orden'" ng-class="{visibil:publicaBox(editando,itm.publicado)}">
+
+
+
+		    	<div class="itmlink" style="margin:||r.config.margs||px;">
+				    
+	    			<div style="position: relative;">
+		    			<a ng-if="itm.link" 
+		    			   href="#" 
+		    			   ng-click="playme($event,this);" 
+		    			   style="position: absolute;top:45%;left:45%;">
+		    				<i class="glyphicon glyphicon-play-circle" 
+		    				   style="font-size: 40px;color:#fff;"></i>
+		    			</a>
+				        <img  ng-src="http://img.youtube.com/vi/||itm.link||/0.jpg" 
+				        	  ng-if="itm.link" 
+				        	  class="img-responsive"  
+				        	  width="100%" />
+				        <img src="/static/imgs/defaults/video.jpg" 
+				        	 ng-hide="itm.link" 
+				             class="img-responsive" style="width: 100%" />
+			        </div>
+			  	
+		            <div class="caption" style="font-size:||r.config.fontsize||px;color:||r.config.fontcolor||;" >
+			          
+			          <div ng-hide="editando" class="cfg_titulos" ng-bind-html="itm.title">||itm.title||</div>
+			          <div ng-hide="editando" class="cfg_textos" ng-bind-html="itm.descp">||itm.descp||</div>
+
+			          <p>
+			          		<input type="text" 
+			          		   ng-model="itm.urlvideo" 
+			          		   ng-change="loadvideokey(itm);" 
+			          		   ng-show="editando" 
+			          		   class="input-w-decored" 
+			          		   placeholder="youtube url" 
+			          		   style="font-size:||r.config.fontsize||px;color:||r.config.fontcolor||;">
+			          		</input>
+			          </p>		          
+			          <p>
+			          	<input type="text" 
+			          			ng-model="itm.title" 
+			          			ng-show="editando" 
+			          			ng-change="editadoes(itm);"
+			          			class="input-w-decored cfg_titulos"
+			          			style="font-size:||r.config.fontsize||px;color:||r.config.fontcolor||;"></input>
+			          </p>
+			          <p><textarea ng-model="itm.descp" ng-show="editando" class="input-w-decored cfg_textos" style="font-size:||r.config.fontsize||px;color:||r.config.fontcolor||;"></textarea>
+			          </p>
+		            </div>
+
+				</div>
+
+				<div class="separador" ng-show="editando" style="padding:0px 100px;">
+					<a href="#" class="boton rg-side" ng-click="rmme($event,this,r.items,itm,'itm');">
+						 <i class="glyphicon glyphicon-trash"></i> 
+					</a>
+					<a href="#" class="boton rg-side " ng-class="{btn_active:editore(itm)}" ng-click="saveGrid($event,this);">
+						 <i class="glyphicon glyphicon-ok"></i></a>
+					<span class="clr-both"></span>
+				</div>
+		</div>
+	
+	</div>
+</div>
+

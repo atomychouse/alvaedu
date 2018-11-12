@@ -1,0 +1,116 @@
+
+<section class="modulebox" ng-controller="moduleCtr">
+
+<style type="text/css">
+	.toolbar-item:hover{
+		/*border:1px dotted gray;*/
+	}
+
+	.alineado{
+		padding:0px 15px;
+	}
+
+	.editortxt{
+		background-color: #eee;border:0px solid;
+		width:100%;padding:5px 10px;text-align: center;
+	}
+
+	a{
+		color:#333;
+		
+	}
+	a i{font-size: 16px;}
+
+</style>
+
+
+
+
+	<div class="toolbar" style="padding:10px; " ng-show="editmodule">
+
+	<div class="row">
+	<div class="col-xs-12  col-sm-1 col-md-1 " >
+		<div class="input-group ">
+		  <span class="input-group-addon" id="basic-addon1">COLS</span>
+		  <input type="text" ng-model="structure_module.setts.cols" class="form-control" />
+		</div>
+	</div>
+	<div class="col-xs-12  col-sm-2 col-md-2 " >
+
+		<div class="input-group">
+		  <span class="input-group-addon" id="basic-addon1">PADDING</span>
+		  <input type="text" ng-model="structure_module.setts.padds" class="form-control" />
+		</div>
+	</div>
+	<div class="col-xs-12  col-sm-2 col-md-2 " >
+
+
+		<div class="input-group">
+		  <span class="input-group-addon" id="basic-addon1">MARGIN</span>
+		<input type="text" ng-model="structure_module.setts.margs" class="form-control" />
+		</div>
+	</div>	
+	<div class="col-xs-12  col-sm-6 col-md-6" style="text-align: right;" >		
+		<input type="file" id="linkimg" name="linkimage" ng-model="image" style="display: none;" />
+      <a href="#agregar" id="masbox" class="btn btn-default" ng-click="addItem($event,this);">
+        +
+      </a> 
+     </div>
+
+	</div>
+
+	</div>
+
+
+
+<ul class="row alineado">
+
+<li class="col-xs-12  col-sm-||structure_module.setts.cols|| 
+     col-md-||structure_module.setts.cols|| " 
+     ng-repeat="itm in structure_module.items|orderBy:'orden'" >
+     
+     <div style="width:100%;margin: auto;padding:5px 10px;height:auto;position:absolute;">
+     	<a href="#editar" ng-show="editmodule" style="float:left;" ng-click="$event.preventDefault();itm.editmode=true;" >
+     	EDIT
+     	</a>
+     	<a href="#editar" style="float:right;margin-right:10px;" ng-click="$event.preventDefault();itm.editmode=false;" ng-show="itm.editmode" ><i class="glyphicon glyphicon-ok-circle"></i></a>
+     	<a href="#editar" style="float:right;margin-right:10px;" ng-click="$event.preventDefault();itm.editmode=false;" ng-show="itm.editmode" ><i class="glyphicon glyphicon-remove-circle"></i></a>
+     	<span style="clear: both;"></span>
+     </div>
+
+    <div class="toolbar-item"  
+     style="padding:||structure_module.setts.padds||px;margin:||structure_module.setts.margs||px;">
+
+    	<div class="thumbnail">
+    	    <div class="" style="top:30px;right:0px;position:absolute;width:14% !important;padding:1px;" ng-show="itm.editmode">
+              <a href="#links" class="boton red" ng-click="changeme($event,this);">
+                <i class="glyphicon glyphicon-camera"></i>
+              </a>
+              <br/>
+              <a href="#links" class="boton red" ng-click="slay($event,this);">
+                <i class="glyphicon glyphicon-trash"></i>
+              </a>
+
+
+            </div>
+
+		    <a href="||itm.link||">
+		        <img src="||itm.img||" ng-src="||itm.img||" ng-if="itm.img"  class="img-responsive"  width="100%" >
+		  	</a>
+            <div class="caption">
+	          <a class="links-box-link" href="||itm.link||" class="generaltitle_link">
+	          <span ng-hide="itm.editmode">||itm.tit||</span>
+	          </a>
+	          <input class="links-box-link editortxt" ng-show="itm.editmode"  type="text" name="tit" ng-model="itm.tit" class="editortxt" />
+            </div>
+
+		</div>
+	</div>
+
+
+
+	</li>
+
+</ul>
+
+</section>

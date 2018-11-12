@@ -1,0 +1,100 @@
+<style type="text/css">
+	
+#row_||r.pk|| .gridtitle{
+	color:||r.config.fontcolor||;
+}
+
+
+#row_||r.pk|| .insidegridbox{
+	margin:||r.config.margs||px;
+}
+
+#row_||r.pk|| .contendor{
+	padding:0px ||r.config.pads||px;
+}
+
+#row_||r.pk||
+	.captions p{
+		color:||r.config.fontcolor||;
+	}
+</style>
+
+	<div class="contendor" ng-class="estadoEdicion(editando);" style="padding:0px ||r.config.pads||px;">
+		<div class="col-md-||r.config.cols|| col-sm-||r.config.cols|| col-xl-3 gridcol" ng-class="{visibil:publicaBox(editando,itm.publicado)}" ng-repeat="itm in r.items|orderBy:'orden'">
+			
+		<div class="insidegridbox">
+			<div class="floatrev" style="position: relative;top:inherit;">
+
+			
+			<ul class="top-btns" ng-show="editando">
+				<li>
+					<a href="#" class="boton" ng-click="loadImg($event,this,'grid');">
+						<i class="icon-iconos-brandline_banco-de-imagen"></i>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="boton" ng-click="saveGrid($event,this);"><i class="glyphicon glyphicon-ok"></i></a>
+				</li>
+				<li>
+					<a href="#" class="boton" ng-click="rmme($event,this,r.items,itm,'itm');">
+						 <i class="glyphicon glyphicon-trash"></i> 
+					</a>					
+				</li>
+			</ul>		
+			<img src="||itm.img||" class="img-responsive" style="width:100%;">
+			</div>
+
+
+				<div class="edit-tools" ng-hide="editando">
+					<span class="brand-control gridtitule cfg_subtitulos gridtitle" 
+					style="display: block;color:||r.config.fontcolor||;margin:8px 0px;">
+						||itm.title||
+					</span>
+				</div>
+
+
+			<div class="captions" ng-hide="editando" style="min-height: 120px;">
+	          <div ng-bind-html="itm.descp" class="cfg_textos">||itm.descp||</div>
+			</div>
+			<div style="height:35px;" ng-hide="editando">&nbsp;</div>
+			
+			<div class="edit-tools" ng-show="editando">
+				<div>
+					<input class="brand-control titleform cfg_subtitulos gridtitle" type="text" name="link" placeholder="Título" ng-model="itm.title" />
+				</div>
+				<div class="captions cfg_textos" ng-show="editando" style="height:123px;">
+					<text-angular ta-toolbar="[]" class="captions" name="griddwhtmlcontent_||itm.pk||"  ng-model="itm.descp" >
+					</text-angular>
+			    </div>
+			</div>
+				<ul>
+				    <li  ng-repeat="dw in itm.downs" class="dwlist-grid">
+					    <div>
+					    	<a href="/||dw.pathfile||" target="_blank" style="color:#4c4c4c;float:left;width:70%;">||dw.filename||</a>
+					    	<a href="#" ng-show="editando" ng-if="dw.pk" style="float: right;padding-top:4%;width:25%;text-align:right;"   
+					    	   ng-click="rmme($event,this,this.itm.downs,dw,'dwgrid');" >
+									<i class="glyphicon glyphicon-trash"></i>
+							</a>
+						</div>
+						<div style="height:0px;clear: both;"></div>
+				   	</li>
+				</ul>
+
+				<div class="down-btns-box" ng-show="editando">
+						<a href="#||dw.filepath||" 
+						   class="fleft" 
+						   ng-click="loadImg($event,this,'assign');"> 
+						   <img src="/static/imgs/defaults/btn-dw.png"/>
+						</a>
+					<div style="height:0px;clear: both;"></div>
+				</div>
+
+
+		</div>
+		</div>	
+	</div>
+
+
+
+
+

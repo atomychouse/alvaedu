@@ -1,0 +1,144 @@
+<style type="text/css">
+	
+#row_||r.pk|| .gridtitle{
+	font-size:||r.config.fontsize||px;
+	color:||r.config.fontcolor||;
+}
+
+
+#row_||r.pk|| .insidegridbox{
+	padding:0px 12.5px;
+}
+
+#row_||r.pk|| .contendor{
+	padding:0px 20px;
+}
+
+
+
+#row_||r.pk||
+	.captions p{
+		font-size:||r.config.fontsize||px;color:||r.config.fontcolor||;
+	}
+
+
+</style>
+
+<div class="row" style="padding:0px 90px;">
+	<div class="col-md-3 col-sm-3 col-xs-1 col-xl-3" style="padding:0px 0px;">
+			<ng-include src="'/static/modulos/pices/config_banco.html'"></ng-include>
+	</div>
+ 	<div class="col-md-9 col-sm-9 col-xs-1 col-xl-9">
+
+		<div class="contendors" style="padding:0px 10px">
+			<div class="col-md-||r.config.cols|| col-sm-||r.config.cols|| col-xl-3" ng-class="{visibil:publicaBox(editando,itm.publicado)}" ng-repeat="itm in r.items|orderBy:'orden'|filter:{'isvisible':true}">
+				<div class="insidegridbox">
+					<div class="floatrev" style="position: relative;top:inherit;">
+						
+						<ul class="top-btns" ng-show="editando">
+							<li>
+								<a href="#" class="boton" ng-click="loadImg($event,this,'grid');">
+									<span class="icon-iconos-brandline_banco-de-imagen"></span>
+								</a>	
+							</li>
+							<li>
+								<a href="#" 
+							   class="boton" 
+							   ng-click="cfg_banco_itm($event,this,'cfg_banco_itm','Banco');">
+								 <i class="glyphicon glyphicon-cog"></i> 
+							</a>
+							</li>
+							<li>
+								<a href="#" class="boton" ng-click="rmme($event,this,r.items,itm,'itm');">
+									 <i class="glyphicon glyphicon-trash"></i> 
+								</a>
+							</li>
+							<li>
+								<a href="#" class="boton" ng-click="saveGrid($event,this);"><i class="glyphicon glyphicon-ok"></i></a>
+							</li>
+						</ul>
+					<a href="#banco"   
+							       class="modalbanco" 
+							       data-webimg="||itm.webimage||" 
+							       data-original="||itm.original||"
+							       data-pk='||itm.pk||'
+							      ng-click="cambiovideo(itm);" 
+								  ng-if="itm.isvideo==1" 
+								  data-toggle="modal" data-target="#videobox" >
+						<img src="||itm.img||" class="img-responsive" style="width:100%;">
+
+					</a>
+
+					<a href="#banco"   
+							       data-target="#bancomodal" 
+							       class="modalbanco" 
+							       data-webimg="||itm.webimage||" 
+							       data-original="||itm.original||"
+							       data-pk='||itm.pk||'
+							      ng-click="showMod($event,this);" 
+								  ng-if="itm.isvideo==0" 
+							      >
+						<img src="||itm.img||" class="img-responsive" style="width:100%;">
+					</a>
+
+
+
+					</div>
+					
+					<div style="height:170px;" ng-hide="editando">&nbsp;</div>
+					
+					<div class="edit-tools" ng-show="editando">
+						<div class="captions" ng-show="editando" style="height:auto;margin:10px 0px;">
+							<text-angular ta-toolbar="[]" name="bancocontent_||itm.pk||"  ng-model="itm.descp" >
+							</text-angular>
+					    </div>
+					    <div>
+					    	ES VIDEO 
+					    	 <input type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="itm.isvideo" ng-checked="esvideoeste(itm);" />
+					    </div>
+					</div>
+
+					<ul ng-show="editando">
+					    <li  ng-repeat="dw in itm.downs" class="dwlist-grid">
+						    <div>
+						    	<a href="/||dw.pathfile||" target="_blank" style="color:#4c4c4c;float:left;width:70%;">||dw.filename||</a>
+						    	
+						    	<a href="#" ng-show="editando" ng-if="dw.pk" style="float: right;padding-top:4%;width:25%;text-align:right;"   
+						    	   ng-click="rmme($event,this,this.itm.downs,dw,'dwgrid');" >
+										<i class="glyphicon glyphicon-trash"></i>
+								</a>
+							</div>
+							<div style="height:0px;clear: both;"></div>
+					   	</li>
+					</ul>
+
+						<div id="doms-link-||itm.pk||" style="display: none;">
+							<div class="row">
+								<div class="col-md-2 col-sm-2 col-xl-2 col-xs-1" ng-repeat="d in itm.downs">
+									<a href="/||d.pathfile||" class="dwlist-grid" target="_blank" >||d.filename||</a>
+								</div>
+								<div class="col-md-2 col-sm-2 col-xl-2 col-xs-1" ng-repeat="od in itm.onlydowns">
+									<a href="/||od.pathfile||" class="dwlist-grid" target="_blank" >||od.filename||</a>
+								</div>
+							</div>
+						</div>
+				<div class="down-btns-box" ng-show="editando">
+						<a href="#||dw.filepath||" 
+						   class="fleft" 
+						   ng-click="loadImg($event,this,'assign');"> 
+						   <img src="/static/imgs/defaults/btn-dw.png"/>
+						</a>
+					<div style="height:0px;clear: both;"></div>
+				</div>
+
+				</div>
+			
+			</div>	
+		</div>
+
+
+	</div>
+
+</div>
+
+

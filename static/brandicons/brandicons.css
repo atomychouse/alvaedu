@@ -1,0 +1,185 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?ld29wv');
+  src:  url('fonts/icomoon.eot?ld29wv#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ld29wv') format('truetype'),
+    url('fonts/icomoon.woff?ld29wv') format('woff'),
+    url('fonts/icomoon.svg?ld29wv#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-iconos-brandline_texto:before {
+  content: "\e901";
+  color: #999;
+}
+.icon-iconos-brandline_360:before {
+  content: "\e903";
+  color: #999;
+}
+.icon-iconos-brandline_ambientes-3d:before {
+  content: "\e905";
+  color: #999;
+}
+.icon-iconos-brandline_añadir-elemento .path1:before {
+  content: "\e909";
+  color: rgb(128, 128, 128);
+}
+.icon-iconos-brandline_añadir-elemento .path2:before {
+  content: "\e90a";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-iconos-brandline_añadir-elemento .path3:before {
+  content: "\e90b";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-iconos-brandline_area-de-proteccion:before {
+  content: "\e90d";
+  color: #999;
+}
+.icon-iconos-brandline_banco-de-imagen:before {
+  content: "\e90f";
+  color: #999;
+}
+.icon-iconos-brandline_borrar-elemento .path1:before {
+  content: "\e914";
+  color: rgb(128, 128, 128);
+}
+.icon-iconos-brandline_borrar-elemento .path2:before {
+  content: "\e915";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-iconos-brandline_borrar-elemento .path3:before {
+  content: "\e916";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-iconos-brandline_borrar-elemento .path4:before {
+  content: "\e917";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-iconos-brandline_chat:before {
+  content: "\e91b";
+  color: #999;
+}
+.icon-iconos-brandline_color:before {
+  content: "\e91d";
+  color: #999;
+}
+.icon-iconos-brandline_comentarias:before {
+  content: "\e91f";
+  color: #999;
+}
+.icon-iconos-brandline_editar-modulo .path1:before {
+  content: "\e927";
+  color: rgb(128, 128, 128);
+}
+.icon-iconos-brandline_editar-modulo .path2:before {
+  content: "\e928";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-iconos-brandline_editar-modulo .path3:before {
+  content: "\e929";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-iconos-brandline_editar-modulo .path4:before {
+  content: "\e92a";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-iconos-brandline_editar-modulo .path5:before {
+  content: "\e92b";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-iconos-brandline_fondos-de-color:before {
+  content: "\e92d";
+  color: #999;
+}
+.icon-iconos-brandline_grid-de-imagen:before {
+  content: "\e92f";
+  color: #999;
+}
+.icon-iconos-brandline_html:before {
+  content: "\e931";
+  color: #999;
+}
+.icon-iconos-brandline_imagen-rebasada:before {
+  content: "\e933";
+  color: #999;
+}
+.icon-iconos-brandline_llamadas-de-atencion:before {
+  content: "\e935";
+  color: #999;
+}
+.icon-iconos-brandline_notas-referenciales:before {
+  content: "\e937";
+  color: #999;
+}
+.icon-iconos-brandline_paquetes:before {
+  content: "\e939";
+  color: #999;
+}
+.icon-iconos-brandline_portada:before {
+  content: "\e93b";
+  color: #999;
+}
+.icon-iconos-brandline_publicar-elemento .path1:before {
+  content: "\e93f";
+  color: rgb(128, 128, 128);
+}
+.icon-iconos-brandline_publicar-elemento .path2:before {
+  content: "\e940";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-iconos-brandline_publicar-elemento .path3:before {
+  content: "\e941";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-iconos-brandline_separador:before {
+  content: "\e943";
+  color: #999;
+}
+.icon-iconos-brandline_set-de-iconos:before {
+  content: "\e945";
+  color: #999;
+}
+.icon-iconos-brandline_tabla:before {
+  content: "\e947";
+  color: #999;
+}
+.icon-iconos-brandline_texto-e-imagen:before {
+  content: "\e949";
+  color: #999;
+}
+.icon-iconos-brandline_trabajo-en-proceso:before {
+  content: "\e94b";
+  color: #999;
+}
+.icon-iconos-brandline_video:before {
+  content: "\e94d";
+  color: #999;
+}

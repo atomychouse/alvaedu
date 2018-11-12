@@ -1,0 +1,109 @@
+	<style type="text/css">
+
+	.altura-itm{
+		display: inline-block;width:30%;min-height:20px;margin:20px 0px;
+		background:#8a8c8c;
+		border:1px solid #fff;
+		cursor: pointer;
+	}
+
+	.altura-itm:hover,.selectaltura{
+		background: #4aaee3;
+	}
+
+
+
+
+	</style>
+	<div class="headbox" >
+		<div class="title" style="float: left;padding-top: 20px;">Cabeza</div>
+		<div style="float: right;text-align: right;margin:10px 0px;">
+			<a href="#addItem"  class="boton-g-round cierraboximgreb" ng-click="colserr();">
+				<i class="glyphicon glyphicon-remove"></i>
+			</a>
+
+			<a href="#addItem"  class="boton-g-round cierraboximgreb" ng-click="savesettsimglg($event);">
+				<i class="glyphicon glyphicon-ok"></i>
+			</a>
+		</div>
+		<div style="clear: both;height: 0px;"></div>
+
+	</div>
+
+	<div class="cepar"></div>
+
+	<div style="margin:20px 0px 30px 0px;">
+
+	<table style="width:100%;height: 100%;" class="formnom" >
+	<tr>
+		<td class="txt-form" colspan="3">
+			<div class="txt-form">Altura de la imagen</div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<div class="altura-itm" 
+				 ng-class="{selectaltura:datos_sets.items[0].config.altura==25}"  
+				 style="height:25px;" 
+				 ng-click="datos_sets.items[0].config.altura=25">&nbsp;</div>
+
+			<div class="altura-itm" 
+			     style="height:50px;" ng-class="{selectaltura:datos_sets.items[0].config.altura==50}" 
+			     ng-click="datos_sets.items[0].config.altura=50">&nbsp;</div>
+
+			<div class="altura-itm" 
+			     style="height:75px;" ng-class="{selectaltura:datos_sets.items[0].config.altura==75}" 
+			     ng-click="datos_sets.items[0].config.altura=75">&nbsp;</div>
+		</td>
+	</tr>
+	</table>
+	<table style="width:100%;height: 100%;" class="formgrid" >
+
+	<tr>
+		<td colspan="2" class="txt-form">Color del fondo</td>
+		<td>
+
+    		<div class="input-group listadorow">
+		    	<span class="block_color_cfg" style="background-color:||datos_sets.items[0].config.backcolor||;color:||datos_sets.items[0].config.fontcolor||;">A</span>
+			    <div class="input-group-btn">
+			        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          +
+			        </button>
+			        <div class="dropdown-menu dropdown-menu-right" style="padding:20px;">
+
+						<div style="position:relative;background: #fff;padding:20px 0px 10px 0px;">
+							<div class="colorear-row">
+								<span  class="color-pice"  
+									  style="background:#fff;color:#000;"  ng-click="setcfgcolor(datos_sets,'#fff','#000');">A</span>
+								
+							</div>
+							<div class="colorear-row" ng-repeat="c in syscolors">
+								<span ng-if="c.cromas.hex!=ft.cromas.hex" class="color-pice" ng-class="{noseve:opacando(c.cromas.hex,ft.cromas.hex)}" 
+									  style="background:||c.cromas.hex||;color:||ft.cromas.hex||;" ng-repeat="ft in syscolors" ng-click="setcfgcolor(datos_sets,c.cromas.hex,ft.cromas.hex);">A</span>
+							</div>
+						</div>
+
+			      	</div>
+			    </div>
+		    </div>
+
+		</td>
+	</tr>	
+
+
+	<tr>
+		<td colspan="2" class="txt-form">Posición del texto</td>
+		<td>
+			<select name="fondo" id="fondo" class="form-control" ng-model="datos_sets.items[0].config.textalg">  
+			<option value="left">Izquierda</option>
+			<option value="center">Centro</option>
+			<option value="right">Derecha</option>
+			</select>
+			
+		</td>
+	</tr>
+
+
+
+	</table>
+

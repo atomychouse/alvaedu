@@ -1,0 +1,59 @@
+<div ng-class="estadoEdicion(editando);" style="padding: 0px 90px;">
+	<div  ng-class="{visibil:publicaBox(editando,itm.publicado)}" ng-repeat="itm in r.items|orderBy:orden">
+      		<ul class="lateral-menu-btns" ng-show="editando" style="display: none;">
+		        <li>
+		        	<a href="#" class="boton" 
+		        	   ng-click="addcattypo($event,r);"> 
+		        		<i class="glyphicon glyphicon-plus"></i>
+		         	</a>
+		         </li>
+		        <li>
+		        	<a href="#" 
+		        	   class="boton" 
+		        	   ng-click="rmme($event,this,this.rows,r,'mod');">
+		        	    <i class="glyphicon glyphicon-trash"></i> 
+		        	</a>
+		        </li>
+				<li>
+					<a href="#" class="boton" ng-click="publicarRow($event,r);">
+						<i class="glyphicon glyphicon-ok"></i>
+					</a>
+				</li>
+
+		    </ul>
+
+		<div style="padding:15px 0px;">
+			<div ng-show="editando">
+				<input type="text" ng-model="itm.categoria" class="cfg_textos" placeholder="Categoría de Fuente" />
+							<a href="#" class="boton" 
+				        	   ng-click="cfgmodal($event,this,'cfg_cromatico','Código Cromático');"> 
+				        		<i class="glyphicon glyphicon-pencil"></i>
+				         	</a>
+				         	<a href="#" 
+		        	   	       class="boton" 
+		        	           ng-click="rmme($event,this,r.items,itm,'item');">
+		        	    		<i class="glyphicon glyphicon-trash"></i> 
+		        			</a>
+		                    <a href="#addItem"  
+		                       class="boton-g-round cierraboximgreb" 
+		                       ng-click="savecromas($event,r,itm);">
+		                        <i class="glyphicon glyphicon-floppy-disk"></i>
+		                    </a>
+
+			</div>
+
+			<div ng-hide="editando" class="cfg_subtitulos">
+				> ||itm.categoria||
+			</div>
+		</div>
+
+	<div>
+		<ng-include src="'/static/modulos/pices/cromatico_'+r.config.typo+'.html'"></ng-include>				
+	</div>
+
+
+</div>
+
+
+
+

@@ -1,0 +1,210 @@
+{% extends 'registroapp/base.html' %}
+
+{% block content %}
+
+<style type="text/css">
+	body{
+		height: 100%;
+		width: 100%;
+		background:#3d3f42;
+		color:#fff;
+	}
+
+	.miniheader{
+		background:||page_settings.colores[0].hex||;padding: 20px;text-align:left;
+	}
+
+
+	.textcolorsimulate{
+		background:||page_settings.colores[1].hex||;
+	}
+
+
+	.minimenu{
+		display:inline-block;
+		width:100%;
+		height:3px;
+		background:||page_settings.colores[1].hex||;
+		position:absolute;top:45%;
+	}
+
+
+</style>
+
+<link rel="stylesheet" ng-href="/dycss/user-fonts.css?ahora=||ahorale||" >
+
+
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <a class="navbar-brand" href="#">
+    <img src="/static/imgs/defaults/logobrandline.png" class="d-inline-block align-top" alt="Responsive image" />
+  </a>
+  <div style="padding:0px 40px;">
+  	<span class="bluebigtxt">Configuración General Paso (||paso||) </span>
+  	<span class="ion-ios-arrow-left arrows" ng-show="paso > 1" ng-click="downstep()"></span>
+  	<span class="ion-ios-arrow-right arrows" ng-click="upstep()" ng-show="paso < 5" ng-if="validesteps();"></span>
+  </div>
+</nav>
+
+<!-- SECTIONS -->
+
+<section id="paso1" class="steps" ng-show="paso==1">
+	
+	    <div style="display: table-row;">
+		    <div style="display: table-cell;vertical-align: middle;padding:0px 10vw;">
+		    	
+		    	<div class="row tabulador" style="text-align: left;">
+		    		<div class="col-md-4 col-sm-4 col-xs-2 col-xl-4 info">
+		    			<h3>DATOS DE PERFIL</h3>
+		    			<div>
+		    				<p>
+								Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 				
+		    				</p>
+		    			</div>
+		    		</div>
+		    		<div class="col-md-4 col-sm-4 col-xs-2 col-xl-4 info" style="text-align: center;">
+		    			<div style="position: relative;padding:15px;background: #fff;height:34vh;width:34vh;display: table;">
+		    				<div style="display: table-row;">
+		    					<div style="display: table-cell;height: 100%;vertical-align: middle;">
+				    				<ul class="floatmenu">
+				    					<li>
+				    						<span class="ion-camera" launch-foto></span>
+				    					</li>
+				    					<li>
+				    						<span class="ion-trash-a" ng-click="resetimg()"></span>
+				    					</li>
+				    				</ul>
+				    				<img id="imgbrand" src="/static/imgs/defaults/registro_marca.png" class="img-fluid img-thumbnail">
+				    			</div>
+		    				</div>
+		    		</div>
+		    		</div>
+		    		<div class="col-md-4 col-sm-4 col-xs-2 col-xl-4 info">
+						<form name="lg" id="regform" action="/registro/saveprofile/" method="post" send-data>
+							{% csrf_token %}
+							<div id="id_first_name">
+								<input type="hidden" name="pk" id="id_pk"/>
+								<input type="text" class="form-control" placeholder="Nombre"  name="first_name">
+							</div>
+							<div class="labelo" id="id_last_name">
+								<input type="text" class="form-control" placeholder="Apellido" name="last_name">
+							</div>
+							<div class="labelo" id="id_username">
+								<input type="text" class="form-control" placeholder="Usuario" name="username">
+							</div>
+							<div class="labelo" id="id_password">
+								<input type="password" class="form-control" placeholder="xxx" name="password">
+							</div>
+							<div class="input-group labelo" id="id_dominio" id="id_dominio">
+							  <input type="text"  class="form-control"  
+							         placeholder="dominio" 
+							         aria-label="dominio" 
+							         aria-describedby="basic-addon2" 
+							         name="dominio"
+							         >
+							  <span class="input-group-addon" id="basic-addon2">.brandline.com</span>
+							</div>
+							<div class="formrow" style="text-align: right;">
+								<button type="button" class="btn btn-secondary">Cancelar</button>
+								<button type="submit" class="btn btn-info">Guardar</button>
+							</div>
+						</form>	    			
+
+		    		</div>
+
+
+		    	</div>
+		    </div>
+	    </div>
+</section>
+
+
+<section id="paso2" ng-show="paso==2" class="steps">
+	    <div style="display: table-row;">
+		    <div style="display: table-cell;vertical-align: middle;padding:0px 10vw;">
+		    	
+		    	<div class="row tabulador" style="text-align: left;">
+		    		<div class="col-md-4 col-sm-4 col-xs-2 col-xl-4 info" style="padding:0px 40px;">
+		    			<h3>LAYOUTH</h3>
+		    			<div>
+		    				<p>
+								Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 				
+		    				</p>
+		    			</div>
+		    		</div>
+		    		{% include 'registroapp/paso_dos.html'%}
+		    	</div>
+		    </div>
+	    </div>
+</section>
+
+
+<section id="paso3" ng-show="paso==3" class="steps" style="padding:60px 0px;">
+
+	    <div style="display: table-row;">
+		    <div style="display: table-cell;vertical-align: middle;">
+		    	
+		    	<div class="row tabulador" style="text-align: left;">
+		    		<div class="col-md-3 col-sm-3 col-xs-1 col-xl-3 info" style="padding:0px 40px;">
+		    			<h3>COLORES</h3>
+		    			<div>
+		    				<p>
+								Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 				
+		    				</p>
+		    			</div>
+		    		</div>
+		    		{% include 'registroapp/colores.html' %}
+
+
+		    		</div>
+		    	</div>
+		    </div>
+	    </div>
+</section>
+
+
+<section id="paso4" ng-show="paso==4" class="steps" style="height:90vh;">
+
+	    <div style="display: table-row;">
+		    <div style="display: table-cell;vertical-align:middle;">
+		    	
+		    	<div class="row tabulador" style="text-align:left;">
+		    		<div class="col-md-4 col-sm-4 col-xs-2 col-xl-4 info" style="padding:10% 40px;">
+		    			<h3 >Tipografías</h3>
+		    			<div>
+		    				<p>
+								Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 				
+		    				</p>
+		    			</div>
+		    		</div>
+		    		{% include 'registroapp/tipografia.html' %}
+		    	</div>
+
+
+		    </div>
+	    </div>
+</section>
+
+
+<section id="paso5" ng-show="paso==5" class="steps" style="height:90vh;">
+
+	    <div style="display: table-row;">
+	    	A culminado su registro éxitosamente, entre aquí:
+	    </div>
+</section>
+
+
+
+
+
+{%  endblock %}
+
+
+  {% block scripts %}
+
+      <script src="/static/registro/directivas.js"></script>
+      <script src="/static/registro/defaultpagectr.js"></script>
+
+
+  {% endblock %}
+
+

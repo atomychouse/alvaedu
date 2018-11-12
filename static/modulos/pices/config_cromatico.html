@@ -1,0 +1,93 @@
+	<div class="headbox" >
+		<div class="title" style="float: left;padding-top: 20px;">||datos_sets.tit||</div>
+		<div style="float: right;text-align: right;margin:10px 0px;">
+			<a href="#addItem"  class="boton-g-round cierraboximgreb" ng-click="colserr();">
+				<i class="glyphicon glyphicon-remove"></i>
+			</a>
+			<a href="#addItem"  class="boton-g-round cierraboxcroma" ng-click="saveitem($event,datos_sets);">
+				<i class="glyphicon glyphicon-ok"></i>
+			</a>
+		</div>
+		<div style="clear: both;height: 0px;"></div>
+	</div>
+	<div class="cepar"></div>
+	<div style="margin:20px 0px 30px 0px;">
+		<table style="width:100%;height: 100%;" class="formgrid" >
+			<tr>
+				<td class="txt-form">Sistema de Color</td>
+			</tr>
+			<tr>
+				<td>
+				<table>
+					<tr>
+						<td><input name="listapan[]" type="checkbox" ng-true-value="'pc'" ng-false-value="" ng-model="datos_sets.listapan[0]"  /></td>
+						<td class="txt-form">Pantone Coated</td>
+					</tr>
+					<!--<tr>
+						<td><input name="listapan[]" type="checkbox" ng-true-value="'punc'" ng-false-value="" ng-model="datos_sets.listapan[1]"  /></td>
+						<td class="txt-form">Pantone Uncoated</td>
+					</tr>-->
+					<tr>
+						<td><input name="listapan[]" type="checkbox" ng-true-value="'cmyk'" ng-false-value="" ng-model="datos_sets.listapan[2]"  /></td>
+						<td class="txt-form">CMYK</td>
+					</tr>
+					<tr>
+						<td><input name="listapan[]" type="checkbox" ng-true-value="'hex'" ng-false-value="" ng-model="datos_sets.listapan[3]"  /></td>
+						<td class="txt-form">Hexagesimal</td>
+					</tr>
+					<tr>
+						<td><input name="listapan[]" type="checkbox" ng-true-value="'rgb'" ng-false-value="" ng-model="datos_sets.listapan[4]"  /></td>
+						<td class="txt-form">RGB</td>
+					</tr>
+					<tr>
+						<td><input name="listapan[]"  type="checkbox" ng-true-value="'hsb'" ng-false-value="" ng-model="datos_sets.listapan[5]"  /></td>
+						<td class="txt-form">HSB</td>
+					</tr>
+
+				</table>
+				</td>
+			</tr>
+		</table>
+		<div class="cepar"></div>
+		<table style="width:100%;height: 100%;" class="formgrid" >
+
+			<tr>
+				<td colspan="3" class="txt-form">Estilos de la muetra</td>
+			</tr>
+			<tr style="text-align: center;margin-top: 40px;">
+				<td>
+					<a href="#" ng-click="$event.preventDefault();datos_sets.estilo='squared'"><img src="/static/imgs/defaults/cromatico/cuadricula.png" border="0"/></a>
+				</td>
+				<td>
+					<a href="#" ng-click="$event.preventDefault();datos_sets.estilo='rounded'"><img src="/static/imgs/defaults/cromatico/circular.png" border="0"/></a>
+				</td>
+				<td>
+					<a href="#" ng-click="$event.preventDefault();datos_sets.estilo='linear'"><img src="/static/imgs/defaults/cromatico/lista.png" border="0"/></a>
+				</td>
+			</tr>
+		</table>
+
+	</div>
+
+
+
+
+
+
+<script type="text/javascript">
+	
+	jQuery(document).ready(function(){
+		$('#cambiaside').on('change',function(){		
+			truselec = this.value;
+			var ro = angular.element(jQuery('#cfgtxtimg')).scope();
+				 ro.$apply(function(){
+				 	ro.datos_sets.itm.config.img_pos=truselec;
+				 	if(truselec=='right')
+				 		ro.datos_sets.itm.config.txt_pos='left';
+				 	else
+				 		ro.datos_sets.itm.config.txt_pos='right';
+				 });
+		});
+	});
+
+</script>

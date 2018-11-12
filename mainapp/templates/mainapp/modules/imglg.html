@@ -1,0 +1,56 @@
+<section  ng-controller="imgCtr">
+
+<div class="toolbar" style="padding:10px; " ng-show="editmodule">
+
+	<div class="row">
+		<div class="col-xs-12  col-sm-1 col-md-1 " >
+			<input type="file" id="imglgfile" name="imglgfile" ng-model="imglgfile" style="display: none;" />
+
+		</div>
+		<div class="col-xs-12  col-sm-1 col-md-1 ">
+			<a href="#agregar" id="masbox" class="btn btn-default" ng-click="addItem($event,this);">+</a> 
+		</div>	
+	</div>
+
+
+</div>
+
+<div class="row" style="position: relative;padding:||imglg_bones.setts.padds||;margin:||imglg_bones.setts.margs||;" ng-repeat="itm in imglg_bones.items|orderBy:'orden'">
+
+
+     <div style="width:100%;margin: auto;padding:5px 10px;height:auto;position:absolute;z-index:9001;">
+     	<a href="#editar" ng-show="editmodule"  style="float:left;" ng-click="$event.preventDefault();itm.editmode=true;" >
+     	EDIT
+     	</a>
+     	<a href="#editar" style="float:right;margin-right:10px;" ng-click="$event.preventDefault();itm.editmode=false;" ng-show="itm.editmode" ><i class="glyphicon glyphicon-ok-circle"></i></a>
+     	<a href="#editar" style="float:right;margin-right:10px;" ng-click="$event.preventDefault();itm.editmode=false;" ng-show="itm.editmode" ><i class="glyphicon glyphicon-remove-circle"></i></a>
+     	<span style="clear: both;"></span>
+
+
+     </div>
+
+
+
+	<div style="min-height:100px;background-color:#999;">
+    	    <div class="" style="top:30px;right:0px;position:absolute;width:14% !important;padding:1px;z-index: 9001;" ng-show="itm.editmode">
+              <a href="#links" class="boton red" ng-click="changeme($event,this);">
+                <i class="glyphicon glyphicon-camera"></i>
+              </a>
+              <br/>
+              <a href="#links" class="boton red" ng-click="slay($event,this);">
+                <i class="glyphicon glyphicon-trash"></i>
+              </a>
+
+
+            </div>
+
+	<img src="||itm.img||" ng-src="||itm.img||" ng-if="itm.img"  class="img-responsive"  width="100%" />
+	</div>	
+	<div style="position:absolute;top:30%;height:70%;">
+		<h2  class="red-txt bolding">||itm.tit||</h2>
+		<div  style="font-size:1.6vmax;color:#fff;width:50%;padding:0% 1.2%;">||itm.txt||</div>
+	</div>
+
+</div>
+
+</section>

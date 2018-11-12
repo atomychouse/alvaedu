@@ -1,0 +1,142 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es" ng-app='mainApp' ng-controller="pageCtr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="atomyc.in">
+        <title>BRANDLINE  &reg;</title>
+        <meta name="" content="#496201s">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Josefin+Sans|Open+Sans|Paytone+One" rel="stylesheet">
+        <link rel="stylesheet" href="/static/bootstrap-4/css/bootstrap.min.css">
+        <link href="/static/css/jquery-ui.min.css" rel="stylesheet">
+        <link href="/static/css/brandfonts.css" rel="stylesheet">
+        <link href="/static/css/frontend-main.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" ng-href="/dycss/user-fonts.css?ahora=||ahorale||" >
+
+        {% block css %}{% endblock %}
+
+</head>
+<body class="configurador">
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light menuconf coloresback">
+    <div class="nav-item">
+        <div class="nodes-box" id="brandline-logo">
+          <a href="/">&nbsp;</a>
+        </div>
+    </div>
+    <div class="collapse navbar-collapse" style="width:1vw;">&nbsp;</div>
+    <div class="collapse navbar-collapse">
+        <span class="nav-item" style="display: none;">
+            <a class="nav-link active" href="#">Usuarios y Grupos</a>
+        </span>
+        <span class="nav-item" style="display: none;">
+            <a class="nav-link active" href="#" ng-click="viewer='layouth'">Layouth</a>
+        </span>
+        <span class="nav-item">
+            <a class="nav-link active" href="#" ng-click="viewer='colores'">Color</a>
+        </span>
+        <span class="nav-item">
+            <a class="nav-link active" href="#" ng-click="viewer='fuentes'">Tipografía</a>
+        </span>
+        <span class="nav-item" style="border-left: white 1px solid;">
+            &nbsp;
+        </span>
+        <span class="nav-item">
+            <a class="nav-link active" href="/">Home</a>
+        </span>
+        
+    </div>
+    
+
+
+    <ul class="collapse navbar-collapse">
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Cambio Color 
+        </a>
+        <div id="colormenu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" 
+           ng-repeat="co in page_settings.combinaciones"  
+           ng-class="{noseve:co.activate!=1}" style="padding:20px;" change-colormenu>
+                <span  style="display:block; background:||co.backcolor||;margin:5px;padding:10px;border:1px solid #4c4c4c;">
+                    <span style="color:||co.fcolor||;">A</span>
+                </span>
+
+        </a>
+        </div>
+      </li>
+    </ul>
+
+</nav>
+
+        {% block content%}
+        {% endblock %}
+
+    <script src="/static/js/jquery.js"></script>
+    <script src='/static/js/cropper.min.js'></script>
+    <script src="/static/js/jquery-ui.min.js"></script>
+
+    <script src="/static/bootstrap-4/js/bootstrap.bundle.js"></script>
+    <script src="/static/js/w3color.js"></script>
+    <script src="/static/js/angular.min.js"></script>
+    <script src="/static/js/angular-route.min.js"></script>
+    <script src="/static/js/chumbucket.js"></script>
+    <script src="/static/js/superplaceholder.js"></script>
+   
+    <script type="text/javascript">    
+$(function () {
+  $('[data-toggle="popover"]').popover();
+});
+        var myapp = angular.module('mainApp',['ngRoute']);
+        var customInterpolationApp = angular.module('customInterpolationApp', []);
+        // GLOBALS --------------------------------------------------------------------
+        var csrf = '{{csrf}}';
+        // ----------------------------------------------------------------------------
+        
+        myapp.config(function($interpolateProvider) {
+            $interpolateProvider.startSymbol('||');
+            $interpolateProvider.endSymbol('||');
+
+        });
+
+        myapp.config(['$httpProvider', function($httpProvider) {
+            $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+            $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+            $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';        
+        }]);
+        var setts = '{{pagesetts.jssetts|safe}}';
+        var arrsetts = eval("(" + setts + ")");
+    </script>
+
+
+
+      <script src="/static/registro/directivas.js"></script>
+      <script src="/static/registro/pagectr.js"></script>
+
+    {% block scripts %}{% endblock %}
+
+
+<form ng-show="editandox">
+    <input type="file" id="uploader" name="uploader" upload-foto>
+    <input type="file" id="upload-file" name="upload-file" upload-file>
+</form>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1"  id="saving" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      Guardando ...
+    </div>
+  </div>
+</div>
+
+
+</body>
+
+</html>

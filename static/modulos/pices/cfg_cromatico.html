@@ -1,0 +1,119 @@
+<div class="headbox" style="color:#ffffff;">		
+		<div class="title" style="float: left;padding-top: 20px;">Código Cromático</div>
+		<div style="float: right;text-align: right;margin:10px 0px;">
+			<a href="#addItem"  class="boton-g-round cierraboximgreb" ng-click="colserr();">
+				<i class="glyphicon glyphicon-remove"></i>
+			</a>
+			<a href="#addItem"  class="boton-g-round cierraboximgreb" ng-click="updatecfgcromas($event,datos_sets);">
+				<i class="glyphicon glyphicon-ok"></i>
+			</a>
+		</div>
+		<div style="clear: both;height: 0px;"></div>
+
+	</div>
+
+	<div style="margin:10px 0px;">
+		<span class="txt-form">Agregar Color</span> 
+		<div class="row">
+			<div class="col-md-3 col-sm-3 col-xl-3">
+				<label class="txt-form">R</label>
+				<input type="text" name="cromatico_colores.r" ng-model="cromatico_colores.r" class="form-control">
+			</div>
+
+			<div class="col-md-3 col-sm-3 col-xl-3">
+				<label class="txt-form">G</label>
+				<input type="text" name="cromatico_colores.g" ng-model="cromatico_colores.g" class="form-control">
+			</div>
+
+			<div class="col-md-3 col-sm-3 col-xl-3">
+				<label class="txt-form">B</label>
+				<input type="text" name="cromatico_colores.b" ng-model="cromatico_colores.b" class="form-control">
+			</div>
+
+
+
+		</div>
+		<a href="#" class="txt-form" ng-click="addRGB($event);">+</a>
+	</div>
+
+	<div class="cepar"></div>
+	<div style="margin:20px 0px 30px 0px;">
+		<ul>
+			<li ng-repeat="c in setcolores">
+				<input type="checkbox" ng-checked="checkcolor_itm(c);" ng-click="addcolor_to_item(c);"/>
+				<span class="txt-form" style="background:||c.cromas.hex.color||;margin:20px;">&nbsp;</span>
+				
+			</li>
+		</ul>
+	</div>
+	<div class="cepar"></div>
+	<div style="margin:20px 0px 30px 0px;">
+		<table style="width:100%;height: 100%;" class="formgrid" >
+			<tr>
+				<td class="txt-form">Sistema de Color</td>
+			</tr>
+			<tr>
+				<td>
+				<table>
+					<tr>
+						<td><input  type="checkbox" ng-checked="chekviscolor('pantone');" ng-click="disviscolor($event,'pantone');"  /></td>
+						<td class="txt-form">Pantone</td>
+					</tr>
+					<tr>
+						<td>
+							<input  type="checkbox" ng-checked="chekviscolor('cmyk');" ng-click="disviscolor($event,'cmyk');"  /></td>
+						<td class="txt-form">CMYK</td>
+					</tr>
+					<tr>
+						<td><input  type="checkbox"  ng-checked="chekviscolor('hex');" ng-click="disviscolor($event,'hex');"  /></td>
+						<td class="txt-form">Hexagesimal</td>
+					</tr>
+					<tr>
+						<td><input  type="checkbox" ng-checked="chekviscolor('rgb');" ng-click="disviscolor($event,'rgb');"  /></td>
+						<td class="txt-form">RGB</td>
+					</tr>
+					<tr>
+						<td><input  type="checkbox" ng-checked="chekviscolor('hsl');" ng-click="disviscolor($event,'hsl');"  /></td>
+						<td class="txt-form">HSB</td>
+					</tr>
+
+				</table>
+				</td>
+			</tr>
+		</table>
+		<div class="cepar"></div>
+		<table style="width:100%;height: 100%;" class="formgrid" >
+
+			<tr>
+				<td colspan="3" class="txt-form">Estilos de la muetra</td>
+			</tr>
+			<tr style="text-align: center;margin-top: 40px;">
+				<td>
+					<a href="#" ng-click="$event.preventDefault();datos_sets.r.config.typo='squared'"><img src="/static/imgs/defaults/cromatico/cuadricula.png" border="0"/></a>
+				</td>
+				<td>
+					<a href="#" ng-click="$event.preventDefault();datos_sets.r.config.typo='rounded'"><img src="/static/imgs/defaults/cromatico/circular.png" border="0"/></a>
+				</td>
+				<td>
+					<a href="#" ng-click="$event.preventDefault();datos_sets.r.config.typo='linear'"><img src="/static/imgs/defaults/cromatico/lista.png" border="0"/></a>
+				</td>
+			</tr>
+		</table>
+
+	</div>
+
+
+
+<script type="text/javascript">
+	
+	jQuery(document).ready(function(){
+
+		$('.cierraboxbanco').click(function(){
+			$('#cfg_banco').hide();
+		});
+
+
+
+	});
+
+</script>

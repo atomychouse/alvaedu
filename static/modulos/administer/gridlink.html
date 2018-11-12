@@ -1,0 +1,66 @@
+<style type="text/css">
+	
+#row_||r.pk|| .gridtitle{
+	
+	color:||r.config.fontcolor||;
+}
+
+
+#row_||r.pk|| .insidegridbox{
+	margin:||r.config.margs||px;
+}
+
+#row_||r.pk|| .contendor{
+	padding:0px ||r.config.pads||px;;
+}
+
+
+</style>
+ 
+<div class="contendor">
+	<!-- CONTENIDO -->
+
+			<div class="col-md-||r.config.cols|| col-sm-||r.config.cols|| col-xl-3 gridcol" ng-class="{visibil:publicaBox(editando,itm.publicado)}" ng-repeat="itm in r.items|orderBy:'orden'">
+				
+			<div class="insidegridbox">
+				<div class="floatrev" style="position: relative;top:inherit;">
+
+				<ul class="top-btns" ng-show="editando">
+					<li>
+						<a href="#" class="boton" ng-click="loadImg($event,this,'grid');">
+							<span class="icon-iconos-brandline_banco-de-imagen"></span>
+						</a>	
+					</li>
+					<li>
+						<a href="#" class="boton" ng-click="rmme($event,this,r.items,itm,'itm');">
+							 <i class="glyphicon glyphicon-trash"></i> 
+						</a>
+					</li>
+					<li>
+						<a href="#" class="boton" ng-click="saveGrid($event,this);"><i class="glyphicon glyphicon-ok"></i></a>
+					</li>
+				</ul>
+				
+				<a href="||itm.link||"><img src="||itm.img||" class="img-responsive" style="width:100%;border:0px;"></a>
+				
+				</div>
+
+				<div class="edit-tools" ng-hide="editando">
+					<a href="||itm.link||" class="brand-control gridtitule cfg_subtitulos gridtitle" style="color:||r.config.fontcolor||;margin:5px 0px;">
+						||itm.title||
+					</a>
+					<span class="brand-control link" >&nbsp;</span>
+				</div>
+				
+				<div class="edit-tools" ng-show="editando">
+					<input class="brand-control gridtitule cfg_subtitulos gridtitle" type="text" name="link" placeholder="Título" ng-model="itm.title" />
+
+					<input class="brand-control link" type="text" name="link" placeholder="Link" ng-model="itm.link" />
+				</div>
+
+			</div>
+			</div>	
+
+
+
+</div>

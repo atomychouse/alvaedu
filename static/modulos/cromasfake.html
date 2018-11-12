@@ -1,0 +1,177 @@
+		<div style="padding:0px 100px;" class="rounded" ng-if="r.estilo=='rounded'" >
+			<div style="display: inline-block;width:auto;margin:0px 5px;"  ng-repeat="itm in r.principales|orderBy:'orden'">
+				
+				<div class="cabcroma"><span ng-if="$first">Colores principales</span>&nbsp;</div>
+
+				<div class="col-md-||r.config.cols|| col-sm-||r.config.cols|| col-xl-3 gridcol">
+				</div>
+
+
+
+
+
+				<div class="color-pice" style="background-color:||itm.cromas.hex||;">&nbsp;</div>
+				<ul class="cromas-list">
+					<li ng-repeat="c in itm.cromas">
+						<div ng-if="r.listapan.indexOf('pc')!=-1">Pantone: ||c.pantone||</div>
+						<!--<div ng-if="r.listapan.indexOf('punc')!=-1">Pantone Uncoated: </div>-->
+						<div ng-if="r.listapan.indexOf('rgb')!=-1">RGB: ||c.rgb.r||, ||c.rgb.g||, ||c.rgb.b||</div>
+						<div ng-if="r.listapan.indexOf('hex')!=-1">HEX: ||c.hex||</div>
+						<div ng-if="r.listapan.indexOf('hsb')!=-1">HWB: ||c.hwb.h||, ||c.hwb.w||, ||c.hwb.b||</div>
+						<div ng-if="r.listapan.indexOf('cmyk')!=-1">CMYK: ||c.cmyk||</div>
+						<div ng-if="r.listapan.indexOf('hsl')!=-1">HSL: ||c.hsl.h||, ||c.hsl.h||, ||c.hsl.s||, ||c.hsl.l||</div>
+					</li>
+				</ul>
+				<div ng-show="editando">
+					<a href="#" class="boton" ng-click="rmmecroma($event,this,this.r.principales,itm);"> <i class="glyphicon glyphicon-trash"></i> </a>
+				</div>
+			</div>
+			<div style="display: inline-block;width:auto;margin:0px 5px;" ng-repeat="it in r.apoyo|orderBy:'orden'">
+					<div class="cabcroma"><span ng-if="$first">Colores de apoyo</span>&nbsp;</div>
+					<div class="color-pice" style="background-color:||it.rgb||;">&nbsp;</div>
+					<ul class="cromas-list">
+						<li ng-repeat="c in it.cromas">
+						<div ng-if="r.listapan.indexOf('pc')!=-1">Pantone:||c.pantone|| </div>
+						<!--<div ng-if="r.listapan.indexOf('punc')!=-1">Pantone Uncoated: </div>-->
+						<div ng-if="r.listapan.indexOf('rgb')!=-1">RGB: ||c.rgb.r||, ||c.rgb.g||, ||c.rgb.b||</div>
+						<div ng-if="r.listapan.indexOf('hex')!=-1">HEX: ||c.hex||</div>
+						<div ng-if="r.listapan.indexOf('hsb')!=-1">HWB: ||c.hwb.h||, ||c.hwb.w||, ||c.hwb.b||</div>
+						<div ng-if="r.listapan.indexOf('cmyk')!=-1">CMYK: ||c.cmyk||</div>
+						<div ng-if="r.listapan.indexOf('hsl')!=-1">HSL: ||c.hsl.h||, ||c.hsl.h||, ||c.hsl.s||, ||c.hsl.l||</div>
+						</li>
+					</ul>
+				<div ng-show="editando">
+					<a href="#" class="boton" ng-click="rmmecroma($event,this,this.r.apoyo,it);"> <i class="glyphicon glyphicon-trash"></i> </a>
+				</div>
+			</div>
+		</div>
+	
+		<!-- SQUARED -->
+
+		<div style="padding:0px 100px;" class="squared"  ng-if="r.estilo=='squared'">
+			<div style="display: inline-block;width:auto;" ng-repeat="itm in r.principales|orderBy:'orden'">
+				<div class="cabcroma"><span ng-if="$first">Colores principales</span>&nbsp;</div>
+				<div class="color-pice" style="background-color:||itm.rgb||;">
+					<ul class="cromas-list">
+						<li ng-repeat="c in itm.cromas">
+							<div ng-if="r.listapan.indexOf('pc')!=-1">Pantone Coated: </div>
+							<div ng-if="r.listapan.indexOf('punc')!=-1">Pantone Uncoated: </div>
+							<div ng-if="r.listapan.indexOf('rgb')!=-1">RGB: ||c.rgb.r||, ||c.rgb.g||, ||c.rgb.b||</div>
+							<div ng-if="r.listapan.indexOf('hex')!=-1">HEX: ||c.hex||</div>
+							<div ng-if="r.listapan.indexOf('hsb')!=-1">HWB: ||c.hwb.h||, ||c.hwb.w||, ||c.hwb.b||</div>
+							<div ng-if="r.listapan.indexOf('cmyk')!=-1">CMYK: ||c.cmyk||</div>
+							<div ng-if="r.listapan.indexOf('hsl')!=-1">HSL: ||c.hsl.h||, ||c.hsl.h||, ||c.hsl.s||, ||c.hsl.l||</div>
+						</li>
+					</ul>
+				</div>
+
+				<div ng-show="editando">
+					<a href="#" class="boton" ng-click="rmmecroma($event,this,this.r.principales,itm);"> <i class="glyphicon glyphicon-trash"></i> </a>
+				</div>
+			</div>
+			<div style="display: inline-block;width:auto;"  ng-repeat="it in r.apoyo|orderBy:'orden'">
+					<div class="cabcroma"><span ng-if="$first">Colores de apoyo</span>&nbsp;</div>
+					<div class="color-pice" style="background-color:||it.rgb||;">
+						<ul class="cromas-list">
+							<li ng-repeat="c in it.cromas">
+								<div ng-if="r.listapan.indexOf('pc')!=-1">Pantone Coated: </div>
+								<div ng-if="r.listapan.indexOf('punc')!=-1">Pantone Uncoated: </div>
+								<div ng-if="r.listapan.indexOf('rgb')!=-1">RGB: ||c.rgb.r||, ||c.rgb.g||, ||c.rgb.b||</div>
+								<div ng-if="r.listapan.indexOf('hex')!=-1">HEX: ||c.hex||</div>
+								<div ng-if="r.listapan.indexOf('hsb')!=-1">HWB: ||c.hwb.h||, ||c.hwb.w||, ||c.hwb.b||</div>
+								<div ng-if="r.listapan.indexOf('cmyk')!=-1">CMYK: ||c.cmyk||</div>
+								<div ng-if="r.listapan.indexOf('hsl')!=-1">HSL: ||c.hsl.h||, ||c.hsl.h||, ||c.hsl.s||, ||c.hsl.l||</div>
+							</li>
+						</ul>
+
+					</div>
+				<div ng-show="editando">
+					<a href="#" class="boton" ng-click="rmmecroma($event,this,this.r.apoyo,it);"> <i class="glyphicon glyphicon-trash"></i> </a>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<!-- LIST -->
+
+		<div style="padding:0px 100px;" class="linear"  ng-if="r.estilo=='linear'">
+
+		<table>
+		<tr>
+			<td colspan="9">Colores pricipales</td>
+		</tr>
+		<tr ng-repeat="itm in r.principales|orderBy:'orden'">
+			<td>
+				<div class="color-pice" style="background-color:||itm.rgb||;">&nbsp;</div>
+			</td>
+			<td>
+				<div ng-if="r.listapan.indexOf('pc')!=-1">Pantone Coated:</div> 
+			</td>
+			<td>
+				<div ng-if="r.listapan.indexOf('punc')!=-1">Pantone Uncoated:</div> 
+			</td>	
+			<td>
+				<div ng-if="r.listapan.indexOf('rgb')!=-1">RGB: ||itm.cromas[0].rgb.r||, ||itm.cromas[0].rgb.g||, ||itm.cromas[0].rgb.b||</div>
+			</td>
+			<td>
+				<div ng-if="r.listapan.indexOf('hex')!=-1">HEX: ||itm.cromas[0].hex||</div>
+			</td>
+			<td>
+				<div ng-if="r.listapan.indexOf('hsb')!=-1">HWB: ||itm.cromas[0].hwb.h||, ||itm.cromas[0].hwb.w||, ||itm.cromas[0].hwb.b||</div>
+			</td>
+			<td>
+				<div ng-if="r.listapan.indexOf('cmyk')!=-1">CMYK: ||c.cmyk||</div>
+			</td>
+			<td>
+				<div ng-if="r.listapan.indexOf('hsl')!=-1">HSL: ||itm.cromas[0].hsl.h||, ||itm.cromas[0].hsl.h||, ||itm.cromas[0].hsl.s||, ||itm.cromas[0].hsl.l||</div>
+			</td>
+			<td ng-show="editando">
+				<a href="#" 
+				   class="boton" 
+				   ng-click="rmmecroma($event,this,this.r.principales,itm);"> <i class="glyphicon glyphicon-trash"></i> </a>
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan="9">Colores secundarios</td>
+		</tr>
+		<tr ng-repeat="it in r.apoyo|orderBy:'orden'">
+			<td>
+				<div class="color-pice" style="background-color:||it.rgb||;">&nbsp;</div>
+			</td>
+			<td>
+				<div ng-if="r.listapan.indexOf('pc')!=-1">Pantone Coated:</div> 
+			</td>
+			<td>
+				<div ng-if="r.listapan.indexOf('punc')!=-1">Pantone Uncoated:</div> 
+			</td>	
+			<td>
+				<div ng-if="r.listapan.indexOf('rgb')!=-1">RGB: ||it.cromas[0].rgb.r||, ||it.cromas[0].rgb.g||, ||it.cromas[0].rgb.b||</div>
+			</td>
+			<td>
+				<div ng-if="r.listapan.indexOf('hex')!=-1">HEX: ||it.cromas[0].hex||</div>
+			</td>
+			<td>
+				<div ng-if="r.listapan.indexOf('hsb')!=-1">HWB: ||it.cromas[0].hwb.h||, ||it.cromas[0].hwb.w||, ||it.cromas[0].hwb.b||</div>
+			</td>
+			<td>
+				<div ng-if="r.listapan.indexOf('cmyk')!=-1">CMYK: ||it.cromas[0].cmyk.c||, ||it.cromas[0].cmyk.m||, ||it.cromas[0].cmyk.y||, ||it.cromas[0].cmytd||</div>
+			</td>
+			<td>
+				<div ng-if="r.listapan.indexOf('hsl')!=-1">HSL: ||it.cromas[0].hsl.h||, ||it.cromas[0].hsl.h||, ||it.cromas[0].hsl.s||, ||it.cromas[0].hsl.l||</div>
+			</td>
+			<td ng-show="editando"> 
+				<a href="#" 
+				   class="boton" 
+				   ng-show="editando"
+				   ng-click="rmmecroma($event,this,this.r.principales,it);"> <i class="glyphicon glyphicon-trash"></i> </a>
+			</td>
+		</tr>
+
+
+		</table>
+
+
+		</div>

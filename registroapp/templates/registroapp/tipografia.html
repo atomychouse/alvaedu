@@ -1,0 +1,35 @@
+	<div class="col-md-8 col-sm-8 col-xs-2 col-xl-8 info" 
+	     style="text-align: center;padding:30px;">
+
+
+	     <div ng-repeat="fg in page_settings.fuentes" style="margin-bottom: 50px;">
+			<div>
+				<div style="float: left;font-size: 14px;padding:12px 0px 0px 0px;">||fg.usage||</div>
+
+				<div style="float:right;background: #fff;color:#3d3f42;padding:4px 4px;">
+					<!-- <input type="text" name="puntos" ng-model="fg.puntos" style="width:20px;" />-->
+					<select style="background:#fff;border:1px solid #fff;" ng-options="item as item for item in puntajes " ng-model="fg.puntos">
+						
+					</select>
+
+				</div>
+				
+				<div style="float:right;background: #fff;color:#3d3f42;padding:4px;margin-right:4px;">
+					<span style="margin-right: 5px;">||fg.fuente||</span>
+					<img src="/static/imgs/defaults/uploadicon.png" launch-file />
+				</div>
+
+			</div>
+			<div style="clear: both;height:0px;">&nbsp;</div>
+
+		     <div style="margin:4px 0px;background:#eeeeeb;color:#3d3f42;padding:20px 0px 40px 0px;text-align:center;font-size:72px;">
+		     	<span  style="font-family:||fg.fuente||;font-size:||fg.puntos||px;">||fg.fuente||</span>
+		     </div>
+
+	 	</div>
+	 	<div style="margin-top:20px;padding: 20px 0px;text-align:right;">
+			<button type="button" class="btn btn-secondary" style="margin:0px 20px;">Cancelar</button>
+			<button type="submit" class="btn btn-info" ng-click="savefour();">Guardar</button>
+		</div>
+
+	</div>

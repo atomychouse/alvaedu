@@ -1,0 +1,15 @@
+
+
+	<div  class="row" ng-repeat="itm in r.items|orderBy:'orden'  " style="position: relative;padding:0px 90px" ng-class="{visibil:publicaBox(editando,itm.publicado)}">
+		
+		<table border="1" cellpadding="2" cellspacing="2" style="margin:20px 0px;width:100%;height:100%;border:||itm.config.bordes||px solid ||itm.config.color_linea||;background-color:||itm.config.backcolor||;color:||itm.config.fontcolor||;">
+			<tr ng-repeat="r in itm.contenido.rows" >
+				<td   ng-repeat="c in r.cols" style="border:||itm.config.bordes||px solid ||itm.config.color_linea||;">
+						<p ng-hide="editando" class="tablarow">||c.texto||</p>
+						<input ng-show="editando" type="text" ng-model="c.texto" class="form-control" style="background:none !important;color:||itm.config.fontcolor||;" />
+				</td>
+			</tr>
+		</table>
+
+
+	</div>
