@@ -182,11 +182,6 @@ class Index(View):
             logout(request)
             return redirect('/')
         # AUN NO ESTAS LOGUEADO
-        if not request.user.username:
-            response = render(request,'mainapp/loginform.html', context)
-            return response
-        else:
-            insite = UserProfile.objects.filter(myuser=request.user,mysite=current_site)
             
             #if len(insite)<1:
             #    response = render(request,'mainapp/nosite.html', context)
