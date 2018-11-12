@@ -29,6 +29,7 @@ from django.db.models import Q
 from PIL import Image,ImageFont,ImageDraw 
 from django.contrib.sites.models import * 
 from django.http import JsonResponse
+from django.core.mail import send_mail, EmailMessage
 
 
 class dyCss(View):
@@ -525,20 +526,11 @@ class Sender(View):
     def post(self,request):
         data = request.POST.copy()
 
-        subject, from_email, to = 'Nuevo mensaje dde contacto', 'rios@atomyc.house','albertorios.py@gmail.com'
+        mail = EmailMessage(u'%s %s'%('Hola Elizabeth, haz recibido un mensaje de:',data['name']), u' %s'%(data['mensaje']), 'cruzarios@gmail.com',['albertorios.py@gmail.com'],)
+        #mail.attach_file('%s/frontapp/envios/promo_%s.xlsx' %(settings.BASE_DIR,promo.pk))
+        mail.send()
+           
 
-        mensaje = u'''
-            <h1>Hola  Elizabeth, tienes un nuevo mensaje de  %s</h1>
-            <p>con correo: %s  </p>
-            <p>%s</p>
-
-        '''%(data['name'],data['correo'],data['mensaje'])
-
-
-        # create the email, and attach the HTML version as well.
-        msg = EmailMultiAlternatives(subject, mensaje, from_email, [to])
-        msg.attach_alternative(mensaje, "text/html")
-        msg.send()
 
         return HttpResponse({'saved':'ok','callback':'hideformr'})
 
