@@ -17,7 +17,7 @@ urlpatterns = [
    url(r'^section/(?P<lugy>[\w-]+)/$',(MViews.Index), name='section'),   
    url(r'^section/(?P<secty>[\w-]+)/(?P<columna>[\w-]+)/(?P<lugy>[\w-]+)$',(MViews.Index), name='section'),   
    url(r'^recover/(?P<pk>[\w-]+)/(?P<tmstamp>\d+\.\d+)/$',MViews.Recovers,name="recover"),   
-   url(r'^sender/$', (MViews.Sender),name='sender'),
+   url(r'^contacto$', (MViews.Sender),name='contacto'),
    url(r'^dycss/dynamic.css$',MViews.dyCss,name='dycss'),
    url(r'^dycss/user-fonts.css$',MViews.userFonts,name='dycss'),
 

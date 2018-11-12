@@ -60,6 +60,13 @@ function reg_success_user(response)
 	window.location = '/admin/users/';
 }
 
+
+function hideformr(){
+	console.log('azlo');
+
+	$('#contactform').hide().after('<div class="titulo">Gracias por contactaros, te haremso llegar una respuesta en breve.</div>');
+}
+
 function sendit(e){
 	
 	//var data = $(this).serializeArray();
@@ -68,7 +75,7 @@ function sendit(e){
 	var type = $(this).attr('method');
 	forma = $(this).get(0);
 	//forma = $('#empresaspt1').get(0);
-	
+	$('#formabox').hide().after('<div class="titulo" style="font-size:1.2rem;">Gracias por su interes, le haremos llegar una respuesta en breve.</div>');
 	var data = new FormData(forma);
 	$.ajax({url:url,
 			type:type,
@@ -80,27 +87,7 @@ function sendit(e){
 			success:function(response){
 				$('.errr').removeClass('errr');
 				$('.alert').remove();
-				if(response.errors){
-					toastr('warning',response.msg);
-					$.each(response.errors,function(err,i){
-					$('#id_'+err).addClass('errr').after('<div  class="id_'+err+' alert " rol="alert"><i class="glyphicon glyphicon-fire"></i>   '+i+'</div>');
-					$('.errr').change(function(){
-						$('.id_'+err+'').remove();
-					});
 
-					});
-					
-					$('.errr:first').focus();
-
-				}
-				if(response.saved=='ok'){
-					if(response.callback){
-						if(typeof(window[response.callback])=='function'){
-							window[response.callback](response.datos);
-						}
-					}
-
-				}
 			}
 
 	});

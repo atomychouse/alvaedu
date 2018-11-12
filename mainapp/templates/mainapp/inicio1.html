@@ -68,8 +68,8 @@
     <div class="separador">&nbsp;</div>
 
 
-    <form action="/contacto" method="post" style="width: 90%;margin: auto;">
-
+    <form id="contactform" action="/contacto" method="post" style="width: 90%;margin: auto;" class="sended">
+        {% csrf_token %}
         <div>
 
             <div class="columna" style="border-right: 1px solid #ececec;width:30%;min-width: 250px;margin-right: 20px;">
@@ -91,48 +91,42 @@
                 </div>
 
             </div>
-            <div class="columna" >
-                <div >
-                    <label for="name">
-                        Nombre:
-                    </label>
-                    <input type="text" name="name" class="form-control" placeholder="tu nombre">
-                </div>
+            <div class="columna">
+                <div id="formabox">
+                    <div >
+                        <label for="name">
+                            Nombre:
+                        </label>
+                        <input type="text" name="name" class="form-control" placeholder="tu nombre">
+                    </div>
 
-                <div>
-                    <label for="correo">
-                        Correo:
-                    </label>
-                    <input type="text" name="correo" class="form-control" placeholder="email">
-                </div>
+                    <div>
+                        <label for="correo">
+                            Correo:
+                        </label>
+                        <input type="text" name="correo" class="form-control" placeholder="email">
+                    </div>
 
-                <div>
-                    <label for="mensaje">
-                        Mensaje:
-                    </label>
-                    <textarea class="form-control" name="mensaje"></textarea>
-                </div>
+                    <div>
+                        <label for="mensaje">
+                            Mensaje:
+                        </label>
+                        <textarea class="form-control" name="mensaje"></textarea>
+                    </div>
 
+                <div style="text-align: right;">
+                    <button type="submit" style="font-size: 1.2rem;" >Enviar</button>
+                </div>
+            </div>
             </div>
 
           
-            <div style="text-align: right;width:77%;">
-                <button type="submit" style="font-size: 1.2rem;" >Enviar</button>
-            </div>
+
+        
 
 
 
     </form>
-
-
-
-
-
-
-
-
-
-
 
 </section>
 
@@ -259,21 +253,7 @@
 </script>
 
 
-<script type="text/javascript">
-var options = {'controls':true,'autoplay':false,'fluid':true};
-var jsplayer = videojs('videoplaybanco', options);
 
-$('#videobox').on('show.bs.modal', function (e) {
-        jsplayer.play();
-})
-
-$('#videobox').on('hide.bs.modal', function (e) {
-        jsplayer.pause();
-})
-
-
-
-</script>
 
 
 <script type="text/javascript">

@@ -523,18 +523,16 @@ Download = Download.as_view()
 class Sender(View):
 
     def post(self,request):
-        current_site = get_current_site(request)
         data = request.POST.copy()
-        urix = '%s/dw/?f=%s'%(current_site,data['fileid'])
 
-        subject, from_email, to = 'Archivo compartido', 'claro@normatividadclaro.com',data['correo_envio']
+        subject, from_email, to = 'Nuevo mensaje dde contacto', 'rios@atomyc.house','albertorios.py@gmail.com'
 
         mensaje = u'''
-            <h1>Hola : %s</h1>
-            <p>%s te ha enviado un archivo de Normatividad Claro. </p>
-            <p><a href="%s">Descargar</a></p>
+            <h1>Hola  Elizabeth, tienes un nuevo mensaje de  %s</h1>
+            <p>con correo: %s  </p>
+            <p>%s</p>
 
-        '''%(data['nombre_envio'],request.user.first_name,urix)
+        '''%(data['name'],data['correo'],data['mensaje'])
 
 
         # create the email, and attach the HTML version as well.
@@ -542,7 +540,7 @@ class Sender(View):
         msg.attach_alternative(mensaje, "text/html")
         msg.send()
 
-        return HttpResponse(urix)
+        return HttpResponse({'saved':'ok','callback':'hideformr'})
 
 
 Sender = Sender.as_view()
