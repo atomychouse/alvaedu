@@ -41,7 +41,7 @@ LOGOUT_URL = "/logout/"
 
 EMAIL_HOST = 'mail.atomyc.house'
 EMAIL_HOST_USER = 'rios@atomyc.house'
-EMAIL_HOST_PASSWORD = 'saruman999'
+EMAIL_HOST_PASSWORD = 'zserdx'
 DEFAULT_FROM_EMAIL = 'rios@atomyc.house'
 SERVER_EMAIL = 'rios@atomyc.house'
 EMAIL_PORT = 25
