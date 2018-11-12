@@ -39,10 +39,10 @@ LOGIN_URL = "/"
 LOGIN_REDIRECT_VIEW = "/"
 LOGOUT_URL = "/logout/"
 
-EMAIL_HOST = 'mail.normatividadclaro.com'
-EMAIL_HOST_USER = 'claro@normatividadclaro.com'
-EMAIL_HOST_PASSWORD = 's4nt4scachuchas'
-DEFAULT_FROM_EMAIL = 'claro@normatividadclaro.com'
-SERVER_EMAIL = 'claro@normatividadclaro.com'
+EMAIL_HOST = 'mail.atomyc.house'
+EMAIL_HOST_USER = 'rios@atomyc.house'
+EMAIL_HOST_PASSWORD = 'saruman999'
+DEFAULT_FROM_EMAIL = 'rios@atomyc.house'
+SERVER_EMAIL = 'rios@atomyc.house'
 EMAIL_PORT = 25
 EMAIL_USE_TLS = False
