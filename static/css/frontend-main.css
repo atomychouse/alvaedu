@@ -93,6 +93,17 @@ textarea.form-control{
 }
 
 
+.bloquemedio{
+	text-align: center;
+	color:#fff;
+	background-color:#ff2a7f; 
+	padding:20px;
+	width:40%;
+	min-width:259px;
+	margin: auto;
+
+}
+
 .sesentatxt{
 	text-align: center;
 	color:#fff;
@@ -100,7 +111,7 @@ textarea.form-control{
 	padding:50px 20px;
 	width:40%;
 	min-width:259px;
-	margin: auto;font-size: 1rem;
+	margin: auto;font-size: 1.5rem;
 }
 
 
@@ -1056,9 +1067,32 @@ input
 }
 
 
+
+.lapicitos{
+	width:30%;text-align: center;color:#fff;padding:50px 20px;height:30vh;margin: auto;font-size: 1.3rem;background:#ffcc00;
+}
+
 /* [MEDIAS QUERYS --------------------------------------------]*/
 
 @media screen and (max-width: 768px) {
+
+
+
+.lapicitos{
+	width:60vw;
+	text-align: center;
+	font-size: 1rem !important;
+	margin-top: 60px;
+}
+
+.lapicitos img{
+	width:120px !important;
+}
+
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form{
+	border:0px solid;
+}
 
 
 
@@ -1066,9 +1100,7 @@ input
 	padding-top:27%; 
 }
 
-.menupage{
-	padding:20px;
-}
+
 
 .menupage li{
 	text-align: center;

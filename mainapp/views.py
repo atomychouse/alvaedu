@@ -526,7 +526,7 @@ class Sender(View):
     def post(self,request):
         data = request.POST.copy()
 
-        mail = EmailMessage(u'%s %s'%('Hola Elizabeth, haz recibido un mensaje de:',data['name']), u' %s'%(data['mensaje']), 'rios@atomyc.house',['albertorios.py@gmail.com'],)
+        mail = EmailMessage(u'%s %s'%('Hola Elizabeth, haz recibido un mensaje de:',data['name']), u' %s'%(data['mensaje']), 'rios@atomyc.house',['alva.educacion01@gmail.com','albertorios.py@gmail.com'],)
         #mail.attach_file('%s/frontapp/envios/promo_%s.xlsx' %(settings.BASE_DIR,promo.pk))
         mail.send()
            

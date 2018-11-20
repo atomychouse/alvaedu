@@ -19,7 +19,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="atomyc.site">
-        <title>alvaedu &reg;</title>
+        <title>alva.educación 2018 &reg;</title>
         <meta name="" content="#496201">
         <!-- core CSS -->
         <link href="https://fonts.googleapis.com/css?family=Concert+One|Didact+Gothic|Fjalla+One" rel="stylesheet">
@@ -28,18 +28,11 @@
         <link href="/static/css/brandfonts.css" rel="stylesheet">
 
         <!-- MANAGE DESIGN C SS -->
-        <link href="/static/manager/css/manager.css" rel="stylesheet">
-        <link href="/static/css/dropzone.css" rel="stylesheet">
-        <link href="/static/css/cropper.css" rel="stylesheet">
 
         {%block extras%}{%endblock%}
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 
-        <link href="/static/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/static/css/textAngular.css" rel="stylesheet">
-         <link rel="stylesheet" href="/static/css/photo-sphere-viewer.css">
-        <link href="/static/frontend/css/default-theme.css" rel="stylesheet">
 
 
 
@@ -66,11 +59,11 @@
 
 <div style="padding:50px 0px;">
 
-    <div style="text-align: center;margin:80px 0px 0px 0px;"><img src="/static/logos/logocolor.png"></div>
-    <div style="text-align:center;margin:20px 0px 50px 0px;  color:#ff2a7f;font-size: 1.2rem;" class="titulo">Alvaedu</div>
+    <div style="text-align: center;margin:80px 0px 0px 0px;"><img src="/static/logos/logoalvaedu.png" style="height:20vh;"></div>
+    <div style="text-align:center;margin:20px 0px 50px 0px;  color:#333;font-size: 1.2rem;" class="titulo">alva.educación</div>
     
     <div class="eli" style="text-align:center;margin:40px auto;padding:0px 0px;">
-        <p ><img src="/static/logos/elz3.jpg" style="border-radius: 50%;height:130px;"></p>
+        <p ><img src="/static/logos/elz2.jpg" style="border-radius: 50%;height:130px;"></p>
         <p class="subtitulo" style="vertical-align: top;margin-top: 20px;"><b>Elizabeth Alvarado</b> </p>
         <p style="display: inline-block;padding:10px 20px;">
             
@@ -93,14 +86,7 @@
     {% endblock %}
 </div>
 
-<footer class="coloresback">
 
-          <ul>
-
-          </ul>
-
-
-</footer>
 
 
 
@@ -109,137 +95,39 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/static/js/jquery.js"></script>
-    <script src='/static/js/cropper.min.js'></script>
     <script src="/static/js/jquery-ui.min.js"></script>
-    <script src="/static/bootstrap-3/dist/js/bootstrap.js"></script>
+    <script src="/static/js/chumbucket.js"></script>
+    <script src="/static/js/parallax.js"></script>
+<script src="/static/bootstrap-3/dist/js/bootstrap.js"></script>
     <script src="/static/bootstrap-3/js/tooltip.js"></script>
     <script src="/static/bootstrap-3/js/button.js"></script>
     <script src="/static/bootstrap-3/js/alert.js"></script>
     <script src="/static/bootstrap-3/js/popover.js"></script>
     <script src="/static/bootstrap-3/js/affix.js"></script>
-    <script src="/static/js/angular.min.js"></script>
-    <script src="/static/js/angular-route.min.js"></script>
-    <!-- JSUT FORM ADMINS  -->    
-        <script src='/static/js/textangular/textAngular-rangy.min.js'></script>
-        <script src='/static/js/textangular/textAngular-sanitize.min.js'></script>
-        <script src='/static/js/textangular/textAngular.min.js'></script>
-        <script src="/static/js/three.min.js"></script>
-        <script src="/static/js/D.min.js"></script>
-        <script src="/static/js/uevent.min.js"></script>
-        <script src="/static/js/doT.min.js"></script>
-        <script src='/static/js/photo-sphere-viewer.js'></script>
-        <script src='/static/js/dropzone.js'></script>
-        
 
+
+
+
+<script type="text/javascript">
     
-    <script type="text/javascript">    
-        var myapp = angular.module('mainApp',['ngRoute','textAngular']);
-        var customInterpolationApp = angular.module('customInterpolationApp', []);
 
-        // GLOBALS --------------------------------------------------------------------
-        var pasale = null;
-        var secrows = null;
-        var global_section_pk = '{{section.pk}}';
-        var csrf = '{{csrf}}';
-        // ----------------------------------------------------------------------------
-        
-        myapp.config(function($interpolateProvider) {
-            $interpolateProvider.startSymbol('||');
-            $interpolateProvider.endSymbol('||');
+$('.mainmenu').click(function(e){
 
-        });
+    e.preventDefault();
 
-        myapp.config(['$httpProvider', function($httpProvider) {
-            $httpProvider.defaults.xsrfCookieName = 'csrftoken';
-            $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-            $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';        
-        }]);
+$('.navbar-toggle').click();
 
-        
-
-        myapp.service('pathImgCrop', function () {
-                var pathimg = 'path';
-
-                return {
-                    getPath: function () {
-                        return pathimg;
-                    },
-                    setPath: function(value) {
-                        pathimg = value;
-                    }
-                };
-        });
+    var targ = $(this).attr('href').replace('#','/');
+$('html, body').animate({
+                    scrollTop: $("[name='"+targ+"']").offset().top - 170
+                }, 1000);
 
 
-        angular.module("mainApp").directive('justPopover', function() {
-
-          return {
-            restrict: 'A',
-            link: function(scope, elm, attrs) {
-              elm.popover();
-            }
-          };
-
-        });
-        
-
-        $(document).ready(function(){
-
-
-            
-
-
-        });
-
-    </script>
-
-    {% block extrajs %}{% endblock %}
-    <script src="https://www.youtube.com/iframe_api"></script>
-    <script src="/static/js/w3color.js"></script>
-    <script src="/static/frontend/js/brline_bones.js"></script>
-    <script type="text/javascript" src="/static/frontend/js/rowctr.js"></script>
-    <script src="/static/frontend/js/menu.js"></script>
-    <script src="/static/frontend/js/headctr.js"></script>
-
-    {% block modules_loader %}{% endblock %}
-
-
-    <!-- JSUT FORM ADMINS  THE ORDER OF SCDIPTS MATTERS PLEASE DONT MOVE-->    
-    <script src="/static/js/jquery-ui.min.js"></script>
-    <script src='/static/js/jquery.mjs.nestedSortable.js'></script>        
-    <script src="/static/manager/js/manager.js"></script>
-    <script src="/static/js/chumbucket.js"></script>
+});
 
 
 
-    <!-- JSUT FORM ADMINS  -->    
-
-<div class="modal " id="bancomodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Banco de imagenes</h4>
-      </div>
-      <div class="modal-body">
-        
-        <div><img src="" id="grande" class="img-responsive" /></div>
-
-        <div class="cfg_textos" style="padding:40px 20px;">
-            <div id="legales" class="cuerpo-texto"></div>
-            <br>
-            <div id="descargaslinks" ></div>
-        </div>
-
-      </div>
-
-
-    </div>
-  </div>
-</div>
-
-
-
+</script>
 
 
 </body>
