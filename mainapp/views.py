@@ -532,7 +532,7 @@ class Sender(View):
            
 
 
-        return HttpResponse({'saved':'ok','callback':'hideformr'})
+        return JsonResponse({'saved':'ok','callback':'hideformr'})
 
 
 Sender = Sender.as_view()
